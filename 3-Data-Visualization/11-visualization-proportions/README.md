@@ -188,3 +188,10 @@ Do some research to find more information on this sticky decision.
 ## Assignment
 
 [Try it in Excel](assignment.md)
+
+## Applied Lab: Proportion Table Validation (R39-T026)
+
+For an applied example illustrating proportion normalization, worked calculation steps, zero-total policies, and negative count validation, see [Applied Lab R39-T026](applied-labs/r39-t026/README.md).
+- **Fixture:** Counts `A=2, B=3` &rarr; Proportions `A=0.4, B=0.6, total=1.0`
+- **Verification:** `python3 -m unittest discover -s 3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t026 -p "test_*.py"`
+
