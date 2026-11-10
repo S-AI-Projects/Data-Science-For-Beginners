@@ -181,3 +181,10 @@ There are several resources available on [Microsoft Learn](https://docs.microsof
 ## Assignment
 
 [Displaying airport data](assignment.md)
+
+## Applied Lab: SQLite Parameterized Query Evaluation (R39-T028)
+
+For an applied example illustrating parameterized relational database queries, literal quote handling, SQL injection immunity, and multi-configuration benchmarks, see [Applied Lab R39-T028](applied-labs/r39-t028/README.md).
+- **Fixture:** `(tea, drink), (rice, food), (coffee, drink)` &rarr; Category `drink` returns `coffee`, `tea` in name order.
+- **Verification:** `python3 -m unittest discover -s 2-Working-With-Data/05-relational-databases/applied-labs/r39-t028 -p "test_*.py"`
+
