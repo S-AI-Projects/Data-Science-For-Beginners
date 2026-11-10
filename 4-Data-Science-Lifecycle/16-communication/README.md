@@ -219,3 +219,10 @@ Review what you've just learned with the Post-Lecture Quiz above!
 ## Assignment
 
 [Market Research](assignment.md)
+
+## Applied Lab: Chart-Data Consistency (R39-T023)
+
+For an applied example illustrating consistent aggregation and comparing procedural loops with `collections.Counter`, see [Applied Lab R39-T023](applied-labs/r39-t023/README.md).
+- **Fixture:** `['A', 'A', 'B', 'C', 'C', 'C']`
+- **Expected Output:** Unfiltered: `{'A': 2, 'B': 1, 'C': 3}, total=6`; Filtered to A/B: `{'A': 2, 'B': 1}, total=3`
+- **Verification:** `python3 -m unittest discover -s 4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t023 -p "test_*.py"`

@@ -1,0 +1,22 @@
+=== Environment ===
+OS: Darwin 27.0.0 arm64
+Python: Python 3.9.6
+Git: git version 2.54.0 (Apple Git-157)
+Date: Tue Nov 10 21:14:13 UTC 2026
+
+=== Unit Test Results ===
+test_deliberate_wrong_result_fails (test_example.TestChartDataConsistency)
+A desynchronized report (e.g. filtered counts but unfiltered total=6) must fail assertion. ... ok
+test_empty_input (test_example.TestChartDataConsistency)
+Empty input yields empty counts and total=0. ... ok
+test_filtered_summary (test_example.TestChartDataConsistency)
+Filtering to ['A', 'B'] yields A=2, B=1, and total=3. ... ok
+test_two_approaches_equivalence (test_example.TestChartDataConsistency)
+Verify that procedural and Counter implementations yield identical results. ... ok
+test_unfiltered_summary (test_example.TestChartDataConsistency)
+Rows A,A,B,C,C,C yield A=2, B=1, C=3, and total=6. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK
