@@ -201,3 +201,10 @@ In this lesson, you used Matplotlib and started working with Seaborn to show mor
 ## Assignment
 
 [Apply your skills](assignment.md)
+
+## Applied Lab: Histogram Refactoring (R39-T030)
+
+For an applied example demonstrating refactoring and proving before/after equivalence on histogram binning via extracted `find_bin_index`, see [Applied Lab R39-T030](applied-labs/r39-t030/README.md).
+- **Fixture:** Bins `[0, 10, 20]`, Values `[0, 9, 10, 20]` &rarr; Counts `[2, 2]`
+- **Verification:** `python3 -m unittest discover -s 3-Data-Visualization/10-visualization-distributions/applied-labs/r39-t030 -p "test_*.py"`
+
