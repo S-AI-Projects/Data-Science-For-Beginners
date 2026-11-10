@@ -1,0 +1,24 @@
+=== Environment ===
+OS: Darwin 27.0.0 arm64
+Python: Python 3.9.6
+Git: git version 2.54.0 (Apple Git-157)
+Date: Tue Nov 10 21:11:54 UTC 2026
+
+=== Unit Test Results ===
+test_boundary_points (test_example.TestHistogramBoundaryAccounting)
+Verify boundary placement: left edge, interior boundary, and terminal right edge. ... ok
+test_canonical_fixture (test_example.TestHistogramBoundaryAccounting)
+Bins [0,10,20] with [0,9,10,20] must yield counts [2,2] and empty out_of_bounds. ... ok
+test_deliberate_wrong_result_fails (test_example.TestHistogramBoundaryAccounting)
+A deliberate wrong result (placing 10 in bin 0 giving [3, 1]) must fail assertion. ... ok
+test_invalid_bin_edges (test_example.TestHistogramBoundaryAccounting)
+Ensure invalid bin configurations raise ValueError. ... ok
+test_out_of_bounds (test_example.TestHistogramBoundaryAccounting)
+Values strictly outside the bin range must be reported separately. ... ok
+test_smallest_valid_case (test_example.TestHistogramBoundaryAccounting)
+Smallest valid fixture: 2 edges (1 bin) and 1 value. ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

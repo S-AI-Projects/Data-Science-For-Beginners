@@ -201,3 +201,11 @@ In this lesson, you used Matplotlib and started working with Seaborn to show mor
 ## Assignment
 
 [Apply your skills](assignment.md)
+
+## Applied Lab: Histogram Boundary Accounting (R39-T022)
+
+For an applied example illustrating boundary accounting, half-open intermediate intervals, and closed terminal intervals, see [Applied Lab R39-T022](applied-labs/r39-t022/README.md).
+- **Fixture:** Bins `[0, 10, 20]`, Values `[0, 9, 10, 20]`
+- **Expected Output:** Counts `[2, 2]`, Out of bounds `[]`
+- **Verification:** `python3 -m unittest discover -s 3-Data-Visualization/10-visualization-distributions/applied-labs/r39-t022 -p "test_*.py"`
+
