@@ -1,0 +1,24 @@
+=== Environment ===
+OS: Darwin 27.0.0 arm64
+Python: Python 3.9.6
+Git: git version 2.54.0 (Apple Git-157)
+Date: Tue Nov 10 21:23:48 UTC 2026
+
+=== Unit Test Results ===
+test_canonical_filtered (test_example.TestCategorySummaryScenarios)
+Filtering to ['A', 'B'] gives counts A=2, B=1 and total=3. ... ok
+test_canonical_unfiltered (test_example.TestCategorySummaryScenarios)
+Rows A,A,B,C,C,C yield A=2, B=1, C=3, and total=6. ... ok
+test_deliberate_wrong_result_fails (test_example.TestCategorySummaryScenarios)
+Deliberately assert that filtering to A/B does NOT produce the unfiltered total 6. ... ok
+test_question_1_predict_check (test_example.TestCategorySummaryScenarios)
+Executable check for Q1: predicting output under filtered condition. ... ok
+test_question_2_diagnose_check (test_example.TestCategorySummaryScenarios)
+Executable check for Q2: diagnosing state desynchronization failure. ... ok
+test_question_3_boundary_policy_check (test_example.TestCategorySummaryScenarios)
+Executable check for Q3: choosing boundary policy for empty matches. ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

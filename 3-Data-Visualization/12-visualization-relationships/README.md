@@ -174,3 +174,10 @@ Line plots can be simple or quite complex. Do a bit of reading in the [Seaborn d
 ## Assignment
 
 [Dive into the beehive](assignment.md)
+
+## Applied Lab: Category Summary & Assessment Scenarios (R39-T029)
+
+For an applied example illustrating consistent category aggregation, predicting filtered output, diagnosing state desynchronization, and setting boundary policies, see [Applied Lab R39-T029](applied-labs/r39-t029/README.md).
+- **Fixture:** `['A', 'A', 'B', 'C', 'C', 'C']` &rarr; Unfiltered: `total=6`; Filtered to A/B: `total=3`
+- **Verification:** `python3 -m unittest discover -s 3-Data-Visualization/12-visualization-relationships/applied-labs/r39-t029 -p "test_*.py"`
+
