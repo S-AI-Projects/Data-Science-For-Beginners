@@ -1,0 +1,20 @@
+=== Environment ===
+OS: Darwin 27.0.0 arm64
+Python: Python 3.9.6
+Git: git version 2.54.0 (Apple Git-157)
+Date: Tue Nov 10 21:22:18 UTC 2026
+
+=== Unit Test Results ===
+test_canonical_query_ordering (test_example.TestSQLiteParameterizedQueries)
+Rows (tea,drink),(rice,food),(coffee,drink): category drink returns coffee and tea in name order. ... ok
+test_configuration_benchmarks (test_example.TestSQLiteParameterizedQueries)
+Compare three controlled configurations (3, 10, 25 rows) and verify metrics. ... ok
+test_deliberate_wrong_result_fails (test_example.TestSQLiteParameterizedQueries)
+Deliberately assert that results are NOT returned in un-ordered insertion order. ... ok
+test_literal_quote_handling_and_injection_immunity (test_example.TestSQLiteParameterizedQueries)
+A quote-containing category remains literal data and prevents SQL injection. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.005s
+
+OK
