@@ -299,3 +299,19 @@ In this lesson, you learned how to train, deploy and consume a model to predict 
 [Data Science project using Azure ML SDK](assignment.md)
 
 
+
+
+---
+
+## Applied Lab Extension (R39-T021)
+
+For an applied, runnable local implementation demonstrating cloud security threat-model evaluation, see:
+- [Applied Lab: R39-T021](./applied-labs/r39-t021/README.md)
+
+### Verification & Invocation
+Run the automated test suite locally:
+```bash
+python3 -m unittest discover -s 5-Data-Science-In-Cloud/19-Azure/applied-labs/r39-t021 -p "test_*.py" -v
+```
+
+*Note: All external dependencies and cloud services are bounded by deterministic local mocks/fixtures. No external API keys, Azure subscriptions, or GPUs required.*
