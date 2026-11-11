@@ -42,3 +42,10 @@ All the topics in this lesson can help identify missing or inconsistent values, 
 ## Assignment
 
 [Exploring for answers](assignment.md)
+
+## Applied Lab: Client-Consent State Machine (R39-T025)
+
+For an applied example illustrating client consent state management, adapter boundaries, and preventing unauthorized model sampling, see [Applied Lab R39-T025](applied-labs/r39-t025/README.md).
+- **Transitions:** `PENDING` &rarr; `APPROVED` (calls model once), `PENDING` &rarr; `DENIED` (zero calls)
+- **Verification:** `python3 -m unittest discover -s 4-Data-Science-Lifecycle/15-analyzing/applied-labs/r39-t025 -p "test_*.py"`
+

@@ -1,0 +1,22 @@
+=== Environment ===
+OS: Darwin 27.0.0 arm64
+Python: Python 3.9.6
+Git: git version 2.54.0 (Apple Git-157)
+Date: Tue Nov 10 21:17:35 UTC 2026
+
+=== Unit Test Results ===
+test_approved_consent_calls_model_once (test_example.TestSamplingConsentStateMachine)
+Approved consent calls the model stub exactly once and transitions state to APPROVED. ... ok
+test_deliberate_wrong_result_fails (test_example.TestSamplingConsentStateMachine)
+Assert that denied consent does NOT trigger any model calls (leakage check). ... ok
+test_denied_consent_never_calls_model (test_example.TestSamplingConsentStateMachine)
+Denied consent never calls the model stub; transitions state to DENIED. ... ok
+test_terminal_state_cannot_be_approved_again (test_example.TestSamplingConsentStateMachine)
+A completed request cannot be approved again; transitions out of terminal states raise ValueError. ... ok
+test_terminal_state_cannot_be_denied_again (test_example.TestSamplingConsentStateMachine)
+A completed request cannot be denied again. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
