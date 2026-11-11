@@ -97,3 +97,34 @@ Sources:
 ## Assignment
 
 [Market Research](assignment.md)
+
+---
+
+## Applied Lab: Cloud Security Scenario Checker (R39-T001)
+
+This applied lab demonstrates a Python-based structural rubric for evaluating fictional cloud-security scenarios.
+
+The checker verifies whether each scenario contains four required fields: asset, threat, control, and residual risk.
+
+It produces three possible outcomes:
+
+- **PASS:** Required fields are complete and the control matches the threat category.
+- **FAIL:** One or more required fields are missing or empty.
+- **REVIEW:** The control may not address the named threat, so human review is required.
+
+The example uses only Python's standard library. It does not connect to or assess real cloud infrastructure.
+
+### Run the example
+
+```bash
+python3 5-Data-Science-In-Cloud/17-Introduction/applied-labs/r39-t001/example.py
+
+```
+
+### Run the automated tests
+
+```bash
+python3 -m unittest discover -s 5-Data-Science-In-Cloud/17-Introduction/applied-labs/r39-t001 -p "test_*.py"
+```
+
+[View the Cloud Security Scenario Checker](applied-labs/r39-t001/README.md)

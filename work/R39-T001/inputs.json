@@ -1,0 +1,24 @@
+
+[
+  {
+    "name": "Cloud customer database",
+    "asset": "Customer records stored in a cloud database",
+    "threat": "An unauthorized user accesses the database because it is publicly accessible",
+    "control": "Restrict database access using identity-based permissions and network access rules",
+    "residual_risk": "A compromised authorized account could still access permitted records"
+  },
+  {
+    "name": "Cloud data processing",
+    "asset": "",
+    "threat": "Unauthorized modification of datasets during cloud processing",
+    "control": "Use access restrictions and data integrity checks",
+    "residual_risk": "A compromised privileged account may still modify data"
+  },
+  {
+    "name": "Real-time sentiment analysis",
+    "asset": "Streaming social media sentiment data and analysis results",
+    "threat": "Unauthorized access to the streaming service through exposed API credentials",
+    "control": "Encrypt stored data",
+    "residual_risk": "Exposed credentials may still allow unauthorized access to the streaming service"
+  }
+]
