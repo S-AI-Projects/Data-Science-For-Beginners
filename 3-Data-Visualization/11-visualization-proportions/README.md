@@ -188,3 +188,10 @@ Do some research to find more information on this sticky decision.
 ## Assignment
 
 [Try it in Excel](assignment.md)
+
+## Applied Lab: Proportion Failure Handling & Recovery (R39-T027)
+
+For an applied example illustrating invalid-input handling, failure recovery, and fault tolerance during proportion normalization, see [Applied Lab R39-T027](applied-labs/r39-t027/README.md).
+- **Behavior:** Rejects negative counts, logs diagnostics, and recovers on subsequent valid data (`A=2, B=3 -> 0.4, 0.6`).
+- **Verification:** `python3 -m unittest discover -s 3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t027 -p "test_*.py"`
+
