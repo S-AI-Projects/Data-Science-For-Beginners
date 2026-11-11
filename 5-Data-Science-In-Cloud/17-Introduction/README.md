@@ -97,3 +97,52 @@ Sources:
 ## Assignment
 
 [Market Research](assignment.md)
+
+---
+
+## Applied Lab: Cloud Security Scenario Checker (R39-T001)
+
+This applied lab demonstrates a Python-based structural rubric for evaluating fictional cloud-security scenarios.
+
+The checker verifies whether each scenario contains four required fields: asset, threat, control, and residual risk.
+
+It produces three possible outcomes:
+
+- **PASS:** Required fields are complete and the control matches the threat category.
+- **FAIL:** One or more required fields are missing or empty.
+- **REVIEW:** The control may not address the named threat, so human review is required.
+
+The example uses only Python's standard library. It does not connect to or assess real cloud infrastructure.
+
+### Run the example
+
+```bash
+python3 5-Data-Science-In-Cloud/17-Introduction/applied-labs/r39-t001/example.py
+
+```
+
+### Run the automated tests
+
+```bash
+python3 -m unittest discover -s 5-Data-Science-In-Cloud/17-Introduction/applied-labs/r39-t001 -p "test_*.py"
+```
+
+[View the Cloud Security Scenario Checker](applied-labs/r39-t001/README.md)
+
+### Local fixture and expected output
+
+The local fixture contains three fictional scenarios based on the lesson's cloud data science examples:
+
+| Scenario | Asset | Threat | Control | Expected result |
+|---|---|---|---|---|
+| Cloud customer database | Customer records | Unauthorized public database access | Identity-based permissions and network access rules | PASS |
+| Cloud data processing | Missing asset | Unauthorized dataset modification | Access restrictions and data integrity checks | FAIL |
+| Real-time sentiment analysis | Streaming social media data and results | Unauthorized access through exposed API credentials | Encryption of stored data | REVIEW |
+
+The checker uses four input fields: `asset`, `threat`, `control`, and `residual_risk`.
+
+Expected output statuses, in order, are `PASS`, `FAIL`, and `REVIEW`.
+
+**Prerequisite:** Python 3 and its standard library. No cloud account, external service, model download, GPU, or physical device is required.
+
+The example is a local simulation using fictional scenarios and keyword-based checks. It does not assess actual cloud configurations or replace human security review.

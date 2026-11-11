@@ -1,0 +1,21 @@
+[
+  {
+    "scenario": "Cloud customer database",
+    "status": "PASS",
+    "issues": []
+  },
+  {
+    "scenario": "Cloud data processing",
+    "status": "FAIL",
+    "issues": [
+      "Missing or empty required field: asset"
+    ]
+  },
+  {
+    "scenario": "Real-time sentiment analysis",
+    "status": "REVIEW",
+    "issues": [
+      "The control may not address the named threat. Human review is required."
+    ]
+  }
+]
