@@ -128,3 +128,21 @@ python3 -m unittest discover -s 5-Data-Science-In-Cloud/17-Introduction/applied-
 ```
 
 [View the Cloud Security Scenario Checker](applied-labs/r39-t001/README.md)
+
+### Local fixture and expected output
+
+The local fixture contains three fictional scenarios based on the lesson's cloud data science examples:
+
+| Scenario | Asset | Threat | Control | Expected result |
+|---|---|---|---|---|
+| Cloud customer database | Customer records | Unauthorized public database access | Identity-based permissions and network access rules | PASS |
+| Cloud data processing | Missing asset | Unauthorized dataset modification | Access restrictions and data integrity checks | FAIL |
+| Real-time sentiment analysis | Streaming social media data and results | Unauthorized access through exposed API credentials | Encryption of stored data | REVIEW |
+
+The checker uses four input fields: `asset`, `threat`, `control`, and `residual_risk`.
+
+Expected output statuses, in order, are `PASS`, `FAIL`, and `REVIEW`.
+
+**Prerequisite:** Python 3 and its standard library. No cloud account, external service, model download, GPU, or physical device is required.
+
+The example is a local simulation using fictional scenarios and keyword-based checks. It does not assess actual cloud configurations or replace human security review.
