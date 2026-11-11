@@ -333,3 +333,11 @@ There are many ways to discover and approach preparing your data for analysis an
 ## Assignment
 
 [Evaluating Data from a Form](assignment.md)
+
+## Applied Lab: Training-Only Mean Imputation (R39-T024)
+
+For an applied example demonstrating fit/transform separation, state tracing, and preventing data leakage during missing-value imputation, see [Applied Lab R39-T024](applied-labs/r39-t024/README.md).
+- **Fixture:** Training `[2, None, 4]`, Validation `[100, None]`
+- **Expected Output:** Stored mean `3.0`, Transformed validation `[100, 3.0]`
+- **Verification:** `python3 -m unittest discover -s 2-Working-With-Data/08-data-preparation/applied-labs/r39-t024 -p "test_*.py"`
+

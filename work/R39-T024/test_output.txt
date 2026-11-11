@@ -1,0 +1,22 @@
+=== Environment ===
+OS: Darwin 27.0.0 arm64
+Python: Python 3.9.6
+Git: git version 2.54.0 (Apple Git-157)
+Date: Tue Nov 10 21:15:53 UTC 2026
+
+=== Unit Test Results ===
+test_all_missing_training_rejected (test_example.TestMeanImputer)
+All-missing training input is rejected with ValueError. ... ok
+test_deliberate_wrong_result_fails (test_example.TestMeanImputer)
+A data-leakage result (refitting on validation to give [100, 100]) must fail assertion. ... ok
+test_state_trace_and_invariance (test_example.TestMeanImputer)
+Record intermediate state after each step and verify invariant linking state to final output. ... ok
+test_training_fit_and_validation_transform (test_example.TestMeanImputer)
+Training [2,None,4] yields mean 3; validation [100,None] becomes [100,3], not [100,100]. ... ok
+test_transform_before_fit_raises (test_example.TestMeanImputer)
+Calling transform before fitting must raise RuntimeError. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK
