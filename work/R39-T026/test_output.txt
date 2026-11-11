@@ -1,0 +1,20 @@
+=== Environment ===
+OS: Darwin 27.0.0 arm64
+Python: Python 3.9.6
+Git: git version 2.54.0 (Apple Git-157)
+Date: Tue Nov 10 21:18:58 UTC 2026
+
+=== Unit Test Results ===
+test_canonical_counts (test_example.TestProportionTableValidation)
+Counts A=2, B=3 give proportions 0.4, 0.6 and total proportion 1.0. ... ok
+test_deliberate_wrong_result_fails (test_example.TestProportionTableValidation)
+Deliberately assert that total proportion of valid input is NOT 0.5. ... ok
+test_negative_counts_rejected (test_example.TestProportionTableValidation)
+Negative counts must be rejected with ValueError. ... ok
+test_zero_total_policy (test_example.TestProportionTableValidation)
+Zero counts produce an explicit no-data result. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
