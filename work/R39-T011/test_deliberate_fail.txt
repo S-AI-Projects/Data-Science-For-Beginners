@@ -1,0 +1,28 @@
+......F.....
+======================================================================
+FAIL: test_run_prints_expected_table (test_example.CommandLineOutput.test_run_prints_expected_table)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/wrong/test_example.py", line 82, in test_run_prints_expected_table
+    self.assertEqual([l.split()[1] for l in lines],
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     ["PASS", "PASS", "PASS", "PASS", "REVIEW"])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['PASS', 'PASS', 'PASS', 'FAIL', 'REVIEW'] != ['PASS', 'PASS', 'PASS', 'PASS', 'REVIEW']
+
+First differing element 3:
+'FAIL'
+'PASS'
+
+- ['PASS', 'PASS', 'PASS', 'FAIL', 'REVIEW']
+?                           ^ ^^
+
++ ['PASS', 'PASS', 'PASS', 'PASS', 'REVIEW']
+?                           ^ ^^
+
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.001s
+
+FAILED (failures=1)
+exit code: 1
