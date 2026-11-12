@@ -162,6 +162,22 @@ While nothing jumps out to the eye around the year 2003, it does allow us to end
 Go, bees, go!
 
 🐝❤️
+
+## Local example: grouped totals and aligned labels
+
+Try the [local aggregation example](applied-labs/r39-t032/example.py). This is a simulation/mock using a tiny in-memory fixture, not the USDA honey dataset:
+
+```bash
+cd 3-Data-Visualization/12-visualization-relationships/applied-labs/r39-t032
+python3 example.py
+```
+
+Fixture: `AL` and `AZ` have production values 10 and 20 in 1998; `AL` has value 5 in 1999. The example groups production by year, keeping each year label aligned with its summed value. Expected output:
+
+```json
+{"labels": [1998, 1999], "values": [30, 5]}
+```
+
 ## 🚀 Challenge
 
 In this lesson, you learned a bit more about other uses of scatterplots and line grids, including facet grids. Challenge yourself to create a facet grid using a different dataset, maybe one you used prior to these lessons. Note how long they take to create and how you need to be careful about how many grids you need to draw using these techniques.
