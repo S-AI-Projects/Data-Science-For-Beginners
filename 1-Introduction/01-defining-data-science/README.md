@@ -155,6 +155,18 @@ Visit [`notebook.ipynb`](./notebook.ipynb ':ignore') to read through the code.  
 
 ## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ds/quiz/1)
 
+## Applied example: scenario rubric checker (simulation)
+
+Try a small local example that turns the course-digitalization idea above into
+checkable scenarios (asset, threat, control, residual risk):
+[applied-labs/r39-t011](applied-labs/r39-t011/README.md).
+
+- **Run (from the repository root):** `python3 1-Introduction/01-defining-data-science/applied-labs/r39-t011/example.py`
+- **Fixture:** three fictional scenarios plus two deliberately broken ones, all inside `example.py`.
+- **Expected output:** three `PASS` lines, then `N1-no-asset FAIL missing:asset` and `N2-unrelated-control REVIEW control_unrelated_to_threat`.
+- **Needs:** Python 3 standard library only.
+- **Limits:** this is a simulation with fictional data. It checks structure only; it cannot judge whether an explanation is good.
+
 ## Assignments
 
 * **Task 1**: Modify the code above to find out related concepts for the fields of **Big Data** and **Machine Learning**

@@ -1,0 +1,8 @@
+R39-T011 expected vs actual (inputs: inputs.json)
+fixture                 expected  actual   (reasons)
+S1-course-timings       PASS      PASS     -
+S2-web-logs             PASS      PASS     -
+S3-quiz-table           PASS      PASS     -
+N1-no-asset             FAIL      FAIL     missing:asset
+N2-unrelated-control    REVIEW    REVIEW   control_unrelated_to_threat
+Deliberate wrong result: a test expecting N1-no-asset to be PASS makes the run FAIL with exit code 1 (see test_deliberate_fail.txt)
