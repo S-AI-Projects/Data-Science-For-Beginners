@@ -1,0 +1,52 @@
+[
+  {
+    "id": "S1-course-timings",
+    "lesson_section": "Digitalization and Digital Transformation",
+    "asset": "Per-student module completion times and age categories from a fictional online data science course",
+    "threat": "A small age group lets a reader pick out one student (re-identification)",
+    "threat_type": "reidentification",
+    "control": "Publish only averages for groups of at least 5 students",
+    "control_type": "aggregation",
+    "residual_risk": "A single extreme outlier can still reveal one student's behaviour inside a group of 5"
+  },
+  {
+    "id": "S2-web-logs",
+    "lesson_section": "Where to get Data",
+    "asset": "Web server logs of the fictional course website",
+    "threat": "Logs contain IP addresses that identify visitors",
+    "threat_type": "pii_exposure",
+    "control": "Replace IP addresses with salted hashes before analysis",
+    "control_type": "anonymisation",
+    "residual_risk": "Hashed IDs can still be linked to other datasets that share the same visitor"
+  },
+  {
+    "id": "S3-quiz-table",
+    "lesson_section": "What you can do with Data",
+    "asset": "Quiz results table for the fictional course",
+    "threat": "Badly formatted scores silently corrupt module averages",
+    "threat_type": "data_corruption",
+    "control": "Reject rows that break the score schema when loading data",
+    "control_type": "validation",
+    "residual_risk": "A well-formed but wrong score still passes validation"
+  },
+  {
+    "id": "N1-no-asset",
+    "lesson_section": "Digitalization and Digital Transformation",
+    "asset": "",
+    "threat": "A small age group lets a reader pick out one student (re-identification)",
+    "threat_type": "reidentification",
+    "control": "Publish only averages for groups of at least 5 students",
+    "control_type": "aggregation",
+    "residual_risk": "A single extreme outlier can still reveal one student's behaviour inside a group of 5"
+  },
+  {
+    "id": "N2-unrelated-control",
+    "lesson_section": "Digitalization and Digital Transformation",
+    "asset": "Per-student module completion times and age categories from a fictional online data science course",
+    "threat": "A small age group lets a reader pick out one student (re-identification)",
+    "threat_type": "reidentification",
+    "control": "Reject rows that break the score schema when loading data",
+    "control_type": "validation",
+    "residual_risk": "A single extreme outlier can still reveal one student's behaviour inside a group of 5"
+  }
+]
