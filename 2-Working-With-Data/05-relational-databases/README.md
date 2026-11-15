@@ -158,6 +158,24 @@ WHERE rainfall.year = 2019
 -- Auckland |  942
 ```
 
+## Local applied example
+
+Run the [cities and rainfall example](./applied-labs/r39-t031/example.py) from the repository root:
+
+```bash
+python3 2-Working-With-Data/05-relational-databases/applied-labs/r39-t031/example.py
+```
+
+It uses this small fixture: cities Tokyo, Atlanta, and Auckland; 2019 rainfall of 1874, 1111, and 942 mm respectively; and Tokyo's 2020 rainfall of 1690 mm. The query filters for 2019 and orders results by city. Expected output:
+
+```text
+Atlanta: 1111 mm
+Auckland: 942 mm
+Tokyo: 1874 mm
+```
+
+**Simulation/mock behavior:** None. The example runs real SQL against an in-memory SQLite database; the fixture values are synthetic, not live observations.
+
 ## Summary
 
 Relational databases are centered around dividing information between multiple tables which is then brought back together for display and analysis. This provides a high degree of flexibility to perform calculations and otherwise manipulate data. You have seen the core concepts of a relational database, and how to perform a join between two tables.
