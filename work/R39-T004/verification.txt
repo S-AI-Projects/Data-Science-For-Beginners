@@ -1,0 +1,17 @@
+=== Tool Versions ===
+Python 3.15.0
+
+=== Example Output ===
+fictional_complete_pass: verdict=PASS | steps=3 | invariant_ok=True
+fictional_missing_asset_fail: verdict=FAIL | steps=3 | invariant_ok=True
+fictional_unrelated_control_review: verdict=REVIEW | steps=3 | invariant_ok=True
+
+=== Unit Tests ===
+test_deliberate_wrong_verdict_violates_invariant (test_example.TestSecurityScenarioRubric.test_deliberate_wrong_verdict_violates_invariant) ... ok
+test_missing_asset_none_fails_and_records_state (test_example.TestSecurityScenarioRubric.test_missing_asset_none_fails_and_records_state) ... ok
+test_three_fictional_scenarios_verdicts_and_invariants (test_example.TestSecurityScenarioRubric.test_three_fictional_scenarios_verdicts_and_invariants) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
