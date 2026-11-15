@@ -162,6 +162,35 @@ While nothing jumps out to the eye around the year 2003, it does allow us to end
 Go, bees, go!
 
 🐝❤️
+
+## Local practice: Grouped annual totals
+
+Run the [local example](./applied-labs/r39-t032/example.py) from the repository root:
+
+```bash
+python3 3-Data-Visualization/12-visualization-relationships/applied-labs/r39-t032/example.py
+```
+
+The fixture is **mock data**, not USDA observations:
+
+| State | Year | Production |
+| ----- | ---- | ---------- |
+| CA    | 2019 | 12         |
+| ND    | 2019 | 8          |
+| CA    | 2018 | 10         |
+| SD    | 2019 | 5          |
+| ND    | 2018 | 4          |
+
+Expected printed output:
+
+```text
+Year | Total honey production (pounds)
+2018 | 14
+2019 | 25
+```
+
+The example groups production by year, keeps each year paired with its total, and plots the totals. The values are illustrative; they do not represent real honey production.
+
 ## 🚀 Challenge
 
 In this lesson, you learned a bit more about other uses of scatterplots and line grids, including facet grids. Challenge yourself to create a facet grid using a different dataset, maybe one you used prior to these lessons. Note how long they take to create and how you need to be careful about how many grids you need to draw using these techniques.
