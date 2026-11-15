@@ -299,3 +299,11 @@ In this lesson, you learned how to train, deploy and consume a model to predict 
 [Data Science project using Azure ML SDK](assignment.md)
 
 
+
+## Applied Lab: Security-Scenario Rubric (`R39-T004`)
+
+See [applied-labs/r39-t004/README.md](./applied-labs/r39-t004/README.md) for a local Python 3 standard-library example evaluating three fictional Azure ML security scenarios (`PASS`, `FAIL` on missing asset, `REVIEW` on unrelated control) while recording intermediate step states and verifying the state-trace invariant.
+
+- **Prerequisites:** Python 3 standard library and a local checkout (no Azure credentials, model downloads, or cloud services).
+- **Run tests:** `python3 -m unittest discover -s 5-Data-Science-In-Cloud/19-Azure/applied-labs/r39-t004 -p "test_*.py"`
+- **Scope/Limitations:** Fictional local fixtures only; checks structural rubric and trace invariants without making claims about live cloud service behavior or trained-model performance.
