@@ -1,0 +1,55 @@
+=== Tool Versions ===
+Python 3.15.0
+git version 2.55.0
+
+=== Fixture Run (Fresh Process) ===
+{
+  "simulation": true,
+  "train_input": [
+    2,
+    null,
+    4
+  ],
+  "fitted_mean": 3.0,
+  "train_imputed": [
+    2.0,
+    3.0,
+    4.0
+  ],
+  "validation_input": [
+    100,
+    null
+  ],
+  "validation_imputed": [
+    100.0,
+    3.0
+  ],
+  "boundary_validation_imputed": [
+    5.0,
+    5.0
+  ],
+  "all_missing_rejected": true,
+  "invalid_error": "Training input must contain at least one non-missing observation; all-missing or empty training data is rejected."
+}
+
+=== Unit Test Suite (Fresh Process) ===
+test_boundary_no_missing_values_preserves_inputs (test_example.TestTrainingOnlyMeanImputer.test_boundary_no_missing_values_preserves_inputs) ... ok
+test_boundary_single_observed_training_and_all_missing_validation (test_example.TestTrainingOnlyMeanImputer.test_boundary_single_observed_training_and_all_missing_validation) ... ok
+test_invalid_all_missing_and_empty_training_rejected (test_example.TestTrainingOnlyMeanImputer.test_invalid_all_missing_and_empty_training_rejected) ... ok
+test_run_fixture_contract (test_example.TestTrainingOnlyMeanImputer.test_run_fixture_contract) ... ok
+test_training_only_mean_prevents_validation_leakage (test_example.TestTrainingOnlyMeanImputer.test_training_only_mean_prevents_validation_leakage) ... ok
+test_transform_before_fit_rejected (test_example.TestTrainingOnlyMeanImputer.test_transform_before_fit_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+TEST_EXIT_CODE=0
+
+=== Deliberate Wrong-Result Failure Check ===
+Traceback (most recent call last):
+  File "<string>", line 8, in <module>
+    assert actual == expected_leakage, f"Deliberate failure check: got {actual}, not {expected_leakage}"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Deliberate failure check: got [100.0, 3.0], not [100.0, 100.0]
+DELIBERATE_FAILURE_EXIT_CODE=1
