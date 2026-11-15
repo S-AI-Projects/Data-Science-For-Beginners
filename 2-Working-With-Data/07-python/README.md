@@ -278,3 +278,11 @@ Whether you already have structured or unstructured data, using Python you can p
 ## Credits
 
 This lesson has been authored with ♥️ by [Dmitry Soshnikov](http://soshnikov.com)
+
+## Applied Lab: Training-Only Mean Imputation (`R39-T003`)
+
+See [applied-labs/r39-t003/README.md](./applied-labs/r39-t003/README.md) for a local Python 3 standard-library example comparing a stateful `TrainingOnlyMeanImputer` against an independent `statistics.mean` calculation and an expected-result table on identical local fixtures (`train=[2, None, 4]` -> mean `3.0`; `validation=[100, None]` -> `[100.0, 3.0]`, not `[100.0, 100.0]`).
+
+- **Prerequisites:** Python 3 standard library and a local checkout (no external packages, model downloads, or cloud services).
+- **Run tests:** `python3 -m unittest discover -s 2-Working-With-Data/07-python/applied-labs/r39-t003 -p "test_*.py"`
+- **Scope/Limitations:** Local 1D fixture only; omits multi-column DataFrame handling and makes no claims about trained-model performance.
