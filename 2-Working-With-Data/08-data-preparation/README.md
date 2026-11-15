@@ -333,3 +333,12 @@ There are many ways to discover and approach preparing your data for analysis an
 ## Assignment
 
 [Evaluating Data from a Form](assignment.md)
+
+## Applied Lab: Training-Only Mean Imputation (R39-T002)
+
+For a small local simulation of fit/transform separation during missing-value imputation, see [Applied Lab R39-T002](applied-labs/r39-t002/README.md) and [`example.py`](applied-labs/r39-t002/example.py).
+
+- **Prerequisites:** Python 3 standard library (local simulation only; no external services or model training).
+- **Invocation:** `python3 2-Working-With-Data/08-data-preparation/applied-labs/r39-t002/example.py`
+- **Fixture & Expected Output:** Training `[2, None, 4]` fits mean `3.0`; validation `[100, None]` becomes `[100.0, 3.0]` (not `[100.0, 100.0]`); all-missing training `[None, None]` raises `ValueError`.
+- **Scope & Limitations:** Simplifies imputation to a 1D numeric list with `None` markers to isolate leakage prevention; does not cover multi-column DataFrames or model performance.
