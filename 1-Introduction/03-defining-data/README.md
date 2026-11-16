@@ -70,3 +70,26 @@ Kaggle is an excellent source of open datasets. Use the [dataset search tool](ht
 ## Assignment
 
 [Classifying Datasets](assignment.md)
+
+## Applied Lab: Security-Scenario Rubric (`R39-T006`)
+
+See [applied-labs/r39-t006/README.md](./applied-labs/r39-t006/README.md) and [applied-labs/r39-t006/example.py](./applied-labs/r39-t006/example.py) for a local Python 3 standard-library lab that demonstrates security/governance rubric checking and teaching example refactoring across data-defining scenarios.
+
+### 3-Scenario Fixture Summary
+1. **Scenario 1 (Normal / Complete & Consistent):** Structured quantitative database with parameterized SQL queries addressing SQL injection (`status: "PASS"`).
+2. **Scenario 2 (Boundary / Missing Asset):** Qualitative secondary store missing the required `asset` field (`status: "FAIL"`).
+3. **Scenario 3 (Review / Unrelated Control):** Semi-structured sensor stream with an unrelated slide theme control (`status: "FLAGGED_FOR_REVIEW"`).
+
+### Commands & Verification
+- **Run rubric checker:**
+  ```bash
+  python3 1-Introduction/03-defining-data/applied-labs/r39-t006/example.py
+  ```
+  Expected output summary: Verifies `EQUIVALENCE_VERIFIED: True` between baseline and refactored evaluators, and prints per-scenario verdicts (`PASS`, `FAIL`, `FLAGGED_FOR_REVIEW`).
+- **Run unit tests:**
+  ```bash
+  python3 -m unittest discover -s 1-Introduction/03-defining-data/applied-labs/r39-t006 -p "test_*.py"
+  ```
+
+### Scope & Limitations [SIMULATION/MOCK]
+This lab uses purely local, in-memory fixtures and the Python 3 standard library. No live cloud accounts, APIs, GPUs, or trained models are used or claimed. Automated checks evaluate structural schema presence and keyword alignment; human review is required to evaluate qualitative free-text explanations.
