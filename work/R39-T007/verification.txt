@@ -1,0 +1,113 @@
+=== Tool & Environment Versions ===
+Python Version: Python 3.15.0
+Git Version: git version 2.55.0
+OS Details: Darwin Prachis-MacBook-Pro-2.local 25.3.0 Darwin Kernel Version 25.3.0: Wed Jan 28 20:54:05 PST 2026; root:xnu-12377.81.4~5/RELEASE_ARM64_T8142 arm64
+
+=== Fresh-Process Execution of example.py ===
+Command: python3 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t007/example.py
+Exit Code: 0
+
+--- Inputs ---
+Worked Raw Observation Stream: ["A", "A", "B", "C", "C", "C"]
+Filtered Subset Allowed Categories: {"A", "B"}
+Deceptive Scenario: Filtered counts A=2, B=1 paired with stale total 6
+
+--- Expected vs. Actual Outputs ---
+Unfiltered Breakdown:
+  Expected: A=2,B=1,C=3,total=6
+  Actual:   A=2,B=1,C=3,total=6 (MATCH)
+
+Filtered Subset Recomputed Total:
+  Expected: total=3
+  Actual:   total=3 (MATCH)
+
+Deceptive Stale Total Check:
+  Expected: consistent=False (Sum mismatch: sum of counts (3) != displayed_total (6))
+  Actual:   consistent=False (MATCH)
+
+Regression Check Invariants:
+  Expected: Regression check passed: True
+  Actual:   Regression check passed: True (MATCH)
+
+--- Complete Fresh Subprocess stdout ---
+======================================================================
+[SIMULATION/MOCK] Chart-Data Consistency & Worked Example (R39-T007)
+Lesson Reference: 3-Data-Visualization/13-meaningful-visualizations
+Scope: Local standard-library chart consistency validator
+No GUI/rendering hardware, cloud BI service, or ML models claimed.
+======================================================================
+
+--- WORKED INPUT-TO-OUTPUT TRACE ---
+Step 1 [raw_input]: Raw observational categorical stream
+  Consistent: N/A
+
+Step 2 [full_unfiltered_aggregation]: Grouped counts across all observed categories
+  Summary: A=2,B=1,C=3,total=6
+  Consistent: True
+
+Step 3 [filtered_subset_recomputed]: Filtered to A/B with dynamically recomputed total
+  Summary: A=2,B=1,total=3
+  Consistent: True
+
+Step 4 [deceptive_stale_total]: Filtered chart displaying stale unfiltered total (deceptive pattern)
+  Consistency Errors: ['Sum mismatch: sum of counts (3) != displayed_total (6)']
+  Consistent: False
+
+--- REGRESSION VERIFICATION SUMMARY ---
+Unfiltered breakdown: A=2,B=1,C=3,total=6
+Filtered A/B: total=3
+Regression check passed: True
+
+--- STATUS OF EVALUATED SCENARIOS ---
+[SIMULATION/MOCK] Scenario 1 (Normal / Full Fixture): consistent=True (A=2,B=1,C=3,total=6)
+[SIMULATION/MOCK] Scenario 2 (Boundary / Filtered A/B): consistent=True (A=2,B=1,total=3)
+[SIMULATION/MOCK] Scenario 3 (Failure / Stale Total Mismatch): consistent=False (sum=3 != total=6)
+
+======================================================================
+[SIMULATION/MOCK] Verification complete.
+======================================================================
+
+=== Full Unit Test Runner Output ===
+Command: python3 -m unittest discover -s 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t007 -p "test_*.py" -v
+Exit Code: 0
+
+test_01_exact_worked_example_regression (test_example.TestChartDataConsistency.test_01_exact_worked_example_regression)
+Test 1: Rows ['A', 'A', 'B', 'C', 'C', 'C'] yield exact counts and total == 6. ... ok
+test_02_filtered_ab_subset_boundary (test_example.TestChartDataConsistency.test_02_filtered_ab_subset_boundary)
+Test 2: Filtering ['A', 'A', 'B', 'C', 'C', 'C'] to {'A', 'B'} yields counts A=2, B=1 and total == 3. ... ok
+test_03_empty_and_single_category_boundary (test_example.TestChartDataConsistency.test_03_empty_and_single_category_boundary)
+Test 3: Empty input yields total == 0 with empty labels/counts; single category yields expected single item. ... ok
+test_04_deliberate_wrong_result_and_stale_total_failure (test_example.TestChartDataConsistency.test_04_deliberate_wrong_result_and_stale_total_failure)
+Test 4: Stale unfiltered total (total=6) for filtered subset (sum=3) or mismatched arrays fails consistency check. ... ok
+test_05_fresh_process_cli_execution (test_example.TestChartDataConsistency.test_05_fresh_process_cli_execution)
+Test 5: Running example.py in fresh process exits with code 0 and required output tokens. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.019s
+
+OK
+
+=== Deliberate Assertion Failure Verification ===
+Command:
+python3 -c "import unittest
+class BrokenAssertionTest(unittest.TestCase):
+    def test_deliberate_failure(self):
+        self.assertEqual(6, 3, msg='Deliberate failure: stale total mismatch')
+unittest.main()"
+
+Exit Code: 1 (Non-Zero Exit Verified)
+Stderr/Stdout:
+F
+======================================================================
+FAIL: test_deliberate_failure (__main__.BrokenAssertionTest.test_deliberate_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<string>", line 4, in test_deliberate_failure
+    self.assertEqual(6, 3, msg='Deliberate failure: stale total mismatch')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 6 != 3 : Deliberate failure: stale total mismatch
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

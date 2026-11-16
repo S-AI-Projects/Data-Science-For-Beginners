@@ -166,3 +166,26 @@ https://medium.com/@EvanSinar/use-animation-to-supercharge-data-visualization-cd
 ## Assignment
 
 [Build your own custom visualization](assignment.md)
+
+## Applied Lab: Chart-Data Consistency & Worked Example (`R39-T007`)
+
+See [applied-labs/r39-t007/README.md](./applied-labs/r39-t007/README.md) and [applied-labs/r39-t007/example.py](./applied-labs/r39-t007/example.py) for a local Python 3 standard-library worked example and regression validator that prevents deceptive charting caused by stale or desynchronized category totals.
+
+### Worked Example Summary (`A,A,B,C,C,C`)
+- **Unfiltered Aggregation:** Raw categorical stream `["A", "A", "B", "C", "C", "C"]` yields `A=2, B=1, C=3` with total `6` (`consistent=True`).
+- **Filtered Subset (`A/B`):** Restricting to categories `{"A", "B"}` recomputes counts to `A=2, B=1` with total `3` (`consistent=True`).
+- **Deceptive Pattern Detected:** Attempting to display the stale unfiltered total `6` alongside the filtered subset `A/B` (sum `3`) fails validation (`consistent=False`).
+
+### Commands & Verification
+- **Run worked example:**
+  ```bash
+  python3 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t007/example.py
+  ```
+  Expected output summary: Displays the worked input-to-output trace, verifies `A=2,B=1,C=3,total=6` and filtered `A/B` `total=3`, and confirms consistency statuses.
+- **Run unit tests:**
+  ```bash
+  python3 -m unittest discover -s 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t007 -p "test_*.py"
+  ```
+
+### Scope & Limitations [SIMULATION/MOCK]
+This educational lab runs locally in-memory using only the Python 3 standard library. It verifies tabular and aggregate data consistency prior to rendering. It makes no claims regarding live browser rendering engines, GUI libraries, cloud BI dashboards, or trained models.
