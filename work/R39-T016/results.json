@@ -1,0 +1,424 @@
+[
+  {
+    "fixture": {
+      "case": "normal",
+      "counts": {
+        "A": 2,
+        "B": 3
+      },
+      "expected": {
+        "status": "ok",
+        "count_total": 5,
+        "proportions": {
+          "A": 0.4,
+          "B": 0.6
+        },
+        "total": 1.0
+      }
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "{\"A\": 2, \"B\": 3}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"count_total\": 5, \"proportions\": {\"A\": 0.4, \"B\": 0.6}, \"total\": 1.0}\n",
+      "stderr": ""
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "{\"A\": 2, \"B\": 3}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"count_total\": 5, \"proportions\": {\"A\": 0.4, \"B\": 0.6}, \"total\": 1.0}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "smallest positive",
+      "counts": {
+        "A": 1
+      },
+      "expected": {
+        "status": "ok",
+        "count_total": 1,
+        "proportions": {
+          "A": 1.0
+        },
+        "total": 1.0
+      }
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "{\"A\": 1}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"count_total\": 1, \"proportions\": {\"A\": 1.0}, \"total\": 1.0}\n",
+      "stderr": ""
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "{\"A\": 1}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"count_total\": 1, \"proportions\": {\"A\": 1.0}, \"total\": 1.0}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "zero category with positive denominator",
+      "counts": {
+        "A": 0,
+        "B": 3
+      },
+      "expected": {
+        "status": "ok",
+        "count_total": 3,
+        "proportions": {
+          "A": 0.0,
+          "B": 1.0
+        },
+        "total": 1.0
+      }
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "{\"A\": 0, \"B\": 3}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"count_total\": 3, \"proportions\": {\"A\": 0.0, \"B\": 1.0}, \"total\": 1.0}\n",
+      "stderr": ""
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "{\"A\": 0, \"B\": 3}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"count_total\": 3, \"proportions\": {\"A\": 0.0, \"B\": 1.0}, \"total\": 1.0}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "all zero",
+      "counts": {
+        "A": 0,
+        "B": 0
+      },
+      "expected": {
+        "status": "no-data",
+        "count_total": 0,
+        "proportions": {},
+        "total": null
+      }
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "{\"A\": 0, \"B\": 0}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"no-data\", \"count_total\": 0, \"proportions\": {}, \"total\": null}\n",
+      "stderr": ""
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "{\"A\": 0, \"B\": 0}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"no-data\", \"count_total\": 0, \"proportions\": {}, \"total\": null}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "empty",
+      "counts": {},
+      "expected": {
+        "status": "no-data",
+        "count_total": 0,
+        "proportions": {},
+        "total": null
+      }
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "{}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"no-data\", \"count_total\": 0, \"proportions\": {}, \"total\": null}\n",
+      "stderr": ""
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "{}"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"no-data\", \"count_total\": 0, \"proportions\": {}, \"total\": null}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "negative",
+      "counts": {
+        "A": -1,
+        "B": 3
+      },
+      "error": "counts must be nonnegative integers"
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "{\"A\": -1, \"B\": 3}"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: baseline_example.py [-h] [--counts COUNTS]\nbaseline_example.py: error: counts must be nonnegative integers\n"
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "{\"A\": -1, \"B\": 3}"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--counts COUNTS]\nexample.py: error: counts must be nonnegative integers\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "missing count",
+      "counts": {
+        "A": null
+      },
+      "error": "counts must be nonnegative integers"
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "{\"A\": null}"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: baseline_example.py [-h] [--counts COUNTS]\nbaseline_example.py: error: counts must be nonnegative integers\n"
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "{\"A\": null}"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--counts COUNTS]\nexample.py: error: counts must be nonnegative integers\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "boolean count",
+      "counts": {
+        "A": true
+      },
+      "error": "counts must be nonnegative integers"
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "{\"A\": true}"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: baseline_example.py [-h] [--counts COUNTS]\nbaseline_example.py: error: counts must be nonnegative integers\n"
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "{\"A\": true}"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--counts COUNTS]\nexample.py: error: counts must be nonnegative integers\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "invalid container",
+      "counts": null,
+      "error": "counts must be an object"
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "null"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: baseline_example.py [-h] [--counts COUNTS]\nbaseline_example.py: error: counts must be an object\n"
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "null"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--counts COUNTS]\nexample.py: error: counts must be an object\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "malformed JSON",
+      "raw": "{",
+      "error": "Expecting property name enclosed in double quotes"
+    },
+    "baseline": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/shashankinjeti/Documents/ChatGPT/S&AI Assignment/lesson-repo/work/R39-T016/baseline_example.py",
+        "--counts",
+        "{"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: baseline_example.py [-h] [--counts COUNTS]\nbaseline_example.py: error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)\n"
+    },
+    "extracted": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py",
+        "--counts",
+        "{"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--counts COUNTS]\nexample.py: error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)\n"
+    }
+  },
+  {
+    "case": "documented JSON",
+    "actual": "pass"
+  },
+  {
+    "case": "required discovery after extraction",
+    "expected": "9 tests; exit 0",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.283s\n\nOK\n"
+    }
+  },
+  {
+    "case": "suite against original baseline",
+    "expected": "9 tests; exit 0",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.288s\n\nOK\n"
+    }
+  },
+  {
+    "case": "deliberately wrong denominator",
+    "input": {
+      "A": 2,
+      "B": 3
+    },
+    "expected_wrong_shares": {
+      "A": 0.3333333333333333,
+      "B": 0.5
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "example.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"count_total\": 5, \"proportions\": {\"A\": 0.3333333333333333, \"B\": 0.5}, \"total\": 0.8333333333333333}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "suite rejects wrong denominator",
+    "expected": "9 tests; nonzero exit; AssertionError",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "FFFF...FFFFF.\n======================================================================\nFAIL: test_boundaries_in_fresh_processes (test_example.CommandTests.test_boundaries_in_fresh_processes) (counts={'A': 2, 'B': 3})\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t016-qlesl1gx/test_example.py\", line 109, in test_boundaries_in_fresh_processes\n    self.assertEqual(json.loads(result.stdout), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'sta[47 chars]A': 0.3333333333333333, 'B': 0.5}, 'total': 0.8333333333333333} != {'sta[47 chars]A': 0.4, 'B': 0.6}, 'total': 1.0}\n  {'count_total': 5,\n-  'proportions': {'A': 0.3333333333333333, 'B': 0.5},\n?                         ^^^^^^^^^^^^^^^^         ^\n\n+  'proportions': {'A': 0.4, 'B': 0.6},\n?                         ^         ^\n\n   'status': 'ok',\n-  'total': 0.8333333333333333}\n+  'total': 1.0}\n\n======================================================================\nFAIL: test_boundaries_in_fresh_processes (test_example.CommandTests.test_boundaries_in_fresh_processes) (counts={'A': 1})\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t016-qlesl1gx/test_example.py\", line 109, in test_boundaries_in_fresh_processes\n    self.assertEqual(json.loads(result.stdout), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'status': 'ok', 'count_total': 1, 'proportions': {'A': 0.5}, 'total': 0.5} != {'status': 'ok', 'count_total': 1, 'proportions': {'A': 1.0}, 'total': 1.0}\n- {'count_total': 1, 'proportions': {'A': 0.5}, 'status': 'ok', 'total': 0.5}\n?                                          --                             --\n\n+ {'count_total': 1, 'proportions': {'A': 1.0}, 'status': 'ok', 'total': 1.0}\n?                                         ++                             ++\n\n\n======================================================================\nFAIL: test_boundaries_in_fresh_processes (test_example.CommandTests.test_boundaries_in_fresh_processes) (counts={'A': 0, 'B': 3})\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t016-qlesl1gx/test_example.py\", line 109, in test_boundaries_in_fresh_processes\n    self.assertEqual(json.loads(result.stdout), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'sta[19 chars]total': 3, 'proportions': {'A': 0.0, 'B': 0.75}, 'total': 0.75} != {'sta[19 chars]total': 3, 'proportions': {'A': 0.0, 'B': 1.0}, 'total': 1.0}\n  {'count_total': 3,\n-  'proportions': {'A': 0.0, 'B': 0.75},\n?                                  ---\n\n+  'proportions': {'A': 0.0, 'B': 1.0},\n?                                 ++\n\n   'status': 'ok',\n-  'total': 0.75}\n?            ---\n\n+  'total': 1.0}\n?           ++\n\n\n======================================================================\nFAIL: test_default_fixture_in_fresh_process (test_example.CommandTests.test_default_fixture_in_fresh_process)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t016-qlesl1gx/test_example.py\", line 101, in test_default_fixture_in_fresh_process\n    self.assertEqual(json.loads(result.stdout), CASES[0][1])\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'sta[47 chars]A': 0.3333333333333333, 'B': 0.5}, 'total': 0.8333333333333333} != {'sta[47 chars]A': 0.4, 'B': 0.6}, 'total': 1.0}\n  {'count_total': 5,\n-  'proportions': {'A': 0.3333333333333333, 'B': 0.5},\n?                         ^^^^^^^^^^^^^^^^         ^\n\n+  'proportions': {'A': 0.4, 'B': 0.6},\n?                         ^         ^\n\n   'status': 'ok',\n-  'total': 0.8333333333333333}\n+  'total': 1.0}\n\n======================================================================\nFAIL: test_literal_results_and_before_after_equivalence (test_example.ProportionTests.test_literal_results_and_before_after_equivalence) (counts={'A': 2, 'B': 3})\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t016-qlesl1gx/test_example.py\", line 52, in test_literal_results_and_before_after_equivalence\n    self.assertEqual(proportions(counts), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'sta[47 chars]A': 0.3333333333333333, 'B': 0.5}, 'total': 0.8333333333333333} != {'sta[47 chars]A': 0.4, 'B': 0.6}, 'total': 1.0}\n  {'count_total': 5,\n-  'proportions': {'A': 0.3333333333333333, 'B': 0.5},\n?                         ^^^^^^^^^^^^^^^^         ^\n\n+  'proportions': {'A': 0.4, 'B': 0.6},\n?                         ^         ^\n\n   'status': 'ok',\n-  'total': 0.8333333333333333}\n+  'total': 1.0}\n\n======================================================================\nFAIL: test_literal_results_and_before_after_equivalence (test_example.ProportionTests.test_literal_results_and_before_after_equivalence) (counts={'A': 1})\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t016-qlesl1gx/test_example.py\", line 52, in test_literal_results_and_before_after_equivalence\n    self.assertEqual(proportions(counts), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'status': 'ok', 'count_total': 1, 'proportions': {'A': 0.5}, 'total': 0.5} != {'status': 'ok', 'count_total': 1, 'proportions': {'A': 1.0}, 'total': 1.0}\n- {'count_total': 1, 'proportions': {'A': 0.5}, 'status': 'ok', 'total': 0.5}\n?                                          --                             --\n\n+ {'count_total': 1, 'proportions': {'A': 1.0}, 'status': 'ok', 'total': 1.0}\n?                                         ++                             ++\n\n\n======================================================================\nFAIL: test_literal_results_and_before_after_equivalence (test_example.ProportionTests.test_literal_results_and_before_after_equivalence) (counts={'A': 0, 'B': 3})\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t016-qlesl1gx/test_example.py\", line 52, in test_literal_results_and_before_after_equivalence\n    self.assertEqual(proportions(counts), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'sta[19 chars]total': 3, 'proportions': {'A': 0.0, 'B': 0.75}, 'total': 0.75} != {'sta[19 chars]total': 3, 'proportions': {'A': 0.0, 'B': 1.0}, 'total': 1.0}\n  {'count_total': 3,\n-  'proportions': {'A': 0.0, 'B': 0.75},\n?                                  ---\n\n+  'proportions': {'A': 0.0, 'B': 1.0},\n?                                 ++\n\n   'status': 'ok',\n-  'total': 0.75}\n?            ---\n\n+  'total': 1.0}\n?           ++\n\n\n======================================================================\nFAIL: test_nonterminating_fractions_sum_to_one_with_tolerance (test_example.ProportionTests.test_nonterminating_fractions_sum_to_one_with_tolerance)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t016-qlesl1gx/test_example.py\", line 72, in test_nonterminating_fractions_sum_to_one_with_tolerance\n    self.assertEqual(result, baseline_proportions(counts))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'sta[48 chars]': 0.25, 'B': 0.25, 'C': 0.25}, 'total': 0.75} != {'sta[48 chars]': 0.3333333333333333, 'B': 0.3333333333333333[36 chars] 1.0}\n  {'count_total': 3,\n-  'proportions': {'A': 0.25, 'B': 0.25, 'C': 0.25},\n+  'proportions': {'A': 0.3333333333333333,\n+                  'B': 0.3333333333333333,\n+                  'C': 0.3333333333333333},\n   'status': 'ok',\n-  'total': 0.75}\n?            ---\n\n+  'total': 1.0}\n?           ++\n\n\n======================================================================\nFAIL: test_sorting_keeps_labels_attached_to_values (test_example.ProportionTests.test_sorting_keeps_labels_attached_to_values)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t016-qlesl1gx/test_example.py\", line 66, in test_sorting_keeps_labels_attached_to_values\n    self.assertEqual(list(result[\"proportions\"].items()),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     [(\"A\", 0.4), (\"B\", 0.6)])\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [('A', 0.3333333333333333), ('B', 0.5)] != [('A', 0.4), ('B', 0.6)]\n\nFirst differing element 0:\n('A', 0.3333333333333333)\n('A', 0.4)\n\n- [('A', 0.3333333333333333), ('B', 0.5)]\n+ [('A', 0.4), ('B', 0.6)]\n\n----------------------------------------------------------------------\nRan 9 tests in 0.281s\n\nFAILED (failures=9)\n"
+    }
+  }
+]

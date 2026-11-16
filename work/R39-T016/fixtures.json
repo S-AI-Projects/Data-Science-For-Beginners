@@ -1,0 +1,12 @@
+[
+  {"case": "normal", "counts": {"A": 2, "B": 3}, "expected": {"status": "ok", "count_total": 5, "proportions": {"A": 0.4, "B": 0.6}, "total": 1.0}},
+  {"case": "smallest positive", "counts": {"A": 1}, "expected": {"status": "ok", "count_total": 1, "proportions": {"A": 1.0}, "total": 1.0}},
+  {"case": "zero category with positive denominator", "counts": {"A": 0, "B": 3}, "expected": {"status": "ok", "count_total": 3, "proportions": {"A": 0.0, "B": 1.0}, "total": 1.0}},
+  {"case": "all zero", "counts": {"A": 0, "B": 0}, "expected": {"status": "no-data", "count_total": 0, "proportions": {}, "total": null}},
+  {"case": "empty", "counts": {}, "expected": {"status": "no-data", "count_total": 0, "proportions": {}, "total": null}},
+  {"case": "negative", "counts": {"A": -1, "B": 3}, "error": "counts must be nonnegative integers"},
+  {"case": "missing count", "counts": {"A": null}, "error": "counts must be nonnegative integers"},
+  {"case": "boolean count", "counts": {"A": true}, "error": "counts must be nonnegative integers"},
+  {"case": "invalid container", "counts": null, "error": "counts must be an object"},
+  {"case": "malformed JSON", "raw": "{", "error": "Expecting property name enclosed in double quotes"}
+]

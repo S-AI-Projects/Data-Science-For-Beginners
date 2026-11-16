@@ -167,6 +167,28 @@ Using a waffle chart, you can plainly see the proportions of cap colors of this 
 
 In this lesson, you learned three ways to visualize proportions. First, you need to group your data into categories and then decide which is the best way to display the data - pie, donut, or waffle. All are delicious and gratify the user with an instant snapshot of a dataset.
 
+## Applied local example: normalization and a small refactor
+
+The [local proportions lab](applied-labs/r39-t016/README.md) makes the denominator
+and zero-total policy explicit. With Python 3.7+ (standard library only) and a
+checkout, run from the repository root:
+
+```bash
+python3 3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py
+```
+
+Synthetic counts `A=2,B=3` use denominator 5. Expected output, exit 0:
+
+```json
+{"status": "ok", "count_total": 5, "proportions": {"A": 0.4, "B": 0.6}, "total": 1.0}
+```
+
+The lab starts with a tested baseline, extracts `validate_counts`, and checks
+before/after equivalence. Empty or all-zero counts return an explicit `no-data`
+report with undefined proportion total (`null`); negative or missing counts are
+rejected. This is local arithmetic, with no mocked service, model or hardware.
+It does not draw charts or establish the completeness of a real dataset.
+
 ## 🚀 Challenge
 
 Try recreating these tasty charts in [Charticulator](https://charticulator.com).
