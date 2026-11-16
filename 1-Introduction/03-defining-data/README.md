@@ -70,3 +70,26 @@ Kaggle is an excellent source of open datasets. Use the [dataset search tool](ht
 ## Assignment
 
 [Classifying Datasets](assignment.md)
+
+## Applied Lab: Security-Scenario Rubric & Offline Service Adapter (`R39-T005`)
+
+See [applied-labs/r39-t005/README.md](./applied-labs/r39-t005/README.md) and [applied-labs/r39-t005/example.py](./applied-labs/r39-t005/example.py) for a local Python 3 standard-library lab demonstrating security/governance rubric evaluation via a decoupled callable service adapter interface across data-defining scenarios.
+
+### 3-Scenario Fixture Summary
+1. **Scenario 1 (Normal / Complete & Consistent):** Structured quantitative database protected by parameterized SQL queries against SQL injection (`status: "PASS"`).
+2. **Scenario 2 (Boundary / Missing Asset):** Qualitative secondary store missing the required `asset` attribute (`status: "FAIL"`).
+3. **Scenario 3 (Review / Unrelated Control):** Semi-structured environmental sensor stream with an unrelated slide theme control (`status: "FLAGGED_FOR_REVIEW"`).
+
+### Commands & Verification
+- **Run rubric checker:**
+  ```bash
+  python3 1-Introduction/03-defining-data/applied-labs/r39-t005/example.py
+  ```
+  Expected output: Evaluates scenarios via `[SIMULATION/MOCK] Deterministic Local Offline Adapter`, prints per-scenario statuses (`PASS`, `FAIL`, `FLAGGED_FOR_REVIEW`), and lists unestablished real-service behaviors.
+- **Run unit tests:**
+  ```bash
+  python3 -m unittest discover -s 1-Introduction/03-defining-data/applied-labs/r39-t005 -p "test_*.py"
+  ```
+
+### Scope & Limitations [SIMULATION/MOCK]
+This educational lab runs entirely in-memory using the Python 3 standard library with zero external API calls, cloud credentials, or GPU/hardware dependencies. Automated checks verify structural schema fields and adapter keyword rules; human review remains strictly required to judge qualitative free-text explanations.
