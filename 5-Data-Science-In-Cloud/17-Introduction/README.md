@@ -97,3 +97,26 @@ Sources:
 ## Assignment
 
 [Market Research](assignment.md)
+
+## Applied Lab: Cloud Security-Scenario Rubric & Recovery Pipeline (`R39-T008`)
+
+See [applied-labs/r39-t008/README.md](./applied-labs/r39-t008/README.md) and [applied-labs/r39-t008/example.py](./applied-labs/r39-t008/example.py) for a local Python 3 standard-library lab demonstrating cloud security rubric checking with structured error explanations and stream failure recovery.
+
+### Fixture Summary
+- **Scenario 1 (Normal / Complete & Consistent):** Cloud data lake storage account protected by private endpoints and IAM RBAC (`status: "PASS"`).
+- **Scenario 2 (Boundary / Missing Asset):** Real-time ingestion stream missing the required `asset` field (`status: "FAIL"`, `error_code: "MISSING_REQUIRED_FIELD"`).
+- **Scenario 3 (Review / Unrelated Control):** Shared compute cluster paired with an unrelated report watermark control (`status: "FLAGGED_FOR_REVIEW"`).
+
+### Commands & Verification
+- **Run rubric checker and recovery pipeline:**
+  ```bash
+  python3 5-Data-Science-In-Cloud/17-Introduction/applied-labs/r39-t008/example.py
+  ```
+  Expected output summary: Evaluates the three core cloud scenarios, demonstrates graceful error diagnosis on the missing-asset scenario, and proves clean recovery on the next valid input.
+- **Run unit tests:**
+  ```bash
+  python3 -m unittest discover -s 5-Data-Science-In-Cloud/17-Introduction/applied-labs/r39-t008 -p "test_*.py"
+  ```
+
+### Scope & Limitations [SIMULATION/MOCK]
+This educational lab runs locally in-memory using only the Python 3 standard library. It does not connect to live cloud providers (Azure/AWS/GCP), require cloud credentials, or claim trained-model performance. Automated checks verify structural fields and alignment keywords; human review is required for free-text explanations.
