@@ -143,3 +143,46 @@ Want to explore more use cases? Here are a few relevant articles:
 ## Assignment
 
 [Explore A Planetary Computer Dataset](assignment.md)
+
+---
+
+## Applied Lab: Security-Scenario Rubric & Scenario Assessment (R39-T010)
+
+For hands-on practice evaluating real-world data science security models and governance rubrics, see the applied lab module:
+- Lab Guide: [`applied-labs/r39-t010/README.md`](./applied-labs/r39-t010/README.md)
+- Executable Module: [`applied-labs/r39-t010/example.py`](./applied-labs/r39-t010/example.py)
+
+### Scenario Fixtures & 3-Question Applied Assessment
+- **RW-01 (Clinical Health Data)**: Complete fields + aligned mitigation -> `PASS`
+- **RW-02 (Planetary Yield Prediction)**: Missing mandatory `asset` -> `FAIL`
+- **RW-03 (Smart Agriculture LoRaWAN)**: Unrelated control (web XSS headers for IoT replay) -> `FLAGGED_FOR_REVIEW`
+- **3 Applied Questions**: Predict an output (`FLAGGED_FOR_REVIEW`), diagnose failure (`asset`), and choose fail-safe boundary policy (`strip_whitespace_reject_and_flag_unmapped_for_review`), verified live via executable checks.
+
+### Running the Lab
+```bash
+# Run standalone applied lab and scenario assessment report
+python3 6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t010/example.py
+
+# Run unit tests and executable check verification suite
+python3 -m unittest discover -s 6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t010 -p "test_*.py" -v
+```
+
+### Expected Output Summary
+```text
+================================================================================
+APPLIED LAB R39-T010: SECURITY-SCENARIO RUBRIC & SCENARIO ASSESSMENT
+...
+Scenario ID   : RW-01 -> PASS (complete_and_consistent)
+Scenario ID   : RW-02 -> FAIL (missing_asset)
+Scenario ID   : RW-03 -> FLAGGED_FOR_REVIEW (unrelated_control_threat_mismatch)
+...
+[Q1] Type: predict_output -> Answer: FLAGGED_FOR_REVIEW | Check: PASSED
+[Q2] Type: diagnose_failure -> Answer: asset | Check: PASSED
+[Q3] Type: choose_boundary_policy -> Answer: strip_whitespace_reject_and_flag_unmapped_for_review | Check: PASSED
+================================================================================
+ASSESSMENT_CHECKS_PASSED: 3/3
+================================================================================
+```
+
+> **[SIMULATION/MOCK] Scope Notice**: This applied lab is an offline educational simulation running solely on the Python 3 standard library. No live clinical datasets, cloud services, or physical sensor networks are used or claimed. Automated grading validates structural completeness and cataloged threat-control patterns; human expert review is required for free-text risk justifications.
+
