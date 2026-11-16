@@ -174,3 +174,26 @@ Line plots can be simple or quite complex. Do a bit of reading in the [Seaborn d
 ## Assignment
 
 [Dive into the beehive](assignment.md)
+
+## Applied Lab: Chart-Data Consistency Evaluation Experiment (`R39-T009`)
+
+See [applied-labs/r39-t009/README.md](./applied-labs/r39-t009/README.md) and [applied-labs/r39-t009/example.py](./applied-labs/r39-t009/example.py) for a local Python 3 standard-library lab that verifies multi-category chart consistency and evaluates three controlled aggregation configurations.
+
+### Summary of Experiment & Fixture
+- **Core Fixture:** Categorical observations `["A", "A", "B", "C", "C", "C"]` produce `A=2, B=1, C=3, total=6` (`consistent=True`).
+- **Filtered Subset:** Restricting to categories `{"A", "B"}` recomputes counts to `A=2, B=1, total=3` (`consistent=True`).
+- **Three-Configuration Experiment:** Compares baseline small input ($N=6$), 10x scaled pattern ($N=60$), and a cached fast-path with an unrecomputed total, proving that full re-aggregation is mandatory to prevent stale total discrepancies.
+
+### Commands & Verification
+- **Run evaluation experiment:**
+  ```bash
+  python3 3-Data-Visualization/12-visualization-relationships/applied-labs/r39-t009/example.py
+  ```
+  Expected output: Displays `A=2,B=1,C=3,total=6`, filtered `A/B` `total=3`, the three-configuration evaluation comparison table, and the observed trade-off summary.
+- **Run unit tests:**
+  ```bash
+  python3 -m unittest discover -s 3-Data-Visualization/12-visualization-relationships/applied-labs/r39-t009 -p "test_*.py"
+  ```
+
+### Scope & Limitations [SIMULATION/MOCK]
+This educational lab runs locally in-memory using only the Python 3 standard library. It does not use live browser rendering engines, GUI libraries, cloud BI platforms, or trained machine learning models.
