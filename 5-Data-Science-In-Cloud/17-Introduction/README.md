@@ -83,6 +83,37 @@ Let's see the different steps used for this:
 To see the full process, visit [Dmitry’s blog](https://soshnikov.com/science/analyzing-medical-papers-with-azure-and-text-analytics-for-health/). 
  
 As you can see, we can leverage Cloud services in many ways to perform Data Science. 
+
+## Applied lab: Local cloud-risk rubric
+
+Use the [Python example](./applied-labs/r39-t033/example.py) to check fictional risk scenarios inspired by the lesson sections above. The fixtures are mock data: this local simulation calls no cloud service or paid provider and requires no model download, GPU, or physical device. Its category pairs are illustrative rubric data, not a security standard; the checker validates structure and flags a control-category mismatch for human review, but does not judge the explanation.
+
+From the repository root, run:
+
+```bash
+python3 5-Data-Science-In-Cloud/17-Introduction/applied-labs/r39-t033/example.py
+```
+
+The [fixtures](./applied-labs/r39-t033/example.py) cover:
+
+| Fictional fixture | Lesson section | Expected result |
+| --- | --- | --- |
+| Protecting live sentiment data | Real-time social media sentiment analysis | pass |
+| Retaining research-paper results | Scientific papers analysis | fail: missing asset |
+| Protecting a paper-analysis dashboard | Scientific papers analysis | review: autoscaling is not listed for unauthorized access |
+
+Expected output:
+
+```text
+Protecting live sentiment data: pass
+Retaining research-paper results: fail
+  - missing or empty asset
+Protecting a paper-analysis dashboard: review
+  - control category is not listed for this threat; human review required
+```
+
+The [test module](./applied-labs/r39-t033/test_example.py) compares the checker against an explicit expected-result table using the same fixtures.
+
 ## Footnote
 
 Sources:
