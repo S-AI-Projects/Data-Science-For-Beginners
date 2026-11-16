@@ -1,0 +1,18 @@
+{
+  "scenarios": [
+    {"id": "clinic-access", "section": "Data Science + Industry", "asset": "Fictional clinic appointment dataset used for demand analysis", "threat": "unauthorized_access", "control": "access_review", "residual_risk": "An approved account could still misuse its access."},
+    {"id": "poetry-archive", "section": "Data Science + Humanities", "asset": "Fictional archive of transcribed poems and annotation history", "threat": "data_loss", "control": "backups", "residual_risk": "Edits since the last backup could still be lost."},
+    {"id": "habitat-feed", "section": "Data Science + Sustainability", "asset": "Fictional habitat sensor readings used in a dashboard", "threat": "tampered_readings", "control": "integrity_checks", "residual_risk": "A faulty sensor may send authentic but inaccurate data."}
+  ],
+  "cases": [
+    {"case": "complete", "args": [], "expected_exit": 0, "expected_results": [{"status": "pass", "issues": []}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]},
+    {"case": "missing asset", "args": ["--case", "missing-asset"], "expected_exit": 1, "expected_results": [{"status": "fail", "issues": ["missing or invalid: asset"]}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]},
+    {"case": "unrelated control", "args": ["--case", "unrelated-control"], "expected_exit": 3, "expected_results": [{"status": "review", "issues": ["threat/control pair not listed"]}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]},
+    {"case": "minimal complete", "args": ["--scenario", "{\"asset\":\"x\",\"threat\":\"data_loss\",\"control\":\"backups\",\"residual_risk\":\"x\"}"], "expected_exit": 0, "expected_results": [{"status": "pass", "issues": []}]},
+    {"case": "unknown labels", "args": ["--scenario", "{\"asset\":\"x\",\"threat\":\"unknown\",\"control\":\"backups\",\"residual_risk\":\"x\"}"], "expected_exit": 3, "expected_results": [{"status": "review", "issues": ["relation unknown or invalid response"]}]},
+    {"case": "empty object", "args": ["--scenario", "{}"], "expected_exit": 1, "expected_results": [{"status": "fail", "issues": ["missing or invalid: asset", "missing or invalid: threat", "missing or invalid: control", "missing or invalid: residual_risk"]}]},
+    {"case": "invalid container", "args": ["--scenario", "null"], "expected_exit": 1, "expected_results": [{"status": "fail", "issues": ["scenario must be an object"]}]},
+    {"case": "blank asset", "args": ["--scenario", "{\"asset\":\" \",\"threat\":\"data_loss\",\"control\":\"backups\",\"residual_risk\":\"x\"}"], "expected_exit": 1, "expected_results": [{"status": "fail", "issues": ["missing or invalid: asset"]}]},
+    {"case": "malformed JSON", "args": ["--scenario", "{"], "expected_exit": 2, "expected_error": "error:"}
+  ]
+}

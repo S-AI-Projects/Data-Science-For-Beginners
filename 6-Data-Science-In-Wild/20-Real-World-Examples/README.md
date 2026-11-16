@@ -125,6 +125,30 @@ Here are some examples of data science student projects to inspire you.
     - [Reliability of NYC Subway System](https://www.microsoft.com/en-us/research/video/data-science-summer-school-2018-exploring-the-reliability-of-the-nyc-subway-system/) | [Github](https://github.com/msr-ds3/nyctransit)
  * [Digitizing Material Culture: Exploring socio-economic distributions in Sirkap](https://claremont.maps.arcgis.com/apps/Cascade/index.html?appid=bdf2aef0f45a4674ba41cd373fa23afc)- from [Ornella Altunyan](https://twitter.com/ornelladotcom) and team at Claremont, using using [ArcGIS StoryMaps](https://storymaps.arcgis.com/).
 
+## Applied local example: scenario rubric and offline adapter
+
+The [scenario-rubric lab](applied-labs/r39-t015/README.md) uses three fictional
+projects tied to the Industry, Humanities and Sustainability sections: a clinic
+dataset, poetry archive and habitat sensor feed. Each names an asset, threat,
+control and residual risk. With Python 3.7+ (standard library only) and a checkout,
+run from the repository root:
+
+```bash
+python3 6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py
+```
+
+Expected output, exit 0:
+
+```json
+{"adapter": "deterministic-local-mock", "results": [{"status": "pass", "issues": []}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]}
+```
+
+The lab also shows a missing asset failing and an unrelated threat/control pair
+requesting review. The relation dependency is a callable with a deterministic
+local mock, not a real service. It checks nonblank fields and listed label pairs;
+human review judges the explanation. The mock establishes no remote-service
+accuracy, reliability, control effectiveness or trained-model performance.
+
 ## 🚀 Challenge
 
 Search for articles that recommend data science projects that are beginner friendly - like [these 50 topic areas](https://www.upgrad.com/blog/data-science-project-ideas-topics-beginners/) or [these 21 project ideas](https://www.intellspot.com/data-science-project-ideas) or [these 16 projects with source code](https://data-flair.training/blogs/data-science-project-ideas/) that you can deconstruct and remix. And don't forget to blog about your learning journeys and share your insights with all of us.
