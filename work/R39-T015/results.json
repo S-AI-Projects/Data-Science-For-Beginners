@@ -1,0 +1,371 @@
+[
+  {
+    "case": "fixture snapshot",
+    "expected": [
+      {
+        "id": "clinic-access",
+        "section": "Data Science + Industry",
+        "asset": "Fictional clinic appointment dataset used for demand analysis",
+        "threat": "unauthorized_access",
+        "control": "access_review",
+        "residual_risk": "An approved account could still misuse its access."
+      },
+      {
+        "id": "poetry-archive",
+        "section": "Data Science + Humanities",
+        "asset": "Fictional archive of transcribed poems and annotation history",
+        "threat": "data_loss",
+        "control": "backups",
+        "residual_risk": "Edits since the last backup could still be lost."
+      },
+      {
+        "id": "habitat-feed",
+        "section": "Data Science + Sustainability",
+        "asset": "Fictional habitat sensor readings used in a dashboard",
+        "threat": "tampered_readings",
+        "control": "integrity_checks",
+        "residual_risk": "A faulty sensor may send authentic but inaccurate data."
+      }
+    ],
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-c",
+        "import json; from example import SCENARIOS; print(json.dumps(SCENARIOS))"
+      ],
+      "exit": 0,
+      "stdout": "[{\"id\": \"clinic-access\", \"section\": \"Data Science + Industry\", \"asset\": \"Fictional clinic appointment dataset used for demand analysis\", \"threat\": \"unauthorized_access\", \"control\": \"access_review\", \"residual_risk\": \"An approved account could still misuse its access.\"}, {\"id\": \"poetry-archive\", \"section\": \"Data Science + Humanities\", \"asset\": \"Fictional archive of transcribed poems and annotation history\", \"threat\": \"data_loss\", \"control\": \"backups\", \"residual_risk\": \"Edits since the last backup could still be lost.\"}, {\"id\": \"habitat-feed\", \"section\": \"Data Science + Sustainability\", \"asset\": \"Fictional habitat sensor readings used in a dashboard\", \"threat\": \"tampered_readings\", \"control\": \"integrity_checks\", \"residual_risk\": \"A faulty sensor may send authentic but inaccurate data.\"}]\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "complete",
+      "args": [],
+      "expected_exit": 0,
+      "expected_results": [
+        {
+          "status": "pass",
+          "issues": []
+        },
+        {
+          "status": "pass",
+          "issues": []
+        },
+        {
+          "status": "pass",
+          "issues": []
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"adapter\": \"deterministic-local-mock\", \"results\": [{\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "missing asset",
+      "args": [
+        "--case",
+        "missing-asset"
+      ],
+      "expected_exit": 1,
+      "expected_results": [
+        {
+          "status": "fail",
+          "issues": [
+            "missing or invalid: asset"
+          ]
+        },
+        {
+          "status": "pass",
+          "issues": []
+        },
+        {
+          "status": "pass",
+          "issues": []
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py",
+        "--case",
+        "missing-asset"
+      ],
+      "exit": 1,
+      "stdout": "{\"adapter\": \"deterministic-local-mock\", \"results\": [{\"status\": \"fail\", \"issues\": [\"missing or invalid: asset\"]}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "unrelated control",
+      "args": [
+        "--case",
+        "unrelated-control"
+      ],
+      "expected_exit": 3,
+      "expected_results": [
+        {
+          "status": "review",
+          "issues": [
+            "threat/control pair not listed"
+          ]
+        },
+        {
+          "status": "pass",
+          "issues": []
+        },
+        {
+          "status": "pass",
+          "issues": []
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py",
+        "--case",
+        "unrelated-control"
+      ],
+      "exit": 3,
+      "stdout": "{\"adapter\": \"deterministic-local-mock\", \"results\": [{\"status\": \"review\", \"issues\": [\"threat/control pair not listed\"]}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "minimal complete",
+      "args": [
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"data_loss\",\"control\":\"backups\",\"residual_risk\":\"x\"}"
+      ],
+      "expected_exit": 0,
+      "expected_results": [
+        {
+          "status": "pass",
+          "issues": []
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py",
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"data_loss\",\"control\":\"backups\",\"residual_risk\":\"x\"}"
+      ],
+      "exit": 0,
+      "stdout": "{\"adapter\": \"deterministic-local-mock\", \"results\": [{\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "unknown labels",
+      "args": [
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"unknown\",\"control\":\"backups\",\"residual_risk\":\"x\"}"
+      ],
+      "expected_exit": 3,
+      "expected_results": [
+        {
+          "status": "review",
+          "issues": [
+            "relation unknown or invalid response"
+          ]
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py",
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"unknown\",\"control\":\"backups\",\"residual_risk\":\"x\"}"
+      ],
+      "exit": 3,
+      "stdout": "{\"adapter\": \"deterministic-local-mock\", \"results\": [{\"status\": \"review\", \"issues\": [\"relation unknown or invalid response\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "empty object",
+      "args": [
+        "--scenario",
+        "{}"
+      ],
+      "expected_exit": 1,
+      "expected_results": [
+        {
+          "status": "fail",
+          "issues": [
+            "missing or invalid: asset",
+            "missing or invalid: threat",
+            "missing or invalid: control",
+            "missing or invalid: residual_risk"
+          ]
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py",
+        "--scenario",
+        "{}"
+      ],
+      "exit": 1,
+      "stdout": "{\"adapter\": \"deterministic-local-mock\", \"results\": [{\"status\": \"fail\", \"issues\": [\"missing or invalid: asset\", \"missing or invalid: threat\", \"missing or invalid: control\", \"missing or invalid: residual_risk\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "invalid container",
+      "args": [
+        "--scenario",
+        "null"
+      ],
+      "expected_exit": 1,
+      "expected_results": [
+        {
+          "status": "fail",
+          "issues": [
+            "scenario must be an object"
+          ]
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py",
+        "--scenario",
+        "null"
+      ],
+      "exit": 1,
+      "stdout": "{\"adapter\": \"deterministic-local-mock\", \"results\": [{\"status\": \"fail\", \"issues\": [\"scenario must be an object\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "blank asset",
+      "args": [
+        "--scenario",
+        "{\"asset\":\" \",\"threat\":\"data_loss\",\"control\":\"backups\",\"residual_risk\":\"x\"}"
+      ],
+      "expected_exit": 1,
+      "expected_results": [
+        {
+          "status": "fail",
+          "issues": [
+            "missing or invalid: asset"
+          ]
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py",
+        "--scenario",
+        "{\"asset\":\" \",\"threat\":\"data_loss\",\"control\":\"backups\",\"residual_risk\":\"x\"}"
+      ],
+      "exit": 1,
+      "stdout": "{\"adapter\": \"deterministic-local-mock\", \"results\": [{\"status\": \"fail\", \"issues\": [\"missing or invalid: asset\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "malformed JSON",
+      "args": [
+        "--scenario",
+        "{"
+      ],
+      "expected_exit": 2,
+      "expected_error": "error:"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015/example.py",
+        "--scenario",
+        "{"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--case {complete,missing-asset,unrelated-control} |\n                  --scenario SCENARIO]\nexample.py: error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)\n"
+    }
+  },
+  {
+    "case": "lesson and lab documented JSON",
+    "actual": "pass"
+  },
+  {
+    "case": "required discovery",
+    "expected": "10 tests; exit 0",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t015",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.204s\n\nOK\n"
+    }
+  },
+  {
+    "case": "deliberate wrong adapter result",
+    "input": "clinic threat unauthorized_access; control backups",
+    "expected_wrong_status": "pass",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "example.py",
+        "--case",
+        "unrelated-control"
+      ],
+      "exit": 0,
+      "stdout": "{\"adapter\": \"deterministic-local-mock\", \"results\": [{\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "suite rejects always-true adapter",
+    "expected": "10 tests; nonzero exit; AssertionError",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": ".F...F.F..\n======================================================================\nFAIL: test_fixture_cases_in_fresh_processes (test_example.CommandTests.test_fixture_cases_in_fresh_processes) (case='unrelated-control')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t015-9ra_fy3v/test_example.py\", line 103, in test_fixture_cases_in_fresh_processes\n    self.assertEqual(actual.returncode, expected_exit, actual.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0 != 3 : \n\n======================================================================\nFAIL: test_exact_local_mapping_and_unknown_labels (test_example.RubricTests.test_exact_local_mapping_and_unknown_labels)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t015-9ra_fy3v/test_example.py\", line 54, in test_exact_local_mapping_and_unknown_labels\n    self.assertIs(local_relation(\"unauthorized_access\", \"backups\"), False)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: True is not False\n\n======================================================================\nFAIL: test_minimal_complete_and_unrelated_control (test_example.RubricTests.test_minimal_complete_and_unrelated_control)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t015-9ra_fy3v/test_example.py\", line 44, in test_minimal_complete_and_unrelated_control\n    self.assertEqual(check_scenario(fixture(\"unrelated-control\")[0]),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"status\": \"review\",\n                     ^^^^^^^^^^^^^^^^^^^^\n                      \"issues\": [\"threat/control pair not listed\"]})\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'status': 'pass', 'issues': []} != {'status': 'review', 'issues': ['threat/control pair not listed']}\n- {'issues': [], 'status': 'pass'}\n+ {'issues': ['threat/control pair not listed'], 'status': 'review'}\n\n----------------------------------------------------------------------\nRan 10 tests in 0.208s\n\nFAILED (failures=3)\n"
+    }
+  }
+]
