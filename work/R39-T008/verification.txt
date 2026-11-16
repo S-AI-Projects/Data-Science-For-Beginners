@@ -1,0 +1,147 @@
+=== Tool & Environment Versions ===
+Python Version: Python 3.15.0
+Git Version: git version 2.55.0
+OS Details: Darwin Prachis-MacBook-Pro-2.local 25.3.0 Darwin Kernel Version 25.3.0: Wed Jan 28 20:54:05 PST 2026; root:xnu-12377.81.4~5/RELEASE_ARM64_T8142 arm64
+
+=== Fresh-Process Execution of example.py ===
+Command: python3 5-Data-Science-In-Cloud/17-Introduction/applied-labs/r39-t008/example.py
+Exit Code: 0
+
+--- Fixture Inputs ---
+Scenario 1:
+  ID: cloud_storage_bucket_pass
+  Asset: Cloud Data Lake Storage Account (Raw Training Datasets)
+  Threat: Public internet exposure and unauthenticated data exfiltration of sensitive training datasets
+  Control: Enforce private endpoints, disable public blob access, and mandate RBAC IAM roles
+  Residual Risk: Low: Compromised credential with granted RBAC permissions
+  Explanation: Cloud data lake stores raw training datasets; disabling public internet exposure and mandating private endpoints and IAM RBAC ensures strict boundary defenses.
+
+Scenario 2:
+  ID: cloud_ingestion_pipeline_missing_asset
+  Asset: (missing/empty)
+  Threat: Man-in-the-middle interception and data tampering in real-time stream ingestion
+  Control: Enforce TLS 1.3 encryption in transit and mutual certificate authentication
+  Residual Risk: Low: Endpoint configuration drift during auto-scaling events
+  Explanation: Streaming telemetry requires mutual TLS in transit, but the submission lacks an asset definition.
+
+Scenario 3:
+  ID: shared_compute_cluster_review
+  Asset: Shared Cloud VM Compute Cluster (Distributed Model Training)
+  Threat: Privilege escalation and unauthorized root shell access on shared training nodes
+  Control: Update corporate logo watermark on exported PDF reports
+  Residual Risk: High: Compute nodes remain vulnerable to privilege escalation and container breakout
+  Explanation: Shared training compute requires container hardening and non-root policies; modifying report watermarks provides zero protection against node privilege escalation.
+
+--- Expected vs. Actual Outputs ---
+Scenario 1 Status:
+  Expected: PASS
+  Actual:   PASS (MATCH)
+
+Scenario 2 Status:
+  Expected: FAIL (error_code: MISSING_REQUIRED_FIELD)
+  Actual:   FAIL (error_code: MISSING_REQUIRED_FIELD) (MATCH)
+
+Scenario 3 Status:
+  Expected: FLAGGED_FOR_REVIEW
+  Actual:   FLAGGED_FOR_REVIEW (MATCH)
+
+Failure & Recovery Stream Evaluation:
+  Expected: Step 2 error_code=MISSING_REQUIRED_FIELD, Step 3 recovered_after_failure=True
+  Actual:   Step 2 error_code=MISSING_REQUIRED_FIELD, Step 3 recovered_after_failure=True (MATCH)
+
+--- Complete Fresh Subprocess stdout ---
+======================================================================
+[SIMULATION/MOCK] Cloud Security-Scenario Rubric & Recovery Pipeline (R39-T008)
+Lesson Reference: 5-Data-Science-In-Cloud/17-Introduction
+Scope: Local standard-library cloud security rubric & stream recovery
+No live cloud provider (Azure/AWS/GCP), hardware, or models claimed.
+======================================================================
+[RUBRIC SCOPE NOTICE]
+Automated rubric evaluation only checks structural completeness and
+cloud threat-control alignment. Human review is strictly required to judge
+the qualitative free-text explanation and contextual security rationale.
+======================================================================
+
+--- 1. CORE RUBRIC SCENARIOS ---
+[SIMULATION/MOCK] cloud_storage_bucket_pass: status=PASS
+  Asset: Cloud Data Lake Storage Account (Raw Training Datasets)
+  Threat: Public internet exposure and unauthenticated data exfiltration of sensitive training datasets
+  Control: Enforce private endpoints, disable public blob access, and mandate RBAC IAM roles
+
+[SIMULATION/MOCK] cloud_ingestion_pipeline_missing_asset: status=FAIL
+  Asset: (missing/empty)
+  Threat: Man-in-the-middle interception and data tampering in real-time stream ingestion
+  Control: Enforce TLS 1.3 encryption in transit and mutual certificate authentication
+  Error Explanation: Validation failed: required field(s) 'asset' missing or empty. A complete cloud security submission must explicitly name the target asset, threat, control, and residual risk before automated policy validation.
+
+[SIMULATION/MOCK] shared_compute_cluster_review: status=FLAGGED_FOR_REVIEW
+  Asset: Shared Cloud VM Compute Cluster (Distributed Model Training)
+  Threat: Privilege escalation and unauthorized root shell access on shared training nodes
+  Control: Update corporate logo watermark on exported PDF reports
+  Error Explanation: Review required: proposed control does not contain recognized mitigation patterns addressing the specified cloud threat. Forwarding to human expert for context analysis.
+
+--- 2. FAILURE AND RECOVERY STREAM PIPELINE ---
+Simulating stream: [Scenario 1 (Valid) -> Scenario 2 (Invalid/Missing) -> Scenario 3 (Valid Review)]
+[SIMULATION/MOCK] Stream Step: id=cloud_storage_bucket_pass | status=PASS | error_code=None | recovered_after_failure=False
+[SIMULATION/MOCK] Stream Step: id=cloud_ingestion_pipeline_missing_asset | status=FAIL | error_code=MISSING_REQUIRED_FIELD | recovered_after_failure=False
+[SIMULATION/MOCK] Stream Step: id=shared_compute_cluster_review | status=FLAGGED_FOR_REVIEW | error_code=CONTROL_THREAT_MISALIGNMENT | recovered_after_failure=True
+
+--- RECOVERY VERIFICATION SUMMARY ---
+Step 2 failed with error code: MISSING_REQUIRED_FIELD
+Step 3 recovered cleanly on next valid input: True
+Recovery verified: True
+
+======================================================================
+[SIMULATION/MOCK] Summary: 1 PASS, 1 FAIL, 1 FLAGGED_FOR_REVIEW.
+Verification complete.
+======================================================================
+
+=== Full Unit Test Runner Output ===
+Command: python3 -m unittest discover -s 5-Data-Science-In-Cloud/17-Introduction/applied-labs/r39-t008 -p "test_*.py" -v
+Exit Code: 0
+
+test_01_complete_consistent_cloud_scenario_passes (test_example.TestCloudSecurityScenarioRubric.test_01_complete_consistent_cloud_scenario_passes)
+Test 1: Complete, internally consistent cloud scenario passes (PASS). ... ok
+test_02_missing_asset_boundary_fails_with_explanation (test_example.TestCloudSecurityScenarioRubric.test_02_missing_asset_boundary_fails_with_explanation)
+Test 2: Scenario without an asset fails (FAIL) with structured error explanation. ... ok
+test_03_unrelated_control_flagged_for_review (test_example.TestCloudSecurityScenarioRubric.test_03_unrelated_control_flagged_for_review)
+Test 3: Scenario with a control unrelated to the cloud threat is flagged for review. ... ok
+test_04_failure_and_recovery_stream_pipeline (test_example.TestCloudSecurityScenarioRubric.test_04_failure_and_recovery_stream_pipeline)
+Test 4: Processing [invalid_scenario, valid_scenario] records error and recovers cleanly. ... ok
+test_05_deliberate_wrong_result_triggers_assertion_failure (test_example.TestCloudSecurityScenarioRubric.test_05_deliberate_wrong_result_triggers_assertion_failure)
+Test 5: Deliberate wrong result or failed recovery triggers assertion failure. ... ok
+test_06_fresh_process_cli_execution (test_example.TestCloudSecurityScenarioRubric.test_06_fresh_process_cli_execution)
+Test 6: Running example.py in fresh process exits with code 0 and required tokens. ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.023s
+
+OK
+
+=== Deliberate Assertion Failure Verification ===
+Command:
+python3 -c "import unittest
+class BrokenAssertionTest(unittest.TestCase):
+    def test_deliberate_failure(self):
+        self.assertEqual('PASS', 'FAIL', msg='Deliberate failure: missing asset marked as PASS')
+unittest.main()"
+
+Exit Code: 1 (Non-Zero Exit Verified)
+Stderr/Stdout:
+F
+======================================================================
+FAIL: test_deliberate_failure (__main__.BrokenAssertionTest.test_deliberate_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<string>", line 4, in test_deliberate_failure
+    self.assertEqual('PASS', 'FAIL', msg='Deliberate failure: missing asset marked as PASS')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'FAIL'
+- PASS
++ FAIL
+ : Deliberate failure: missing asset marked as PASS
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)
