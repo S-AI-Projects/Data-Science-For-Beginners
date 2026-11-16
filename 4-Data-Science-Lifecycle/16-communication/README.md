@@ -120,6 +120,26 @@ How do you use emotion when communicating data? Below are a couple of ways.
 		 - Red is usually passion and excitement
 		 - Yellow is usually optimism and happiness
 
+## Applied local example: align categories and totals
+
+The [local category-summary lab](applied-labs/r39-t012/README.md) applies precise
+wording and transparent filtering to a synthetic fixture. With Python 3.7+
+(standard library only), run these commands from the repository root:
+
+```bash
+python3 4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py
+python3 4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py --include '["A","B"]'
+```
+
+Rows `A,A,B,C,C,C` produce `{"counts": {"A": 2, "B": 1, "C": 3}, "total": 6}`;
+the A/B filter produces `{"counts": {"A": 2, "B": 1}, "total": 3}`. Labels,
+counts and total describe the same retained rows. The lab explains why empty data
+is valid (total 0), one row is the smallest nonempty fixture, and blank labels
+are invalid even if filtered out. It uses real local aggregation of synthetic
+data, with no mocked service, hardware or model-performance claim. It does not
+establish population-level conclusions or replace an explanation of why a filter
+was chosen.
+
 # Communication Case Study
 Emerson is a Product Manager for a mobile app. Emerson has noticed that customers submit 42% more complaints and bug reports on the weekends. Emerson also noticed that customers who submit a complaint that goes unanswered after 48 hours are 32% more likely to give the app a rating of 1 or 2 in the app store.
 

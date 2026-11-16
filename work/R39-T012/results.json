@@ -1,0 +1,375 @@
+[
+  {
+    "case": "normal",
+    "inputs": [],
+    "expected": {
+      "report": {
+        "counts": {
+          "A": 2,
+          "B": 1,
+          "C": 3
+        },
+        "total": 6
+      },
+      "exit": 0
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"counts\": {\"A\": 2, \"B\": 1, \"C\": 3}, \"total\": 6}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "filtered",
+    "inputs": [
+      "--include",
+      "[\"A\",\"B\"]"
+    ],
+    "expected": {
+      "report": {
+        "counts": {
+          "A": 2,
+          "B": 1
+        },
+        "total": 3
+      },
+      "exit": 0
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--include",
+        "[\"A\",\"B\"]"
+      ],
+      "exit": 0,
+      "stdout": "{\"counts\": {\"A\": 2, \"B\": 1}, \"total\": 3}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "smallest nonempty",
+    "inputs": [
+      "--rows",
+      "[\"A\"]"
+    ],
+    "expected": {
+      "report": {
+        "counts": {
+          "A": 1
+        },
+        "total": 1
+      },
+      "exit": 0
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--rows",
+        "[\"A\"]"
+      ],
+      "exit": 0,
+      "stdout": "{\"counts\": {\"A\": 1}, \"total\": 1}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "empty data",
+    "inputs": [
+      "--rows",
+      "[]"
+    ],
+    "expected": {
+      "report": {
+        "counts": {},
+        "total": 0
+      },
+      "exit": 0
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--rows",
+        "[]"
+      ],
+      "exit": 0,
+      "stdout": "{\"counts\": {}, \"total\": 0}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "empty filter",
+    "inputs": [
+      "--include",
+      "[]"
+    ],
+    "expected": {
+      "report": {
+        "counts": {},
+        "total": 0
+      },
+      "exit": 0
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--include",
+        "[]"
+      ],
+      "exit": 0,
+      "stdout": "{\"counts\": {}, \"total\": 0}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "no matches",
+    "inputs": [
+      "--include",
+      "[\"Z\"]"
+    ],
+    "expected": {
+      "report": {
+        "counts": {},
+        "total": 0
+      },
+      "exit": 0
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--include",
+        "[\"Z\"]"
+      ],
+      "exit": 0,
+      "stdout": "{\"counts\": {}, \"total\": 0}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "blank label",
+    "inputs": [
+      "--rows",
+      "[\"\"]"
+    ],
+    "expected": {
+      "report": null,
+      "exit": 2
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--rows",
+        "[\"\"]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--rows ROWS] [--include INCLUDE]\nexample.py: error: rows must be a list of nonblank strings\n"
+    }
+  },
+  {
+    "case": "whitespace label",
+    "inputs": [
+      "--rows",
+      "[\" \"]"
+    ],
+    "expected": {
+      "report": null,
+      "exit": 2
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--rows",
+        "[\" \"]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--rows ROWS] [--include INCLUDE]\nexample.py: error: rows must be a list of nonblank strings\n"
+    }
+  },
+  {
+    "case": "non-string label",
+    "inputs": [
+      "--rows",
+      "[1]"
+    ],
+    "expected": {
+      "report": null,
+      "exit": 2
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--rows",
+        "[1]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--rows ROWS] [--include INCLUDE]\nexample.py: error: rows must be a list of nonblank strings\n"
+    }
+  },
+  {
+    "case": "null label",
+    "inputs": [
+      "--rows",
+      "[null]"
+    ],
+    "expected": {
+      "report": null,
+      "exit": 2
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--rows",
+        "[null]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--rows ROWS] [--include INCLUDE]\nexample.py: error: rows must be a list of nonblank strings\n"
+    }
+  },
+  {
+    "case": "invalid container",
+    "inputs": [
+      "--rows",
+      "null"
+    ],
+    "expected": {
+      "report": null,
+      "exit": 2
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--rows",
+        "null"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--rows ROWS] [--include INCLUDE]\nexample.py: error: rows must be a list of nonblank strings\n"
+    }
+  },
+  {
+    "case": "invalid filter",
+    "inputs": [
+      "--include",
+      "null"
+    ],
+    "expected": {
+      "report": null,
+      "exit": 2
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--include",
+        "null"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--rows ROWS] [--include INCLUDE]\nexample.py: error: include must be a list of nonblank strings\n"
+    }
+  },
+  {
+    "case": "malformed JSON",
+    "inputs": [
+      "--rows",
+      "["
+    ],
+    "expected": {
+      "report": null,
+      "exit": 2
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--rows",
+        "["
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--rows ROWS] [--include INCLUDE]\nexample.py: error: Expecting value: line 1 column 2 (char 1)\n"
+    }
+  },
+  {
+    "case": "hidden invalid",
+    "inputs": [
+      "--rows",
+      "[\"A\",\"\"]",
+      "--include",
+      "[\"A\"]"
+    ],
+    "expected": {
+      "report": null,
+      "exit": 2
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012/example.py",
+        "--rows",
+        "[\"A\",\"\"]",
+        "--include",
+        "[\"A\"]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--rows ROWS] [--include INCLUDE]\nexample.py: error: rows must be a list of nonblank strings\n"
+    }
+  },
+  {
+    "case": "required discovery",
+    "expected": "9 tests; exit 0",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t012",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.260s\n\nOK\n"
+    }
+  },
+  {
+    "case": "deliberate wrong result",
+    "inputs": "temporary copy: total = correct total + 1",
+    "expected": "nonzero exit; AssertionError; nonzero tests",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": ".FFFFFFFFFFF..FF\n======================================================================\nFAIL: test_fresh_process_normal_and_boundaries (test_example.CommandTests.test_fresh_process_normal_and_boundaries) (args=[])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 72, in test_fresh_process_normal_and_boundaries\n    self.assertEqual(json.loads(result.stdout), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {'A': 2, 'B': 1, 'C': 3}, 'total': 7} != {'counts': {'A': 2, 'B': 1, 'C': 3}, 'total': 6}\n- {'counts': {'A': 2, 'B': 1, 'C': 3}, 'total': 7}\n?                                               ^\n\n+ {'counts': {'A': 2, 'B': 1, 'C': 3}, 'total': 6}\n?                                               ^\n\n\n======================================================================\nFAIL: test_fresh_process_normal_and_boundaries (test_example.CommandTests.test_fresh_process_normal_and_boundaries) (args=['--include', '[\"A\",\"B\"]'])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 72, in test_fresh_process_normal_and_boundaries\n    self.assertEqual(json.loads(result.stdout), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {'A': 2, 'B': 1}, 'total': 4} != {'counts': {'A': 2, 'B': 1}, 'total': 3}\n- {'counts': {'A': 2, 'B': 1}, 'total': 4}\n?                                       ^\n\n+ {'counts': {'A': 2, 'B': 1}, 'total': 3}\n?                                       ^\n\n\n======================================================================\nFAIL: test_fresh_process_normal_and_boundaries (test_example.CommandTests.test_fresh_process_normal_and_boundaries) (args=['--rows', '[\"A\"]'])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 72, in test_fresh_process_normal_and_boundaries\n    self.assertEqual(json.loads(result.stdout), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {'A': 1}, 'total': 2} != {'counts': {'A': 1}, 'total': 1}\n- {'counts': {'A': 1}, 'total': 2}\n?                               ^\n\n+ {'counts': {'A': 1}, 'total': 1}\n?                               ^\n\n\n======================================================================\nFAIL: test_fresh_process_normal_and_boundaries (test_example.CommandTests.test_fresh_process_normal_and_boundaries) (args=['--rows', '[]'])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 72, in test_fresh_process_normal_and_boundaries\n    self.assertEqual(json.loads(result.stdout), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {}, 'total': 1} != {'counts': {}, 'total': 0}\n- {'counts': {}, 'total': 1}\n?                         ^\n\n+ {'counts': {}, 'total': 0}\n?                         ^\n\n\n======================================================================\nFAIL: test_fresh_process_normal_and_boundaries (test_example.CommandTests.test_fresh_process_normal_and_boundaries) (args=['--include', '[]'])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 72, in test_fresh_process_normal_and_boundaries\n    self.assertEqual(json.loads(result.stdout), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {}, 'total': 1} != {'counts': {}, 'total': 0}\n- {'counts': {}, 'total': 1}\n?                         ^\n\n+ {'counts': {}, 'total': 0}\n?                         ^\n\n\n======================================================================\nFAIL: test_empty_boundaries (test_example.SummaryTests.test_empty_boundaries) (rows=[], include=None)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 31, in test_empty_boundaries\n    self.assertEqual(summarize(rows, include),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"counts\": {}, \"total\": 0})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {}, 'total': 1} != {'counts': {}, 'total': 0}\n- {'counts': {}, 'total': 1}\n?                         ^\n\n+ {'counts': {}, 'total': 0}\n?                         ^\n\n\n======================================================================\nFAIL: test_empty_boundaries (test_example.SummaryTests.test_empty_boundaries) (rows=[], include=['A'])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 31, in test_empty_boundaries\n    self.assertEqual(summarize(rows, include),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"counts\": {}, \"total\": 0})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {}, 'total': 1} != {'counts': {}, 'total': 0}\n- {'counts': {}, 'total': 1}\n?                         ^\n\n+ {'counts': {}, 'total': 0}\n?                         ^\n\n\n======================================================================\nFAIL: test_empty_boundaries (test_example.SummaryTests.test_empty_boundaries) (rows=['A'], include=[])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 31, in test_empty_boundaries\n    self.assertEqual(summarize(rows, include),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"counts\": {}, \"total\": 0})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {}, 'total': 1} != {'counts': {}, 'total': 0}\n- {'counts': {}, 'total': 1}\n?                         ^\n\n+ {'counts': {}, 'total': 0}\n?                         ^\n\n\n======================================================================\nFAIL: test_empty_boundaries (test_example.SummaryTests.test_empty_boundaries) (rows=['A', 'A', 'B', 'C', 'C', 'C'], include=['Z'])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 31, in test_empty_boundaries\n    self.assertEqual(summarize(rows, include),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"counts\": {}, \"total\": 0})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {}, 'total': 1} != {'counts': {}, 'total': 0}\n- {'counts': {}, 'total': 1}\n?                         ^\n\n+ {'counts': {}, 'total': 0}\n?                         ^\n\n\n======================================================================\nFAIL: test_filter_changes_counts_and_total_together (test_example.SummaryTests.test_filter_changes_counts_and_total_together)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 21, in test_filter_changes_counts_and_total_together\n    self.assertEqual(summarize(FIXTURE, [\"B\", \"A\"]), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {'A': 2, 'B': 1}, 'total': 4} != {'counts': {'A': 2, 'B': 1}, 'total': 3}\n- {'counts': {'A': 2, 'B': 1}, 'total': 4}\n?                                       ^\n\n+ {'counts': {'A': 2, 'B': 1}, 'total': 3}\n?                                       ^\n\n\n======================================================================\nFAIL: test_full_fixture_and_label_alignment (test_example.SummaryTests.test_full_fixture_and_label_alignment)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 15, in test_full_fixture_and_label_alignment\n    self.assertEqual(summarize(FIXTURE), expected)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {'A': 2, 'B': 1, 'C': 3}, 'total': 7} != {'counts': {'A': 2, 'B': 1, 'C': 3}, 'total': 6}\n- {'counts': {'A': 2, 'B': 1, 'C': 3}, 'total': 7}\n?                                               ^\n\n+ {'counts': {'A': 2, 'B': 1, 'C': 3}, 'total': 6}\n?                                               ^\n\n\n======================================================================\nFAIL: test_labels_match_exactly (test_example.SummaryTests.test_labels_match_exactly)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 35, in test_labels_match_exactly\n    self.assertEqual(summarize([\"A\", \"a\", \" A \"], [\"A\"]),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"counts\": {\"A\": 1}, \"total\": 1})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {'A': 1}, 'total': 2} != {'counts': {'A': 1}, 'total': 1}\n- {'counts': {'A': 1}, 'total': 2}\n?                               ^\n\n+ {'counts': {'A': 1}, 'total': 1}\n?                               ^\n\n\n======================================================================\nFAIL: test_smallest_nonempty_fixture (test_example.SummaryTests.test_smallest_nonempty_fixture)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t012-k0d9xe2x/test_example.py\", line 25, in test_smallest_nonempty_fixture\n    self.assertEqual(summarize([\"A\"]), {\"counts\": {\"A\": 1}, \"total\": 1})\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'counts': {'A': 1}, 'total': 2} != {'counts': {'A': 1}, 'total': 1}\n- {'counts': {'A': 1}, 'total': 2}\n?                               ^\n\n+ {'counts': {'A': 1}, 'total': 1}\n?                               ^\n\n\n----------------------------------------------------------------------\nRan 9 tests in 0.257s\n\nFAILED (failures=13)\n"
+    }
+  }
+]
