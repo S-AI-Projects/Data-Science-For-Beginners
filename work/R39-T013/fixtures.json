@@ -1,0 +1,16 @@
+[
+  {"case": "normal", "training": [2, null, 4], "validation": [100, null], "expected": {"training_mean": 3, "validation": [100, 3]}},
+  {"case": "validation changed", "training": [2, null, 4], "validation": [-100, null], "expected": {"training_mean": 3, "validation": [-100, 3]}},
+  {"case": "smallest training", "training": [7], "validation": [null], "expected": {"training_mean": 7, "validation": [7]}},
+  {"case": "zero observed", "training": [null, 0], "validation": [null, 8], "expected": {"training_mean": 0, "validation": [0, 8]}},
+  {"case": "negative values", "training": [-2, null, 4], "validation": [null, -9], "expected": {"training_mean": 1, "validation": [1, -9]}},
+  {"case": "fractional mean", "training": [1, 2], "validation": [null], "expected": {"training_mean": 1.5, "validation": [1.5]}},
+  {"case": "empty validation", "training": [2, null, 4], "validation": [], "expected": {"training_mean": 3, "validation": []}},
+  {"case": "all-missing validation", "training": [2, null, 4], "validation": [null, null], "expected": {"training_mean": 3, "validation": [3, 3]}},
+  {"case": "no missing validation", "training": [2, null, 4], "validation": [100, 200], "expected": {"training_mean": 3, "validation": [100, 200]}},
+  {"case": "all-missing training", "training": [null, null], "validation": [100, null], "error": "training must contain at least one observed value"},
+  {"case": "empty training", "training": [], "validation": [100, null], "error": "training must contain at least one observed value"},
+  {"case": "string observation", "training": ["2"], "validation": [null], "error": "values must be a list of finite numbers or None"},
+  {"case": "boolean observation", "training": [true], "validation": [null], "error": "values must be a list of finite numbers or None"},
+  {"case": "invalid validation", "training": [2, null, 4], "validation": null, "error": "values must be a list of finite numbers or None"}
+]

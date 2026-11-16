@@ -1,0 +1,496 @@
+[
+  {
+    "fixture": {
+      "case": "normal",
+      "training": [
+        2,
+        null,
+        4
+      ],
+      "validation": [
+        100,
+        null
+      ],
+      "expected": {
+        "training_mean": 3,
+        "validation": [
+          100,
+          3
+        ]
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[2, null, 4]",
+        "--validation",
+        "[100, null]"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 3.0, \"validation\": [100, 3.0]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "validation changed",
+      "training": [
+        2,
+        null,
+        4
+      ],
+      "validation": [
+        -100,
+        null
+      ],
+      "expected": {
+        "training_mean": 3,
+        "validation": [
+          -100,
+          3
+        ]
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[2, null, 4]",
+        "--validation",
+        "[-100, null]"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 3.0, \"validation\": [-100, 3.0]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "smallest training",
+      "training": [
+        7
+      ],
+      "validation": [
+        null
+      ],
+      "expected": {
+        "training_mean": 7,
+        "validation": [
+          7
+        ]
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[7]",
+        "--validation",
+        "[null]"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 7.0, \"validation\": [7.0]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "zero observed",
+      "training": [
+        null,
+        0
+      ],
+      "validation": [
+        null,
+        8
+      ],
+      "expected": {
+        "training_mean": 0,
+        "validation": [
+          0,
+          8
+        ]
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[null, 0]",
+        "--validation",
+        "[null, 8]"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 0.0, \"validation\": [0.0, 8]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "negative values",
+      "training": [
+        -2,
+        null,
+        4
+      ],
+      "validation": [
+        null,
+        -9
+      ],
+      "expected": {
+        "training_mean": 1,
+        "validation": [
+          1,
+          -9
+        ]
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[-2, null, 4]",
+        "--validation",
+        "[null, -9]"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 1.0, \"validation\": [1.0, -9]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "fractional mean",
+      "training": [
+        1,
+        2
+      ],
+      "validation": [
+        null
+      ],
+      "expected": {
+        "training_mean": 1.5,
+        "validation": [
+          1.5
+        ]
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[1, 2]",
+        "--validation",
+        "[null]"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 1.5, \"validation\": [1.5]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "empty validation",
+      "training": [
+        2,
+        null,
+        4
+      ],
+      "validation": [],
+      "expected": {
+        "training_mean": 3,
+        "validation": []
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[2, null, 4]",
+        "--validation",
+        "[]"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 3.0, \"validation\": []}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "all-missing validation",
+      "training": [
+        2,
+        null,
+        4
+      ],
+      "validation": [
+        null,
+        null
+      ],
+      "expected": {
+        "training_mean": 3,
+        "validation": [
+          3,
+          3
+        ]
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[2, null, 4]",
+        "--validation",
+        "[null, null]"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 3.0, \"validation\": [3.0, 3.0]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "no missing validation",
+      "training": [
+        2,
+        null,
+        4
+      ],
+      "validation": [
+        100,
+        200
+      ],
+      "expected": {
+        "training_mean": 3,
+        "validation": [
+          100,
+          200
+        ]
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[2, null, 4]",
+        "--validation",
+        "[100, 200]"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 3.0, \"validation\": [100, 200]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "all-missing training",
+      "training": [
+        null,
+        null
+      ],
+      "validation": [
+        100,
+        null
+      ],
+      "error": "training must contain at least one observed value"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[null, null]",
+        "--validation",
+        "[100, null]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--training TRAINING] [--validation VALIDATION]\nexample.py: error: training must contain at least one observed value\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "empty training",
+      "training": [],
+      "validation": [
+        100,
+        null
+      ],
+      "error": "training must contain at least one observed value"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[]",
+        "--validation",
+        "[100, null]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--training TRAINING] [--validation VALIDATION]\nexample.py: error: training must contain at least one observed value\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "string observation",
+      "training": [
+        "2"
+      ],
+      "validation": [
+        null
+      ],
+      "error": "values must be a list of finite numbers or None"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[\"2\"]",
+        "--validation",
+        "[null]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--training TRAINING] [--validation VALIDATION]\nexample.py: error: values must be a list of finite numbers or None\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "boolean observation",
+      "training": [
+        true
+      ],
+      "validation": [
+        null
+      ],
+      "error": "values must be a list of finite numbers or None"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[true]",
+        "--validation",
+        "[null]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--training TRAINING] [--validation VALIDATION]\nexample.py: error: values must be a list of finite numbers or None\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "invalid validation",
+      "training": [
+        2,
+        null,
+        4
+      ],
+      "validation": null,
+      "error": "values must be a list of finite numbers or None"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py",
+        "--training",
+        "[2, null, 4]",
+        "--validation",
+        "null"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--training TRAINING] [--validation VALIDATION]\nexample.py: error: values must be a list of finite numbers or None\n"
+    }
+  },
+  {
+    "case": "required discovery",
+    "expected": "9 tests; exit 0",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "2-Working-With-Data/08-data-preparation/applied-labs/r39-t013",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.417s\n\nOK\n"
+    }
+  },
+  {
+    "case": "deliberate validation refit",
+    "inputs": {
+      "case": "normal",
+      "training": [
+        2,
+        null,
+        4
+      ],
+      "validation": [
+        100,
+        null
+      ],
+      "expected": {
+        "training_mean": 3,
+        "validation": [
+          100,
+          3
+        ]
+      }
+    },
+    "expected_wrong": {
+      "training_mean": 3,
+      "validation": [
+        100,
+        100
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "example.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"training_mean\": 3.0, \"validation\": [100, 100.0]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "tests reject validation refit",
+    "expected": "9 tests; nonzero exit; AssertionError",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "F.FFFFFFFF....F\n======================================================================\nFAIL: test_default_fixture_in_fresh_process (test_example.CommandTests.test_default_fixture_in_fresh_process)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 82, in test_default_fixture_in_fresh_process\n    self.assertEqual(json.loads(result.stdout),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"training_mean\": 3, \"validation\": [100, 3]})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'training_mean': 3.0, 'validation': [100, 100.0]} != {'training_mean': 3, 'validation': [100, 3]}\n- {'training_mean': 3.0, 'validation': [100, 100.0]}\n?                    --                      ^^^^^\n\n+ {'training_mean': 3, 'validation': [100, 3]}\n?                                          ^\n\n\n======================================================================\nFAIL: test_table_in_fresh_processes (test_example.CommandTests.test_table_in_fresh_processes) (training=[2, None, 4], validation=[100, None])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 91, in test_table_in_fresh_processes\n    self.assertEqual(json.loads(result.stdout),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"training_mean\": mean, \"validation\": expected})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'training_mean': 3.0, 'validation': [100, 100.0]} != {'training_mean': 3, 'validation': [100, 3]}\n- {'training_mean': 3.0, 'validation': [100, 100.0]}\n?                    --                      ^^^^^\n\n+ {'training_mean': 3, 'validation': [100, 3]}\n?                                          ^\n\n\n======================================================================\nFAIL: test_table_in_fresh_processes (test_example.CommandTests.test_table_in_fresh_processes) (training=[2, None, 4], validation=[-100, None])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 91, in test_table_in_fresh_processes\n    self.assertEqual(json.loads(result.stdout),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"training_mean\": mean, \"validation\": expected})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'training_mean': 3.0, 'validation': [-100, -100.0]} != {'training_mean': 3, 'validation': [-100, 3]}\n- {'training_mean': 3.0, 'validation': [-100, -100.0]}\n?                    --                       ^^^^^^\n\n+ {'training_mean': 3, 'validation': [-100, 3]}\n?                                           ^\n\n\n======================================================================\nFAIL: test_table_in_fresh_processes (test_example.CommandTests.test_table_in_fresh_processes) (training=[None, 0], validation=[None, 8])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 91, in test_table_in_fresh_processes\n    self.assertEqual(json.loads(result.stdout),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"training_mean\": mean, \"validation\": expected})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'training_mean': 0.0, 'validation': [8.0, 8]} != {'training_mean': 0, 'validation': [0, 8]}\n- {'training_mean': 0.0, 'validation': [8.0, 8]}\n?                   --                  --\n\n+ {'training_mean': 0, 'validation': [0, 8]}\n\n======================================================================\nFAIL: test_table_in_fresh_processes (test_example.CommandTests.test_table_in_fresh_processes) (training=[-2, None, 4], validation=[None, -9])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 91, in test_table_in_fresh_processes\n    self.assertEqual(json.loads(result.stdout),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"training_mean\": mean, \"validation\": expected})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'training_mean': 1.0, 'validation': [-9.0, -9]} != {'training_mean': 1, 'validation': [1, -9]}\n- {'training_mean': 1.0, 'validation': [-9.0, -9]}\n?                    --                 ^^^^\n\n+ {'training_mean': 1, 'validation': [1, -9]}\n?                                     ^\n\n\n======================================================================\nFAIL: test_against_explicit_expected_table (test_example.ImputationTests.test_against_explicit_expected_table) (training=[2, None, 4], validation=[100, None])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 33, in test_against_explicit_expected_table\n    self.assertEqual(transform(validation, mean), expected_values)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [100, 100.0] != [100, 3]\n\nFirst differing element 1:\n100.0\n3\n\n- [100, 100.0]\n+ [100, 3]\n\n======================================================================\nFAIL: test_against_explicit_expected_table (test_example.ImputationTests.test_against_explicit_expected_table) (training=[2, None, 4], validation=[-100, None])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 33, in test_against_explicit_expected_table\n    self.assertEqual(transform(validation, mean), expected_values)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [-100, -100.0] != [-100, 3]\n\nFirst differing element 1:\n-100.0\n3\n\n- [-100, -100.0]\n+ [-100, 3]\n\n======================================================================\nFAIL: test_against_explicit_expected_table (test_example.ImputationTests.test_against_explicit_expected_table) (training=[None, 0], validation=[None, 8])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 33, in test_against_explicit_expected_table\n    self.assertEqual(transform(validation, mean), expected_values)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [8.0, 8] != [0, 8]\n\nFirst differing element 0:\n8.0\n0\n\n- [8.0, 8]\n?  --\n\n+ [0, 8]\n\n======================================================================\nFAIL: test_against_explicit_expected_table (test_example.ImputationTests.test_against_explicit_expected_table) (training=[-2, None, 4], validation=[None, -9])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 33, in test_against_explicit_expected_table\n    self.assertEqual(transform(validation, mean), expected_values)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [-9.0, -9] != [1, -9]\n\nFirst differing element 0:\n-9.0\n1\n\n- [-9.0, -9]\n+ [1, -9]\n\n======================================================================\nFAIL: test_transform_reuses_mean_without_refitting (test_example.ImputationTests.test_transform_reuses_mean_without_refitting)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t013-fu0hym9c/test_example.py\", line 37, in test_transform_reuses_mean_without_refitting\n    self.assertEqual(transform([100, None], mean), [100, 3])\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [100, 100.0] != [100, 3]\n\nFirst differing element 1:\n100.0\n3\n\n- [100, 100.0]\n+ [100, 3]\n\n----------------------------------------------------------------------\nRan 9 tests in 0.423s\n\nFAILED (failures=10)\n"
+    }
+  }
+]

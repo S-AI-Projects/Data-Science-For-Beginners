@@ -259,6 +259,25 @@ Notice that when a previous value is not available for forward-filling, the null
 
 > **Takeaway:** There are multiple ways to deal with missing values in your datasets. The specific strategy you use (removing them, replacing them, or even how you replace them) should be dictated by the particulars of that data. You will develop a better sense of how to deal with missing values the more you handle and interact with datasets.
 
+### Applied local example: fit once, transform without leakage
+
+The [training-only mean-imputation lab](applied-labs/r39-t013/README.md) extends
+missing-value filling with separate fit and transform steps. With Python 3.7+
+(standard library only) and a local checkout, run from the repository root:
+
+```bash
+python3 2-Working-With-Data/08-data-preparation/applied-labs/r39-t013/example.py
+```
+
+Synthetic training `[2,None,4]` gives mean 3; validation `[100,None]` becomes
+`[100,3]`. The exact output is `{"training_mean": 3.0, "validation": [100, 3.0]}`.
+The lab compares the implementation with a hand-calculated expected-result table
+using identical inputs. Refitting on validation would incorrectly give
+`[100,100]`; empty or all-missing training data is rejected. This is real local
+aggregation with no mocked service or model training. It uses only `None` as
+missing and does not establish that mean imputation suits a real dataset or
+improves model performance.
+
 ## Removing duplicate data
 
 > **Learning goal:** By the end of this subsection, you should be comfortable identifying and removing duplicate values from DataFrames.
