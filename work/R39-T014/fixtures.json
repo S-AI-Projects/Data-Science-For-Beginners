@@ -1,0 +1,65 @@
+[
+  {
+    "case": "normal",
+    "a": [1, 0], "b": [1, 1, 0, 0],
+    "expected": {
+      "A": {"n": 2, "successes": 1, "rate": 0.5, "trace": [
+        {"n": 0, "successes": 0, "rate": null},
+        {"n": 1, "successes": 1, "rate": 1.0},
+        {"n": 2, "successes": 1, "rate": 0.5}
+      ]},
+      "B": {"n": 4, "successes": 2, "rate": 0.5, "trace": [
+        {"n": 0, "successes": 0, "rate": null},
+        {"n": 1, "successes": 1, "rate": 1.0},
+        {"n": 2, "successes": 2, "rate": 1.0},
+        {"n": 3, "successes": 2, "rate": 0.6666666666666666},
+        {"n": 4, "successes": 2, "rate": 0.5}
+      ]}
+    }
+  },
+  {
+    "case": "undefined versus observed zero",
+    "a": [], "b": [0],
+    "expected": {
+      "A": {"n": 0, "successes": 0, "rate": null, "trace": [
+        {"n": 0, "successes": 0, "rate": null}
+      ]},
+      "B": {"n": 1, "successes": 0, "rate": 0.0, "trace": [
+        {"n": 0, "successes": 0, "rate": null},
+        {"n": 1, "successes": 0, "rate": 0.0}
+      ]}
+    }
+  },
+  {
+    "case": "both empty",
+    "a": [], "b": [],
+    "expected": {
+      "A": {"n": 0, "successes": 0, "rate": null, "trace": [
+        {"n": 0, "successes": 0, "rate": null}
+      ]},
+      "B": {"n": 0, "successes": 0, "rate": null, "trace": [
+        {"n": 0, "successes": 0, "rate": null}
+      ]}
+    }
+  },
+  {
+    "case": "smallest nonempty groups",
+    "a": [0], "b": [1],
+    "expected": {
+      "A": {"n": 1, "successes": 0, "rate": 0.0, "trace": [
+        {"n": 0, "successes": 0, "rate": null},
+        {"n": 1, "successes": 0, "rate": 0.0}
+      ]},
+      "B": {"n": 1, "successes": 1, "rate": 1.0, "trace": [
+        {"n": 0, "successes": 0, "rate": null},
+        {"n": 1, "successes": 1, "rate": 1.0}
+      ]}
+    }
+  },
+  {"case": "outside binary range", "a": [2], "b": [0], "error": "outcomes must be a list of integer 0 or 1 values"},
+  {"case": "missing outcome", "a": [1], "b": [null], "error": "outcomes must be a list of integer 0 or 1 values"},
+  {"case": "boolean outcome", "a": [true], "b": [], "error": "outcomes must be a list of integer 0 or 1 values"},
+  {"case": "float outcome", "a": [0.0], "b": [], "error": "outcomes must be a list of integer 0 or 1 values"},
+  {"case": "invalid container", "a": null, "b": [], "error": "outcomes must be a list of integer 0 or 1 values"},
+  {"case": "malformed JSON", "raw_args": ["--b", "["], "error": "error:"}
+]

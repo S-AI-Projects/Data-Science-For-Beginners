@@ -1,0 +1,453 @@
+[
+  {
+    "fixture": {
+      "case": "normal",
+      "a": [
+        1,
+        0
+      ],
+      "b": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "expected": {
+        "A": {
+          "n": 2,
+          "successes": 1,
+          "rate": 0.5,
+          "trace": [
+            {
+              "n": 0,
+              "successes": 0,
+              "rate": null
+            },
+            {
+              "n": 1,
+              "successes": 1,
+              "rate": 1.0
+            },
+            {
+              "n": 2,
+              "successes": 1,
+              "rate": 0.5
+            }
+          ]
+        },
+        "B": {
+          "n": 4,
+          "successes": 2,
+          "rate": 0.5,
+          "trace": [
+            {
+              "n": 0,
+              "successes": 0,
+              "rate": null
+            },
+            {
+              "n": 1,
+              "successes": 1,
+              "rate": 1.0
+            },
+            {
+              "n": 2,
+              "successes": 2,
+              "rate": 1.0
+            },
+            {
+              "n": 3,
+              "successes": 2,
+              "rate": 0.6666666666666666
+            },
+            {
+              "n": 4,
+              "successes": 2,
+              "rate": 0.5
+            }
+          ]
+        }
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--a",
+        "[1, 0]",
+        "--b",
+        "[1, 1, 0, 0]"
+      ],
+      "exit": 0,
+      "stdout": "{\"A\": {\"n\": 2, \"successes\": 1, \"rate\": 0.5, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}, {\"n\": 1, \"successes\": 1, \"rate\": 1.0}, {\"n\": 2, \"successes\": 1, \"rate\": 0.5}]}, \"B\": {\"n\": 4, \"successes\": 2, \"rate\": 0.5, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}, {\"n\": 1, \"successes\": 1, \"rate\": 1.0}, {\"n\": 2, \"successes\": 2, \"rate\": 1.0}, {\"n\": 3, \"successes\": 2, \"rate\": 0.6666666666666666}, {\"n\": 4, \"successes\": 2, \"rate\": 0.5}]}}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "undefined versus observed zero",
+      "a": [],
+      "b": [
+        0
+      ],
+      "expected": {
+        "A": {
+          "n": 0,
+          "successes": 0,
+          "rate": null,
+          "trace": [
+            {
+              "n": 0,
+              "successes": 0,
+              "rate": null
+            }
+          ]
+        },
+        "B": {
+          "n": 1,
+          "successes": 0,
+          "rate": 0.0,
+          "trace": [
+            {
+              "n": 0,
+              "successes": 0,
+              "rate": null
+            },
+            {
+              "n": 1,
+              "successes": 0,
+              "rate": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--a",
+        "[]",
+        "--b",
+        "[0]"
+      ],
+      "exit": 0,
+      "stdout": "{\"A\": {\"n\": 0, \"successes\": 0, \"rate\": null, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}]}, \"B\": {\"n\": 1, \"successes\": 0, \"rate\": 0.0, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}, {\"n\": 1, \"successes\": 0, \"rate\": 0.0}]}}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "both empty",
+      "a": [],
+      "b": [],
+      "expected": {
+        "A": {
+          "n": 0,
+          "successes": 0,
+          "rate": null,
+          "trace": [
+            {
+              "n": 0,
+              "successes": 0,
+              "rate": null
+            }
+          ]
+        },
+        "B": {
+          "n": 0,
+          "successes": 0,
+          "rate": null,
+          "trace": [
+            {
+              "n": 0,
+              "successes": 0,
+              "rate": null
+            }
+          ]
+        }
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--a",
+        "[]",
+        "--b",
+        "[]"
+      ],
+      "exit": 0,
+      "stdout": "{\"A\": {\"n\": 0, \"successes\": 0, \"rate\": null, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}]}, \"B\": {\"n\": 0, \"successes\": 0, \"rate\": null, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}]}}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "smallest nonempty groups",
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "expected": {
+        "A": {
+          "n": 1,
+          "successes": 0,
+          "rate": 0.0,
+          "trace": [
+            {
+              "n": 0,
+              "successes": 0,
+              "rate": null
+            },
+            {
+              "n": 1,
+              "successes": 0,
+              "rate": 0.0
+            }
+          ]
+        },
+        "B": {
+          "n": 1,
+          "successes": 1,
+          "rate": 1.0,
+          "trace": [
+            {
+              "n": 0,
+              "successes": 0,
+              "rate": null
+            },
+            {
+              "n": 1,
+              "successes": 1,
+              "rate": 1.0
+            }
+          ]
+        }
+      }
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--a",
+        "[0]",
+        "--b",
+        "[1]"
+      ],
+      "exit": 0,
+      "stdout": "{\"A\": {\"n\": 1, \"successes\": 0, \"rate\": 0.0, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}, {\"n\": 1, \"successes\": 0, \"rate\": 0.0}]}, \"B\": {\"n\": 1, \"successes\": 1, \"rate\": 1.0, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}, {\"n\": 1, \"successes\": 1, \"rate\": 1.0}]}}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "outside binary range",
+      "a": [
+        2
+      ],
+      "b": [
+        0
+      ],
+      "error": "outcomes must be a list of integer 0 or 1 values"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--a",
+        "[2]",
+        "--b",
+        "[0]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--a A] [--b B]\nexample.py: error: outcomes must be a list of integer 0 or 1 values\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "missing outcome",
+      "a": [
+        1
+      ],
+      "b": [
+        null
+      ],
+      "error": "outcomes must be a list of integer 0 or 1 values"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--a",
+        "[1]",
+        "--b",
+        "[null]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--a A] [--b B]\nexample.py: error: outcomes must be a list of integer 0 or 1 values\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "boolean outcome",
+      "a": [
+        true
+      ],
+      "b": [],
+      "error": "outcomes must be a list of integer 0 or 1 values"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--a",
+        "[true]",
+        "--b",
+        "[]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--a A] [--b B]\nexample.py: error: outcomes must be a list of integer 0 or 1 values\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "float outcome",
+      "a": [
+        0.0
+      ],
+      "b": [],
+      "error": "outcomes must be a list of integer 0 or 1 values"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--a",
+        "[0.0]",
+        "--b",
+        "[]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--a A] [--b B]\nexample.py: error: outcomes must be a list of integer 0 or 1 values\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "invalid container",
+      "a": null,
+      "b": [],
+      "error": "outcomes must be a list of integer 0 or 1 values"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--a",
+        "null",
+        "--b",
+        "[]"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--a A] [--b B]\nexample.py: error: outcomes must be a list of integer 0 or 1 values\n"
+    }
+  },
+  {
+    "fixture": {
+      "case": "malformed JSON",
+      "raw_args": [
+        "--b",
+        "["
+      ],
+      "error": "error:"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/02-ethics/applied-labs/r39-t014/example.py",
+        "--b",
+        "["
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--a A] [--b B]\nexample.py: error: Expecting value: line 1 column 2 (char 1)\n"
+    }
+  },
+  {
+    "case": "documented JSON matches normal fixture",
+    "actual": "pass"
+  },
+  {
+    "case": "required discovery",
+    "expected": "9 tests; exit 0",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "1-Introduction/02-ethics/applied-labs/r39-t014",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.204s\n\nOK\n"
+    }
+  },
+  {
+    "case": "deliberate wrong final counts",
+    "inputs": {
+      "a": [
+        1,
+        0
+      ],
+      "b": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    "expected_wrong_counts": {
+      "A": 3,
+      "B": 5
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "example.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"A\": {\"n\": 3, \"successes\": 1, \"rate\": 0.5, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}, {\"n\": 1, \"successes\": 1, \"rate\": 1.0}, {\"n\": 2, \"successes\": 1, \"rate\": 0.5}]}, \"B\": {\"n\": 5, \"successes\": 2, \"rate\": 0.5, \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": null}, {\"n\": 1, \"successes\": 1, \"rate\": 1.0}, {\"n\": 2, \"successes\": 2, \"rate\": 1.0}, {\"n\": 3, \"successes\": 2, \"rate\": 0.6666666666666666}, {\"n\": 4, \"successes\": 2, \"rate\": 0.5}]}}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "suite rejects broken final-state invariant",
+    "expected": "9 tests; nonzero exit; AssertionError",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "FFF.F.F..F\n======================================================================\nFAIL: test_boundaries_in_fresh_processes (test_example.CommandTests.test_boundaries_in_fresh_processes) (a=[], b=[])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t014-2rgqsdsz/test_example.py\", line 107, in test_boundaries_in_fresh_processes\n    self.assertEqual(report[group][\"n\"], len(values))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 1 != 0\n\n======================================================================\nFAIL: test_boundaries_in_fresh_processes (test_example.CommandTests.test_boundaries_in_fresh_processes) (a=[0], b=[1])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t014-2rgqsdsz/test_example.py\", line 107, in test_boundaries_in_fresh_processes\n    self.assertEqual(report[group][\"n\"], len(values))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 2 != 1\n\n======================================================================\nFAIL: test_default_fixture_in_fresh_process (test_example.CommandTests.test_default_fixture_in_fresh_process)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t014-2rgqsdsz/test_example.py\", line 92, in test_default_fixture_in_fresh_process\n    self.assertEqual(report[group][\"n\"], n)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 3 != 2\n\n======================================================================\nFAIL: test_empty_is_undefined_and_zero_is_observed (test_example.RateTests.test_empty_is_undefined_and_zero_is_observed)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t014-2rgqsdsz/test_example.py\", line 60, in test_empty_is_undefined_and_zero_is_observed\n    self.assertEqual(summarize_group([]), {\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n        \"n\": 0, \"successes\": 0, \"rate\": None,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        \"trace\": [{\"n\": 0, \"successes\": 0, \"rate\": None}],\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    })\n    ^^\nAssertionError: {'n': 1, 'successes': 0, 'rate': None, 'trace':[37 chars]ne}]} != {'n': 0, 'successes': 0, 'rate': None, 'trace':[37 chars]ne}]}\n- {'n': 1,\n?       ^\n\n+ {'n': 0,\n?       ^\n\n   'rate': None,\n   'successes': 0,\n   'trace': [{'n': 0, 'rate': None, 'successes': 0}]}\n\n======================================================================\nFAIL: test_fixture_rates_keep_distinct_denominators (test_example.RateTests.test_fixture_rates_keep_distinct_denominators)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t014-2rgqsdsz/test_example.py\", line 41, in test_fixture_rates_keep_distinct_denominators\n    self.assertEqual((a[\"n\"], a[\"successes\"], a[\"rate\"]), (2, 1, 0.5))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: (3, 1, 0.5) != (2, 1, 0.5)\n\nFirst differing element 0:\n3\n2\n\n- (3, 1, 0.5)\n?  ^\n\n+ (2, 1, 0.5)\n?  ^\n\n\n======================================================================\nFAIL: test_invariant_for_all_short_binary_sequences (test_example.RateTests.test_invariant_for_all_short_binary_sequences)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t014-2rgqsdsz/test_example.py\", line 57, in test_invariant_for_all_short_binary_sequences\n    self.check_trace_invariant(outcomes, summarize_group(outcomes))\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t014-2rgqsdsz/test_example.py\", line 35, in check_trace_invariant\n    self.assertEqual({key: report[key] for key in (\"n\", \"successes\", \"rate\")},\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     trace[-1])\n                     ^^^^^^^^^^\nAssertionError: {'n': 1, 'successes': 0, 'rate': None} != {'n': 0, 'successes': 0, 'rate': None}\n- {'n': 1, 'rate': None, 'successes': 0}\n?       ^\n\n+ {'n': 0, 'rate': None, 'successes': 0}\n?       ^\n\n\n----------------------------------------------------------------------\nRan 9 tests in 0.208s\n\nFAILED (failures=6)\n"
+    }
+  }
+]
