@@ -1,0 +1,147 @@
+================================================================================
+R39-T010 VERIFICATION EVIDENCE: SECURITY-SCENARIO RUBRIC & SCENARIO ASSESSMENT
+================================================================================
+Timestamp: 2026-11-16 23:17:15 +0530
+Target Branch: student/e26b07f0618/R39-T010
+Base Commit: 4d2ac427ad6f022e73a75c4f46a28bbb7978ec3f (upstream/main)
+Assigned Task: R39-T010 (Issue #10)
+Lab Directory: 6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t010
+
+--------------------------------------------------------------------------------
+1. TOOL & ENVIRONMENT VERSIONS
+--------------------------------------------------------------------------------
+$ python3 --version
+Python 3.15.0
+
+$ git --version
+git version 2.55.0
+
+$ uname -a
+Darwin Prachis-MacBook-Pro-2.local 25.3.0 Darwin Kernel Version 25.3.0: Wed Jan 28 20:54:05 PST 2026; root:xnu-12377.81.4~5/RELEASE_ARM64_T8142 arm64
+
+--------------------------------------------------------------------------------
+2. FRESH-PROCESS CLI EXECUTION OUTPUT
+--------------------------------------------------------------------------------
+$ python3 6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t010/example.py
+================================================================================
+APPLIED LAB R39-T010: SECURITY-SCENARIO RUBRIC & SCENARIO ASSESSMENT
+Lesson Reference: 6-Data-Science-In-Wild/20-Real-World-Examples
+Environment Scope: [SIMULATION/MOCK] Pure Python standard library demonstration
+================================================================================
+
+[GRADING BOUNDARY NOTICE]
+Automated checks verify structural completeness and cataloged threat-control pairings.
+Free-text justifications and residual risk appetite require human expert review.
+
+--------------------------------------------------------------------------------
+PART 1: REAL-WORLD SECURITY SCENARIO EVALUATIONS
+--------------------------------------------------------------------------------
+
+Scenario ID   : RW-01
+Name          : Clinical Healthcare Telemetry Export (Consistent Protection)
+Asset         : Clinical Patient Health Record Telemetry (EHR, vitals, lab panels)
+Threat        : Unauthorized Exfiltration of De-identified Patient Health Records
+Control       : Enforce Differential Privacy Perturbation and Strict Role-Based Column Masking (RBAC)
+Status        : PASS (complete_and_consistent)
+Human Review  : Not Required
+Diagnostics   : All required fields are populated and control matches named threat category.
+
+Scenario ID   : RW-02
+Name          : Planetary Earth Observation Yield Pipeline (Missing Asset)
+Asset         : <MISSING>
+Threat        : Adversarial Model Evasion via Perturbed Satellite Imagery in Crop Health Analysis
+Control       : Implement Input Smoothing and Certified Adversarial Robustness Filtering
+Status        : FAIL (missing_asset)
+Human Review  : Not Required
+Diagnostics   : Scenario lacks required structural field(s): asset
+
+Scenario ID   : RW-03
+Name          : Smart Agriculture LoRaWAN Sensor Pipeline (Control Mismatch)
+Asset         : Soil Moisture and Weather Telemetry Sensor Stream
+Threat        : Sensor Data Spoofing and Replay Attack by Rogue LoRaWAN Gateway
+Control       : Enforce Static HTML Output Encoding and Content-Security-Policy Headers
+Status        : FLAGGED_FOR_REVIEW (unrelated_control_threat_mismatch)
+Human Review  : Required
+Diagnostics   : Control does not match recognized mitigation patterns for the threat; human auditor review required.
+
+--------------------------------------------------------------------------------
+PART 2: APPLIED SCENARIO ASSESSMENT (3 QUESTIONS)
+--------------------------------------------------------------------------------
+
+[Q1] Type: predict_output
+Prompt   : Predict the rubric checker status when all four required fields (asset, threat, control, residual_risk) are non-empty, but the control belongs to an unrelated threat category than the specified threat.
+Answer   : FLAGGED_FOR_REVIEW
+Rationale: When syntactic completeness is satisfied but the semantic threat-control mapping reveals a domain mismatch (e.g., applying web HTML entity sanitization against IoT sensor replay), the automated rubric cannot certify security soundness. Rather than falsely passing or completely rejecting syntactically complete inputs, the system deterministically routes the scenario to human auditor review with status 'FLAGGED_FOR_REVIEW'.
+Check    : PASSED
+
+[Q2] Type: diagnose_failure
+Prompt   : Diagnose which required field causes the structural evaluation of Scenario 2 to return 'FAIL', and verify the outcome when that field is supplied.
+Answer   : asset
+Rationale: Security threat modeling requires an identified target asset. Scenario 2 omitted the 'asset' field (empty string). The automated structural validator flags this missing mandatory attribute with status 'FAIL'. When a valid asset ('Planetary Computer Satellite Multispectral Imagery Archive') is provided alongside its matching adversarial smoothing control, the scenario successfully transitions to 'PASS'.
+Check    : PASSED
+
+[Q3] Type: choose_boundary_policy
+Prompt   : Choose the deterministic boundary policy for handling whitespace-only inputs and unmapped/novel threat categories.
+Answer   : strip_whitespace_reject_and_flag_unmapped_for_review
+Rationale: A robust security rubric adheres to fail-safe defaults: (1) strings composed solely of whitespace ('   ') must be stripped and treated as missing, triggering an explicit 'FAIL' to prevent bypassing completeness checks; and (2) novel or unrecognized threat categories must be flagged for human review ('FLAGGED_FOR_REVIEW') rather than silently assumed safe or falsely passed.
+Check    : PASSED
+
+================================================================================
+ASSESSMENT_CHECKS_PASSED: 3/3
+================================================================================
+
+Exit code: 0
+
+--------------------------------------------------------------------------------
+3. FULL UNIT TEST RUNNER OUTPUT
+--------------------------------------------------------------------------------
+$ python3 -m unittest discover -s 6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t010 -p "test_*.py" -v
+test_complete_scenario_passes (test_example.TestSecurityScenarioRubric.test_complete_scenario_passes)
+Test 1: Complete, internally consistent scenario passes. ... ok
+test_deliberate_wrong_answer_fails_check (test_example.TestSecurityScenarioRubric.test_deliberate_wrong_answer_fails_check)
+Test 5: Deliberate wrong factual answer or corrupted rationale causes verification to fail. ... ok
+test_fresh_process_cli_execution (test_example.TestSecurityScenarioRubric.test_fresh_process_cli_execution)
+Test 6: Running example.py in a fresh Python process exits 0 and produces expected output. ... ok
+test_missing_asset_scenario_fails (test_example.TestSecurityScenarioRubric.test_missing_asset_scenario_fails)
+Test 2: Scenario without an asset fails with diagnostic missing_fields. ... ok
+test_scenario_assessment_three_questions_pass (test_example.TestSecurityScenarioRubric.test_scenario_assessment_three_questions_pass)
+Test 4: All three applied assessment questions include rationales and pass executable checks. ... ok
+test_unrelated_control_scenario_flagged_for_review (test_example.TestSecurityScenarioRubric.test_unrelated_control_scenario_flagged_for_review)
+Test 3: Scenario with a control unrelated to the named threat is flagged for review. ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.025s
+
+OK
+
+--------------------------------------------------------------------------------
+4. DELIBERATE ASSERTION FAILURE CONFIRMATION (NON-ZERO EXIT CODE)
+--------------------------------------------------------------------------------
+$ PYTHONPATH="6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t010" python3 -c "
+import unittest
+from example import evaluate_scenario, verify_assessment_answers
+
+class DeliberateFailureTest(unittest.TestCase):
+    def test_failure(self):
+        res = verify_assessment_answers(evaluate_scenario, submitted_answers={'Q1': 'WRONG_STATUS'})
+        self.assertTrue(res['all_passed'], 'Deliberate failure: wrong answer should not pass')
+
+if __name__ == '__main__':
+    unittest.main()
+"
+F
+======================================================================
+FAIL: test_failure (__main__.DeliberateFailureTest.test_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<string>", line 9, in test_failure
+    self.assertTrue(res['all_passed'], 'Deliberate failure: wrong answer should not pass')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Deliberate failure: wrong answer should not pass
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)
+
+Exit code: 1 (as expected)
