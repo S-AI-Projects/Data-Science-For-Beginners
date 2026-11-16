@@ -163,6 +163,25 @@ Questions to explore here are:
  * Are we using selective statistical techniques to manipulate outcomes?
  * Are there alternative explanations that may offer a different conclusion?
 
+##### Applied local example: rates, denominators and a trace
+
+The [outcome-rate lab](applied-labs/r39-t014/README.md) makes a descriptive metric
+auditable. With Python 3.7+ (standard library only) and a checkout, run from the
+repository root:
+
+```bash
+python3 1-Introduction/02-ethics/applied-labs/r39-t014/example.py
+```
+
+Fictional A `[1,0]` yields n=2, successes=1, rate=0.5; B `[1,1,0,0]` yields
+n=4, successes=2, rate=0.5. The [full expected JSON and intermediate states](applied-labs/r39-t014/README.md#run-locally)
+show the initial state and every observation's count, positive count and rate.
+Tests link each state to its input prefix and the last state to the final output.
+An empty group has n=0 and an undefined rate (`null`), rather than rate zero.
+This is real arithmetic on synthetic local data, with no mocked service or model.
+Sample counts alone do not quantify uncertainty, equal rates do not prove
+fairness, and a rate difference does not imply causation.
+
 #### 2.10 Free Choice
 The [Illusion of Free Choice](https://www.datasciencecentral.com/profiles/blogs/the-illusion-of-choice) occurs when system "choice architectures" use decision-making algorithms to nudge people towards taking a preferred outcome while seeming to give them options and control. These [dark patterns](https://www.darkpatterns.org/) can cause social and economic harm to users. Because user decisions impact behavior profiles, these actions potentially drive future choices that can amplify or extend the impact of these harms.
 
