@@ -1,0 +1,15 @@
+diff --git a/3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py b/3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py
+index ee159e2..76c32d3 100644
+--- a/3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py
++++ b/3-Data-Visualization/11-visualization-proportions/applied-labs/r39-t016/example.py
+@@ -11,2 +11,2 @@ FIXTURE = {"A": 2, "B": 3}
+-def proportions(counts):
+-    """Return labelled proportions, or an explicit no-data report."""
++def validate_counts(counts):
++    """Require nonblank category labels and nonnegative integer counts."""
+@@ -19,0 +20,5 @@ def proportions(counts):
++
++
++def proportions(counts):
++    """Return labelled proportions, or an explicit no-data report."""
++    validate_counts(counts)
