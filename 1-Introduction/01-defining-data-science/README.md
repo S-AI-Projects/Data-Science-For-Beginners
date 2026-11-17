@@ -127,6 +127,31 @@ Because the ultimate goal of data science is to be able to make decisions based 
 
 Of course, depending on the actual data, some steps might be missing (e.g., when we already have the data in the database, or when we do not need model training), or some steps might be repeated several times (such as data processing).
 
+### Applied local example: three scenario questions
+
+The [scenario rubric lab](applied-labs/r39-t020/README.md) uses fictional
+examples tied to **Digitalization and Digital Transformation**, **Data
+Processing**, and **Internet of Things**. Each names an asset, threat, control
+and residual risk. With Python 3.7+ (standard library only) and a local checkout,
+run from the repository root:
+
+```bash
+python3 1-Introduction/01-defining-data-science/applied-labs/r39-t020/example.py
+```
+
+All three complete scenarios pass:
+
+```json
+{"results": [{"status": "pass", "issues": []}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]}
+```
+
+The lab asks learners to predict a complete result, diagnose a missing asset,
+and choose a review policy for an unlisted threat/control pair. Each answer has
+a rationale and an executable check. A missing asset fails; an unlisted pair
+requests review. The cases use fictional local data and deterministic code,
+with no mocked service. The checker covers structure only; human review assesses
+the explanation and evidence.
+
 ## Digitalization and Digital Transformation
 
 In the last decade, many businesses started to understand the importance of data when making business decisions.  To apply data science principles to running a business, one first needs to collect some data, i.e. translate business processes into digital form. This is known as **digitalization**.  Applying data science techniques to this data to guide decisions can lead to significant increases in productivity (or even business pivot), called **digital transformation**.
