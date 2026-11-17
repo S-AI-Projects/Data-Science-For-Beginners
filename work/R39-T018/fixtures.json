@@ -1,0 +1,26 @@
+{
+  "scenarios": [
+    {"id": "customer-table", "section": "Structured Data", "asset": "Fictional customer table with named columns", "threat": "unauthorized_database_read", "control": "limit_database_access", "residual_risk": "An authorized reader could still share an export."},
+    {"id": "sensor-csv", "section": "Structured Data", "asset": "Fictional CSV of hourly sensor readings", "threat": "malformed_structured_rows", "control": "validate_required_columns", "residual_risk": "Validly shaped rows may still contain inaccurate readings."},
+    {"id": "email-source", "section": "Sources of Data", "asset": "Fictional email messages used as a data source", "threat": "misread_email_metadata", "control": "preserve_header_fields", "residual_risk": "Correctly preserved headers do not prove the body is trustworthy."}
+  ],
+  "recovery_input": [
+    {"threat": "unauthorized_database_read", "control": "limit_database_access", "residual_risk": "An authorized reader could still share an export."},
+    {"asset": "Fictional customer table with named columns", "threat": "unauthorized_database_read", "control": "limit_database_access", "residual_risk": "An authorized reader could still share an export."}
+  ],
+  "recovery_expected": {"results": [
+    {"status": "fail", "issues": ["missing or invalid: asset"]},
+    {"status": "pass", "issues": []}
+  ]},
+  "cases": [
+    {"case": "complete", "args": [], "expected_exit": 0, "expected": {"results": [{"status": "pass", "issues": []}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]}},
+    {"case": "missing asset", "args": ["--case", "missing-asset"], "expected_exit": 1, "expected": {"results": [{"status": "fail", "issues": ["missing or invalid: asset"]}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]}},
+    {"case": "unrelated control", "args": ["--case", "unrelated-control"], "expected_exit": 3, "expected": {"results": [{"status": "review", "issues": ["unlisted threat/control pair"]}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]}},
+    {"case": "recovery sequence", "args": ["--sequence", "[ {\"threat\":\"unauthorized_database_read\",\"control\":\"limit_database_access\",\"residual_risk\":\"An authorized reader could still share an export.\"}, {\"asset\":\"Fictional customer table with named columns\",\"threat\":\"unauthorized_database_read\",\"control\":\"limit_database_access\",\"residual_risk\":\"An authorized reader could still share an export.\"} ]"], "expected_exit": 1, "expected": {"results": [{"status": "fail", "issues": ["missing or invalid: asset"]}, {"status": "pass", "issues": []}]}},
+    {"case": "empty sequence", "args": ["--sequence", "[]"], "expected_exit": 0, "expected": {"results": []}},
+    {"case": "empty record", "args": ["--scenario", "{}"], "expected_exit": 1, "expected": {"results": [{"status": "fail", "issues": ["missing or invalid: asset", "missing or invalid: threat", "missing or invalid: control", "missing or invalid: residual_risk"]}]}},
+    {"case": "unknown pair", "args": ["--scenario", "{\"asset\":\"x\",\"threat\":\"unknown\",\"control\":\"limit_database_access\",\"residual_risk\":\"x\"}"], "expected_exit": 3, "expected": {"results": [{"status": "review", "issues": ["unlisted threat/control pair"]}]}},
+    {"case": "invalid sequence container", "args": ["--sequence", "{}"], "expected_exit": 2, "error": "sequence must be a JSON list"},
+    {"case": "malformed JSON", "args": ["--sequence", "["], "expected_exit": 2, "error": "error:"}
+  ]
+}
