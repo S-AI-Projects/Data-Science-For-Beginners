@@ -82,6 +82,30 @@ Here’s some things that a team may do with security in mind:
 - Let only certain project members alter the data
 
 
+### Applied local example: compare rubric checks by input size
+
+The [scenario evaluation lab](applied-labs/r39-t019/README.md) uses three
+fictional cases from Capturing, Processing and Maintaining. Each names an asset,
+threat, control and residual risk. With Python 3.7+ (standard library only) and
+a local checkout, run from the repository root:
+
+```bash
+python3 4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t019/example.py
+```
+
+Expected output, exit 0:
+
+```json
+{"results": [{"status": "pass", "issues": [], "field_checks": 4}, {"status": "pass", "issues": [], "field_checks": 4}, {"status": "pass", "issues": [], "field_checks": 4}], "size_comparison": [{"scenarios": 1, "expected_statuses": ["pass"], "actual_statuses": ["pass"], "required_field_checks": 4, "correct": true}, {"scenarios": 2, "expected_statuses": ["pass", "pass"], "actual_statuses": ["pass", "pass"], "required_field_checks": 8, "correct": true}, {"scenarios": 3, "expected_statuses": ["pass", "pass", "pass"], "actual_statuses": ["pass", "pass", "pass"], "required_field_checks": 12, "correct": true}]}
+```
+
+All three complete scenarios pass. The comparison reports correct expected and
+actual statuses for input sizes 1, 2 and 3, with 4, 8 and 12 required-field
+checks. This check count is a deterministic work proxy, not a runtime or model
+accuracy measure. An absent asset fails; an unrelated threat/control pair
+requests review. The data is fictional and checked by local code, without a
+mocked service. Human review assesses explanation and evidence.
+
 ## 🚀 Challenge
 
 There are many versions of the Data Science Lifecycle, where each step may have different names and number of stages but will contain the same processes mentioned within this lesson.

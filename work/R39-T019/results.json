@@ -1,0 +1,234 @@
+[
+  {
+    "case": "saved input fixture",
+    "expected": [
+      {
+        "id": "capturing-survey",
+        "section": "Capturing",
+        "asset": "Fictional community survey records",
+        "threat": "unclear_data_origin",
+        "control": "record_source_and_provenance",
+        "residual_risk": "Recorded provenance may still be incomplete or incorrect."
+      },
+      {
+        "id": "processing-import",
+        "section": "Processing",
+        "asset": "Fictional CSV used to prepare a monthly summary",
+        "threat": "malformed_records",
+        "control": "validate_input_schema",
+        "residual_risk": "Well-formed rows may still contain inaccurate values."
+      },
+      {
+        "id": "maintenance-table",
+        "section": "Maintaining / Managing Data",
+        "asset": "Fictional shared project table",
+        "threat": "unauthorized_edits",
+        "control": "restrict_data_writers",
+        "residual_risk": "An authorized writer could still make an erroneous change."
+      }
+    ],
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-c",
+        "import json; from example import SCENARIOS; print(json.dumps(SCENARIOS))"
+      ],
+      "exit": 0,
+      "stdout": "[{\"id\": \"capturing-survey\", \"section\": \"Capturing\", \"asset\": \"Fictional community survey records\", \"threat\": \"unclear_data_origin\", \"control\": \"record_source_and_provenance\", \"residual_risk\": \"Recorded provenance may still be incomplete or incorrect.\"}, {\"id\": \"processing-import\", \"section\": \"Processing\", \"asset\": \"Fictional CSV used to prepare a monthly summary\", \"threat\": \"malformed_records\", \"control\": \"validate_input_schema\", \"residual_risk\": \"Well-formed rows may still contain inaccurate values.\"}, {\"id\": \"maintenance-table\", \"section\": \"Maintaining / Managing Data\", \"asset\": \"Fictional shared project table\", \"threat\": \"unauthorized_edits\", \"control\": \"restrict_data_writers\", \"residual_risk\": \"An authorized writer could still make an erroneous change.\"}]\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "complete",
+      "args": [],
+      "expected_exit": 0,
+      "first_status": "pass"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t019/example.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"results\": [{\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}, {\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}, {\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}], \"size_comparison\": [{\"scenarios\": 1, \"expected_statuses\": [\"pass\"], \"actual_statuses\": [\"pass\"], \"required_field_checks\": 4, \"correct\": true}, {\"scenarios\": 2, \"expected_statuses\": [\"pass\", \"pass\"], \"actual_statuses\": [\"pass\", \"pass\"], \"required_field_checks\": 8, \"correct\": true}, {\"scenarios\": 3, \"expected_statuses\": [\"pass\", \"pass\", \"pass\"], \"actual_statuses\": [\"pass\", \"pass\", \"pass\"], \"required_field_checks\": 12, \"correct\": true}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "missing asset",
+      "args": [
+        "--case",
+        "missing-asset"
+      ],
+      "expected_exit": 1,
+      "first_status": "fail"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t019/example.py",
+        "--case",
+        "missing-asset"
+      ],
+      "exit": 1,
+      "stdout": "{\"results\": [{\"status\": \"fail\", \"issues\": [\"missing or invalid: asset\"], \"field_checks\": 4}, {\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}, {\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}], \"size_comparison\": [{\"scenarios\": 1, \"expected_statuses\": [\"pass\"], \"actual_statuses\": [\"pass\"], \"required_field_checks\": 4, \"correct\": true}, {\"scenarios\": 2, \"expected_statuses\": [\"pass\", \"pass\"], \"actual_statuses\": [\"pass\", \"pass\"], \"required_field_checks\": 8, \"correct\": true}, {\"scenarios\": 3, \"expected_statuses\": [\"pass\", \"pass\", \"pass\"], \"actual_statuses\": [\"pass\", \"pass\", \"pass\"], \"required_field_checks\": 12, \"correct\": true}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "unrelated control",
+      "args": [
+        "--case",
+        "unrelated-control"
+      ],
+      "expected_exit": 3,
+      "first_status": "review"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t019/example.py",
+        "--case",
+        "unrelated-control"
+      ],
+      "exit": 3,
+      "stdout": "{\"results\": [{\"status\": \"review\", \"issues\": [\"unlisted threat/control pair\"], \"field_checks\": 4}, {\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}, {\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}], \"size_comparison\": [{\"scenarios\": 1, \"expected_statuses\": [\"pass\"], \"actual_statuses\": [\"pass\"], \"required_field_checks\": 4, \"correct\": true}, {\"scenarios\": 2, \"expected_statuses\": [\"pass\", \"pass\"], \"actual_statuses\": [\"pass\", \"pass\"], \"required_field_checks\": 8, \"correct\": true}, {\"scenarios\": 3, \"expected_statuses\": [\"pass\", \"pass\", \"pass\"], \"actual_statuses\": [\"pass\", \"pass\", \"pass\"], \"required_field_checks\": 12, \"correct\": true}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "unknown case",
+      "args": [
+        "--case",
+        "unknown"
+      ],
+      "expected_exit": 2,
+      "error": "invalid choice"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t019/example.py",
+        "--case",
+        "unknown"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--case {complete,missing-asset,unrelated-control}]\nexample.py: error: argument --case: invalid choice: 'unknown' (choose from 'complete', 'missing-asset', 'unrelated-control')\n"
+    }
+  },
+  {
+    "case": "exact expected default report",
+    "expected": {
+      "results": [
+        {
+          "status": "pass",
+          "issues": [],
+          "field_checks": 4
+        },
+        {
+          "status": "pass",
+          "issues": [],
+          "field_checks": 4
+        },
+        {
+          "status": "pass",
+          "issues": [],
+          "field_checks": 4
+        }
+      ],
+      "size_comparison": [
+        {
+          "scenarios": 1,
+          "expected_statuses": [
+            "pass"
+          ],
+          "actual_statuses": [
+            "pass"
+          ],
+          "required_field_checks": 4,
+          "correct": true
+        },
+        {
+          "scenarios": 2,
+          "expected_statuses": [
+            "pass",
+            "pass"
+          ],
+          "actual_statuses": [
+            "pass",
+            "pass"
+          ],
+          "required_field_checks": 8,
+          "correct": true
+        },
+        {
+          "scenarios": 3,
+          "expected_statuses": [
+            "pass",
+            "pass",
+            "pass"
+          ],
+          "actual_statuses": [
+            "pass",
+            "pass",
+            "pass"
+          ],
+          "required_field_checks": 12,
+          "correct": true
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t019/example.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"results\": [{\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}, {\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}, {\"status\": \"pass\", \"issues\": [], \"field_checks\": 4}], \"size_comparison\": [{\"scenarios\": 1, \"expected_statuses\": [\"pass\"], \"actual_statuses\": [\"pass\"], \"required_field_checks\": 4, \"correct\": true}, {\"scenarios\": 2, \"expected_statuses\": [\"pass\", \"pass\"], \"actual_statuses\": [\"pass\", \"pass\"], \"required_field_checks\": 8, \"correct\": true}, {\"scenarios\": 3, \"expected_statuses\": [\"pass\", \"pass\", \"pass\"], \"actual_statuses\": [\"pass\", \"pass\", \"pass\"], \"required_field_checks\": 12, \"correct\": true}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "required discovery",
+    "expected": "9 tests; exit 0",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t019",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.077s\n\nOK\n"
+    }
+  },
+  {
+    "case": "deliberate wrong pass status",
+    "expected": "9 tests; nonzero exit; AssertionError",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "FFFFF.....\n======================================================================\nFAIL: test_default_fixture_in_fresh_process (test_example.CommandTests.test_default_fixture_in_fresh_process)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t019-xzonyrn8/test_example.py\", line 72, in test_default_fixture_in_fresh_process\n    self.assertEqual(result.returncode, 0, result.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 3 != 0 : \n\n======================================================================\nFAIL: test_failure_and_review_in_fresh_processes (test_example.CommandTests.test_failure_and_review_in_fresh_processes) (case='missing-asset')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t019-xzonyrn8/test_example.py\", line 86, in test_failure_and_review_in_fresh_processes\n    self.assertEqual(report[\"size_comparison\"], EXPECTED_COMPARISON)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [{'sc[60 chars]': ['review'], 'required_field_checks': 4, 'co[317 chars]lse}] != [{'sc[60 chars]': ['pass'], 'required_field_checks': 4, 'corr[302 chars]rue}]\n\nFirst differing element 0:\n{'sce[56 chars]ses': ['review'], 'required_field_checks': 4, 'correct': False}\n{'sce[56 chars]ses': ['pass'], 'required_field_checks': 4, 'correct': True}\n\nDiff is 945 characters long. Set self.maxDiff to None to see it.\n\n======================================================================\nFAIL: test_failure_and_review_in_fresh_processes (test_example.CommandTests.test_failure_and_review_in_fresh_processes) (case='unrelated-control')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t019-xzonyrn8/test_example.py\", line 86, in test_failure_and_review_in_fresh_processes\n    self.assertEqual(report[\"size_comparison\"], EXPECTED_COMPARISON)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [{'sc[60 chars]': ['review'], 'required_field_checks': 4, 'co[317 chars]lse}] != [{'sc[60 chars]': ['pass'], 'required_field_checks': 4, 'corr[302 chars]rue}]\n\nFirst differing element 0:\n{'sce[56 chars]ses': ['review'], 'required_field_checks': 4, 'correct': False}\n{'sce[56 chars]ses': ['pass'], 'required_field_checks': 4, 'correct': True}\n\nDiff is 945 characters long. Set self.maxDiff to None to see it.\n\n======================================================================\nFAIL: test_all_size_comparisons_match_literal_expectations (test_example.RubricTests.test_all_size_comparisons_match_literal_expectations)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t019-xzonyrn8/test_example.py\", line 51, in test_all_size_comparisons_match_literal_expectations\n    self.assertEqual(compare_sizes(fixture()), EXPECTED_COMPARISON)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [{'sc[60 chars]': ['review'], 'required_field_checks': 4, 'co[317 chars]lse}] != [{'sc[60 chars]': ['pass'], 'required_field_checks': 4, 'corr[302 chars]rue}]\n\nFirst differing element 0:\n{'sce[56 chars]ses': ['review'], 'required_field_checks': 4, 'correct': False}\n{'sce[56 chars]ses': ['pass'], 'required_field_checks': 4, 'correct': True}\n\nDiff is 945 characters long. Set self.maxDiff to None to see it.\n\n======================================================================\nFAIL: test_complete_scenarios_pass (test_example.RubricTests.test_complete_scenarios_pass)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t019-xzonyrn8/test_example.py\", line 27, in test_complete_scenarios_pass\n    self.assertEqual([check_scenario(row)[\"status\"] for row in fixture()],\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     [\"pass\", \"pass\", \"pass\"])\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: ['review', 'review', 'review'] != ['pass', 'pass', 'pass']\n\nFirst differing element 0:\n'review'\n'pass'\n\n- ['review', 'review', 'review']\n+ ['pass', 'pass', 'pass']\n\n----------------------------------------------------------------------\nRan 9 tests in 0.077s\n\nFAILED (failures=5)\n"
+    }
+  }
+]
