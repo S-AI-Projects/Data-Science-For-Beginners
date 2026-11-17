@@ -43,6 +43,32 @@ A data source is the initial location of where the data was generated, or where 
 
 Databases are a common source and rely on a database management system to host and maintain the data where users use commands called queries to explore the data. Files as data sources can be audio, image, and video files as well as spreadsheets like Excel. Internet sources are a common location for hosting data, where databases as well as files can be found. Application programming interfaces, also known as APIs allow programmers to create ways to share data with external users through the internet, while the process of web scraping extracts data from a web page. The [lessons in Working with Data](/2-Working-With-Data) focus on how to use various data sources. 
 
+### Applied local example: recover after missing scenario data
+
+The [failure and recovery lab](applied-labs/r39-t018/README.md) uses fictional
+examples of **Structured Data** and **Sources of Data**: a customer table, sensor
+CSV and email source. Each names an asset, threat, control and residual risk.
+With Python 3.7+ (standard library only) and a local checkout, run from the
+repository root:
+
+```bash
+python3 1-Introduction/03-defining-data/applied-labs/r39-t018/example.py
+```
+
+The three complete fixture scenarios return `pass`. The lab also runs an ordered
+input sequence where the first record omits `asset` and fails, while the next
+valid record passes. The sequence exits 1 overall but preserves both results,
+showing the error and recovery. An unrelated control requests human review. These
+are fictional cases checked by deterministic local code, with no mocked or real
+service. The rubric checks structure and listed pairs; human review judges the
+explanation and evidence.
+
+Expected default output, exit 0:
+
+```json
+{"results": [{"status": "pass", "issues": []}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]}
+```
+
 ## Conclusion
 
 In this lesson we have learned:
