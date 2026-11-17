@@ -256,6 +256,26 @@ Here are some examples of exploring data from Image data sources:
 
 Whether you already have structured or unstructured data, using Python you can perform all steps related to data processing and understanding. It is probably the most flexible way of data processing, and that is the reason the majority of data scientists use Python as their primary tool. Learning Python in depth is probably a good idea if you are serious about your data science journey!
 
+## Local Example: Fit and Transform
+
+Run the [fit/transform example](applied-labs/r39-t034/example.py) from the repository root:
+
+```bash
+python3 2-Working-With-Data/07-python/applied-labs/r39-t034/example.py
+```
+
+The deterministic local mock fixture uses training values `[10.0, None, 30.0]` and test values `[None, 100.0]`. It fits the median on training data only, then transforms both sets; `None` represents a missing value. This is a small simulation, not live data or a trained model.
+
+Expected output:
+
+```text
+inputs: {'training': [10.0, None, 30.0], 'test': [None, 100.0]}
+fit: {'training_median': 20.0}
+transform_training: {'values': [10.0, 20.0, 30.0]}
+transform_test: {'values': [20.0, 100.0]}
+Final output: [20.0, 100.0]
+```
+
 ## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ds/quiz/13)
 
 ## Review & Self Study
