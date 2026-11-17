@@ -1,0 +1,18 @@
+{
+  "scenarios": [
+    {"id": "course-survey", "section": "Digitalization and Digital Transformation", "asset": "Fictional course feedback survey responses", "threat": "unclear_survey_provenance", "control": "record_source_and_consent", "residual_risk": "A respondent may still misunderstand how answers are used."},
+    {"id": "site-logs", "section": "What you can do with Data / Data Processing", "asset": "Fictional web server logs used for a page-usage summary", "threat": "malformed_web_logs", "control": "validate_log_fields", "residual_risk": "Well-formed logs may still record incorrect events."},
+    {"id": "room-sensors", "section": "Where to get Data / Internet of Things", "asset": "Fictional room temperature readings from sensors", "threat": "unauthorized_sensor_data_access", "control": "limit_data_access", "residual_risk": "An authorized user could still share an export."}
+  ],
+  "questions": {
+    "predict": {"input": "course-survey complete", "expected": {"status": "pass", "issues": []}, "rationale": "All four fields are nonblank and the threat/control pair is listed."},
+    "diagnose": {"input": "course-survey with asset omitted", "expected": {"status": "fail", "issues": ["missing or invalid: asset"]}, "rationale": "The asset identifies what is at risk and is required by the rubric."},
+    "boundary": {"input": "course-survey with control encrypt_archive", "expected": {"status": "review", "issues": ["unlisted threat/control pair"]}, "rationale": "An unlisted pair needs human review rather than an automatic guess."}
+  },
+  "cases": [
+    {"case": "complete fixture", "args": [], "exit": 0, "first_status": "pass"},
+    {"case": "missing asset", "args": ["--case", "missing-asset"], "exit": 1, "first_status": "fail"},
+    {"case": "unrelated control", "args": ["--case", "unrelated-control"], "exit": 3, "first_status": "review"},
+    {"case": "invalid case name", "args": ["--case", "other"], "exit": 2, "error": "invalid choice"}
+  ]
+}

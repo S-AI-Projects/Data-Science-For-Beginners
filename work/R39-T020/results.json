@@ -1,0 +1,238 @@
+[
+  {
+    "case": "scenario fixture",
+    "expected": [
+      {
+        "id": "course-survey",
+        "section": "Digitalization and Digital Transformation",
+        "asset": "Fictional course feedback survey responses",
+        "threat": "unclear_survey_provenance",
+        "control": "record_source_and_consent",
+        "residual_risk": "A respondent may still misunderstand how answers are used."
+      },
+      {
+        "id": "site-logs",
+        "section": "What you can do with Data / Data Processing",
+        "asset": "Fictional web server logs used for a page-usage summary",
+        "threat": "malformed_web_logs",
+        "control": "validate_log_fields",
+        "residual_risk": "Well-formed logs may still record incorrect events."
+      },
+      {
+        "id": "room-sensors",
+        "section": "Where to get Data / Internet of Things",
+        "asset": "Fictional room temperature readings from sensors",
+        "threat": "unauthorized_sensor_data_access",
+        "control": "limit_data_access",
+        "residual_risk": "An authorized user could still share an export."
+      }
+    ],
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-c",
+        "import json; from example import SCENARIOS; print(json.dumps(SCENARIOS))"
+      ],
+      "exit": 0,
+      "stdout": "[{\"id\": \"course-survey\", \"section\": \"Digitalization and Digital Transformation\", \"asset\": \"Fictional course feedback survey responses\", \"threat\": \"unclear_survey_provenance\", \"control\": \"record_source_and_consent\", \"residual_risk\": \"A respondent may still misunderstand how answers are used.\"}, {\"id\": \"site-logs\", \"section\": \"What you can do with Data / Data Processing\", \"asset\": \"Fictional web server logs used for a page-usage summary\", \"threat\": \"malformed_web_logs\", \"control\": \"validate_log_fields\", \"residual_risk\": \"Well-formed logs may still record incorrect events.\"}, {\"id\": \"room-sensors\", \"section\": \"Where to get Data / Internet of Things\", \"asset\": \"Fictional room temperature readings from sensors\", \"threat\": \"unauthorized_sensor_data_access\", \"control\": \"limit_data_access\", \"residual_risk\": \"An authorized user could still share an export.\"}]\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "complete fixture",
+      "args": [],
+      "exit": 0,
+      "first_status": "pass"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/01-defining-data-science/applied-labs/r39-t020/example.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"results\": [{\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "missing asset",
+      "args": [
+        "--case",
+        "missing-asset"
+      ],
+      "exit": 1,
+      "first_status": "fail"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/01-defining-data-science/applied-labs/r39-t020/example.py",
+        "--case",
+        "missing-asset"
+      ],
+      "exit": 1,
+      "stdout": "{\"results\": [{\"status\": \"fail\", \"issues\": [\"missing or invalid: asset\"]}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "unrelated control",
+      "args": [
+        "--case",
+        "unrelated-control"
+      ],
+      "exit": 3,
+      "first_status": "review"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/01-defining-data-science/applied-labs/r39-t020/example.py",
+        "--case",
+        "unrelated-control"
+      ],
+      "exit": 3,
+      "stdout": "{\"results\": [{\"status\": \"review\", \"issues\": [\"unlisted threat/control pair\"]}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "invalid case name",
+      "args": [
+        "--case",
+        "other"
+      ],
+      "exit": 2,
+      "error": "invalid choice"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/01-defining-data-science/applied-labs/r39-t020/example.py",
+        "--case",
+        "other"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--case {complete,missing-asset,unrelated-control} |\n                  --question {predict,diagnose,boundary}]\nexample.py: error: argument --case: invalid choice: 'other' (choose from 'complete', 'missing-asset', 'unrelated-control')\n"
+    }
+  },
+  {
+    "question": "predict",
+    "input": "course-survey complete",
+    "expected": {
+      "results": [
+        {
+          "status": "pass",
+          "issues": []
+        }
+      ]
+    },
+    "rationale": "All four fields are nonblank and the threat/control pair is listed.",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/01-defining-data-science/applied-labs/r39-t020/example.py",
+        "--question",
+        "predict"
+      ],
+      "exit": 0,
+      "stdout": "{\"results\": [{\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "question": "diagnose",
+    "input": "course-survey with asset omitted",
+    "expected": {
+      "results": [
+        {
+          "status": "fail",
+          "issues": [
+            "missing or invalid: asset"
+          ]
+        }
+      ]
+    },
+    "rationale": "The asset identifies what is at risk and is required by the rubric.",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/01-defining-data-science/applied-labs/r39-t020/example.py",
+        "--question",
+        "diagnose"
+      ],
+      "exit": 1,
+      "stdout": "{\"results\": [{\"status\": \"fail\", \"issues\": [\"missing or invalid: asset\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "question": "boundary",
+    "input": "course-survey with control encrypt_archive",
+    "expected": {
+      "results": [
+        {
+          "status": "review",
+          "issues": [
+            "unlisted threat/control pair"
+          ]
+        }
+      ]
+    },
+    "rationale": "An unlisted pair needs human review rather than an automatic guess.",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "1-Introduction/01-defining-data-science/applied-labs/r39-t020/example.py",
+        "--question",
+        "boundary"
+      ],
+      "exit": 3,
+      "stdout": "{\"results\": [{\"status\": \"review\", \"issues\": [\"unlisted threat/control pair\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "required unittest discovery",
+    "expected": "12 tests; exit 0",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "1-Introduction/01-defining-data-science/applied-labs/r39-t020",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "............\n----------------------------------------------------------------------\nRan 12 tests in 0.152s\n\nOK\n"
+    }
+  },
+  {
+    "case": "deliberate wrong prediction",
+    "expected": "12 tests; nonzero exit; assertion failures",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "FF.......FF.\n======================================================================\nFAIL: test_all_questions_execute_in_fresh_processes (test_example.CommandTests.test_all_questions_execute_in_fresh_processes) (question='predict')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t020-11l29pxs/test_example.py\", line 112, in test_all_questions_execute_in_fresh_processes\n    self.assertEqual(result.returncode, exit_code, result.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 3 != 0 : \n\n======================================================================\nFAIL: test_default_fixture_in_fresh_process (test_example.CommandTests.test_default_fixture_in_fresh_process)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t020-11l29pxs/test_example.py\", line 89, in test_default_fixture_in_fresh_process\n    self.assertEqual(result.returncode, 0, result.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 3 != 0 : \n\n======================================================================\nFAIL: test_question_predicts_complete_scenario (test_example.RubricTests.test_question_predicts_complete_scenario)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t020-11l29pxs/test_example.py\", line 50, in test_question_predicts_complete_scenario\n    self.assertEqual(result[\"answer\"], {\"status\": \"pass\", \"issues\": []})\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'status': 'review', 'issues': []} != {'status': 'pass', 'issues': []}\n- {'issues': [], 'status': 'review'}\n?                           ^^^^^^\n\n+ {'issues': [], 'status': 'pass'}\n?                           ^^^^\n\n\n======================================================================\nFAIL: test_three_complete_scenarios_pass (test_example.RubricTests.test_three_complete_scenarios_pass)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t020-11l29pxs/test_example.py\", line 20, in test_three_complete_scenarios_pass\n    self.assertEqual([check_scenario(row)[\"status\"] for row in fixture()],\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     [\"pass\", \"pass\", \"pass\"])\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: ['review', 'review', 'review'] != ['pass', 'pass', 'pass']\n\nFirst differing element 0:\n'review'\n'pass'\n\n- ['review', 'review', 'review']\n+ ['pass', 'pass', 'pass']\n\n----------------------------------------------------------------------\nRan 12 tests in 0.154s\n\nFAILED (failures=4)\n"
+    }
+  }
+]
