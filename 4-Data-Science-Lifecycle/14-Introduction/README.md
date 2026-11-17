@@ -82,6 +82,31 @@ Here’s some things that a team may do with security in mind:
 - Let only certain project members alter the data
 
 
+### Applied local example: a worked scenario rubric
+
+The [worked lifecycle-scenario lab](applied-labs/r39-t017/README.md) uses three
+fictional scenarios tied to **Maintaining → Securing the Data**: departed-user
+access, unauthorized dataset changes and exposed stored survey data. Each names
+an asset, threat, control and residual risk. With Python 3.7+ (standard library
+only) and a checkout, run from the repository root:
+
+```bash
+python3 4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py
+```
+
+Expected output, exit 0:
+
+```json
+{"results": [{"status": "pass", "issues": []}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]}
+```
+
+The lab explains one exact input-to-output example and executes the published
+command as a regression test. Removing an asset fails the rubric; an unrelated
+control requests review. The scenarios simulate project discussions, using real
+local structural checks with no mocked service or deployed control. Human review
+judges the explanation and evidence; a pass establishes neither security
+effectiveness nor trained-model performance.
+
 ## 🚀 Challenge
 
 There are many versions of the Data Science Lifecycle, where each step may have different names and number of stages but will contain the same processes mentioned within this lesson.

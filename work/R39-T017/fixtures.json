@@ -1,0 +1,20 @@
+{
+  "scenarios": [
+    {"id": "departed-analyst", "section": "Maintaining / Securing the Data", "asset": "Fictional community survey dataset", "threat": "departed_account_access", "control": "revoke_departed_access", "residual_risk": "Previously downloaded copies may still exist."},
+    {"id": "report-edit", "section": "Maintaining / Securing the Data", "asset": "Fictional shared dataset used for a monthly report", "threat": "unauthorized_changes", "control": "restrict_writers", "residual_risk": "An authorized writer could still make an incorrect edit."},
+    {"id": "stored-survey", "section": "Maintaining / Securing the Data", "asset": "Fictional stored survey export", "threat": "exposed_storage", "control": "encrypt_storage", "residual_risk": "A user with decryption access could still disclose data."}
+  ],
+  "worked_input": {"asset": "Fictional community survey dataset", "threat": "departed_account_access", "control": "revoke_departed_access", "residual_risk": "Previously downloaded copies may still exist."},
+  "worked_expected": {"results": [{"status": "pass", "issues": []}]},
+  "cases": [
+    {"case": "complete", "args": [], "expected_exit": 0, "expected_results": [{"status": "pass", "issues": []}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]},
+    {"case": "missing asset", "args": ["--case", "missing-asset"], "expected_exit": 1, "expected_results": [{"status": "fail", "issues": ["missing or invalid: asset"]}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]},
+    {"case": "unrelated control", "args": ["--case", "unrelated-control"], "expected_exit": 3, "expected_results": [{"status": "review", "issues": ["unlisted threat/control pair"]}, {"status": "pass", "issues": []}, {"status": "pass", "issues": []}]},
+    {"case": "minimal text", "args": ["--scenario", "{\"asset\":\"x\",\"threat\":\"departed_account_access\",\"control\":\"revoke_departed_access\",\"residual_risk\":\"x\"}"], "expected_exit": 0, "expected_results": [{"status": "pass", "issues": []}]},
+    {"case": "unknown label", "args": ["--scenario", "{\"asset\":\"x\",\"threat\":\"unknown\",\"control\":\"revoke_departed_access\",\"residual_risk\":\"x\"}"], "expected_exit": 3, "expected_results": [{"status": "review", "issues": ["unlisted threat/control pair"]}]},
+    {"case": "empty object", "args": ["--scenario", "{}"], "expected_exit": 1, "expected_results": [{"status": "fail", "issues": ["missing or invalid: asset", "missing or invalid: threat", "missing or invalid: control", "missing or invalid: residual_risk"]}]},
+    {"case": "invalid container", "args": ["--scenario", "null"], "expected_exit": 1, "expected_results": [{"status": "fail", "issues": ["scenario must be an object"]}]},
+    {"case": "blank residual risk", "args": ["--scenario", "{\"asset\":\"x\",\"threat\":\"departed_account_access\",\"control\":\"revoke_departed_access\",\"residual_risk\":\" \"}"], "expected_exit": 1, "expected_results": [{"status": "fail", "issues": ["missing or invalid: residual_risk"]}]},
+    {"case": "malformed JSON", "args": ["--scenario", "{"], "expected_exit": 2, "expected_error": "error:"}
+  ]
+}
