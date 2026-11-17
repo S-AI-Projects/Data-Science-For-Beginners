@@ -1,0 +1,388 @@
+[
+  {
+    "case": "saved scenario inputs",
+    "expected": [
+      {
+        "id": "departed-analyst",
+        "section": "Maintaining / Securing the Data",
+        "asset": "Fictional community survey dataset",
+        "threat": "departed_account_access",
+        "control": "revoke_departed_access",
+        "residual_risk": "Previously downloaded copies may still exist."
+      },
+      {
+        "id": "report-edit",
+        "section": "Maintaining / Securing the Data",
+        "asset": "Fictional shared dataset used for a monthly report",
+        "threat": "unauthorized_changes",
+        "control": "restrict_writers",
+        "residual_risk": "An authorized writer could still make an incorrect edit."
+      },
+      {
+        "id": "stored-survey",
+        "section": "Maintaining / Securing the Data",
+        "asset": "Fictional stored survey export",
+        "threat": "exposed_storage",
+        "control": "encrypt_storage",
+        "residual_risk": "A user with decryption access could still disclose data."
+      }
+    ],
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-c",
+        "import json; from example import SCENARIOS; print(json.dumps(SCENARIOS))"
+      ],
+      "exit": 0,
+      "stdout": "[{\"id\": \"departed-analyst\", \"section\": \"Maintaining / Securing the Data\", \"asset\": \"Fictional community survey dataset\", \"threat\": \"departed_account_access\", \"control\": \"revoke_departed_access\", \"residual_risk\": \"Previously downloaded copies may still exist.\"}, {\"id\": \"report-edit\", \"section\": \"Maintaining / Securing the Data\", \"asset\": \"Fictional shared dataset used for a monthly report\", \"threat\": \"unauthorized_changes\", \"control\": \"restrict_writers\", \"residual_risk\": \"An authorized writer could still make an incorrect edit.\"}, {\"id\": \"stored-survey\", \"section\": \"Maintaining / Securing the Data\", \"asset\": \"Fictional stored survey export\", \"threat\": \"exposed_storage\", \"control\": \"encrypt_storage\", \"residual_risk\": \"A user with decryption access could still disclose data.\"}]\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "complete",
+      "args": [],
+      "expected_exit": 0,
+      "expected_results": [
+        {
+          "status": "pass",
+          "issues": []
+        },
+        {
+          "status": "pass",
+          "issues": []
+        },
+        {
+          "status": "pass",
+          "issues": []
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"results\": [{\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "missing asset",
+      "args": [
+        "--case",
+        "missing-asset"
+      ],
+      "expected_exit": 1,
+      "expected_results": [
+        {
+          "status": "fail",
+          "issues": [
+            "missing or invalid: asset"
+          ]
+        },
+        {
+          "status": "pass",
+          "issues": []
+        },
+        {
+          "status": "pass",
+          "issues": []
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--case",
+        "missing-asset"
+      ],
+      "exit": 1,
+      "stdout": "{\"results\": [{\"status\": \"fail\", \"issues\": [\"missing or invalid: asset\"]}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "unrelated control",
+      "args": [
+        "--case",
+        "unrelated-control"
+      ],
+      "expected_exit": 3,
+      "expected_results": [
+        {
+          "status": "review",
+          "issues": [
+            "unlisted threat/control pair"
+          ]
+        },
+        {
+          "status": "pass",
+          "issues": []
+        },
+        {
+          "status": "pass",
+          "issues": []
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--case",
+        "unrelated-control"
+      ],
+      "exit": 3,
+      "stdout": "{\"results\": [{\"status\": \"review\", \"issues\": [\"unlisted threat/control pair\"]}, {\"status\": \"pass\", \"issues\": []}, {\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "minimal text",
+      "args": [
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"departed_account_access\",\"control\":\"revoke_departed_access\",\"residual_risk\":\"x\"}"
+      ],
+      "expected_exit": 0,
+      "expected_results": [
+        {
+          "status": "pass",
+          "issues": []
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"departed_account_access\",\"control\":\"revoke_departed_access\",\"residual_risk\":\"x\"}"
+      ],
+      "exit": 0,
+      "stdout": "{\"results\": [{\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "unknown label",
+      "args": [
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"unknown\",\"control\":\"revoke_departed_access\",\"residual_risk\":\"x\"}"
+      ],
+      "expected_exit": 3,
+      "expected_results": [
+        {
+          "status": "review",
+          "issues": [
+            "unlisted threat/control pair"
+          ]
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"unknown\",\"control\":\"revoke_departed_access\",\"residual_risk\":\"x\"}"
+      ],
+      "exit": 3,
+      "stdout": "{\"results\": [{\"status\": \"review\", \"issues\": [\"unlisted threat/control pair\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "empty object",
+      "args": [
+        "--scenario",
+        "{}"
+      ],
+      "expected_exit": 1,
+      "expected_results": [
+        {
+          "status": "fail",
+          "issues": [
+            "missing or invalid: asset",
+            "missing or invalid: threat",
+            "missing or invalid: control",
+            "missing or invalid: residual_risk"
+          ]
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--scenario",
+        "{}"
+      ],
+      "exit": 1,
+      "stdout": "{\"results\": [{\"status\": \"fail\", \"issues\": [\"missing or invalid: asset\", \"missing or invalid: threat\", \"missing or invalid: control\", \"missing or invalid: residual_risk\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "invalid container",
+      "args": [
+        "--scenario",
+        "null"
+      ],
+      "expected_exit": 1,
+      "expected_results": [
+        {
+          "status": "fail",
+          "issues": [
+            "scenario must be an object"
+          ]
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--scenario",
+        "null"
+      ],
+      "exit": 1,
+      "stdout": "{\"results\": [{\"status\": \"fail\", \"issues\": [\"scenario must be an object\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "blank residual risk",
+      "args": [
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"departed_account_access\",\"control\":\"revoke_departed_access\",\"residual_risk\":\" \"}"
+      ],
+      "expected_exit": 1,
+      "expected_results": [
+        {
+          "status": "fail",
+          "issues": [
+            "missing or invalid: residual_risk"
+          ]
+        }
+      ]
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--scenario",
+        "{\"asset\":\"x\",\"threat\":\"departed_account_access\",\"control\":\"revoke_departed_access\",\"residual_risk\":\" \"}"
+      ],
+      "exit": 1,
+      "stdout": "{\"results\": [{\"status\": \"fail\", \"issues\": [\"missing or invalid: residual_risk\"]}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "fixture": {
+      "case": "malformed JSON",
+      "args": [
+        "--scenario",
+        "{"
+      ],
+      "expected_exit": 2,
+      "expected_error": "error:"
+    },
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--scenario",
+        "{"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: example.py [-h] [--case {complete,missing-asset,unrelated-control} |\n                  --scenario SCENARIO]\nexample.py: error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)\n"
+    }
+  },
+  {
+    "case": "exact published worked example",
+    "input": {
+      "asset": "Fictional community survey dataset",
+      "threat": "departed_account_access",
+      "control": "revoke_departed_access",
+      "residual_risk": "Previously downloaded copies may still exist."
+    },
+    "expected_stdout": "{\"results\": [{\"status\": \"pass\", \"issues\": []}]}\n",
+    "expected_exit": 0,
+    "actual": {
+      "command": [
+        "python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--scenario",
+        "{\"asset\":\"Fictional community survey dataset\",\"threat\":\"departed_account_access\",\"control\":\"revoke_departed_access\",\"residual_risk\":\"Previously downloaded copies may still exist.\"}"
+      ],
+      "exit": 0,
+      "stdout": "{\"results\": [{\"status\": \"pass\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "required discovery",
+    "expected": "9 tests; exit 0",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.208s\n\nOK\n"
+    }
+  },
+  {
+    "case": "deliberately wrong worked result",
+    "expected_wrong_exit": 1,
+    "actual": {
+      "command": [
+        "python3",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/example.py",
+        "--scenario",
+        "{\"asset\":\"Fictional community survey dataset\",\"threat\":\"departed_account_access\",\"control\":\"revoke_departed_access\",\"residual_risk\":\"Previously downloaded copies may still exist.\"}"
+      ],
+      "exit": 1,
+      "stdout": "{\"results\": [{\"status\": \"fail\", \"issues\": []}]}\n",
+      "stderr": ""
+    }
+  },
+  {
+    "case": "exact regression rejects wrong worked result",
+    "expected": "9 tests; nonzero exit; specific regression failure",
+    "actual": {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "FFFFF.F..FFF.\n======================================================================\nFAIL: test_boundaries_and_invalid_json_in_fresh_processes (test_example.CommandTests.test_boundaries_and_invalid_json_in_fresh_processes) (scenario={'asset': 'x', 'threat': 'departed_account_access', 'control': 'revoke_departed_access', 'residual_risk': 'x'})\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t017-cz33v5oj/4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/test_example.py\", line 121, in test_boundaries_and_invalid_json_in_fresh_processes\n    self.assertEqual(result.returncode, code, result.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 1 != 0 : \n\n======================================================================\nFAIL: test_exact_readme_worked_example_is_a_regression (test_example.CommandTests.test_exact_readme_worked_example_is_a_regression)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t017-cz33v5oj/4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/test_example.py\", line 99, in test_exact_readme_worked_example_is_a_regression\n    self.assertEqual(actual.returncode, 0, actual.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 1 != 0 : \n\n======================================================================\nFAIL: test_fixture_cases_in_fresh_processes (test_example.CommandTests.test_fixture_cases_in_fresh_processes) (case='complete')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t017-cz33v5oj/4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/test_example.py\", line 111, in test_fixture_cases_in_fresh_processes\n    self.assertEqual(result.returncode, code, result.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 1 != 0 : \n\n======================================================================\nFAIL: test_fixture_cases_in_fresh_processes (test_example.CommandTests.test_fixture_cases_in_fresh_processes) (case='missing-asset')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t017-cz33v5oj/4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/test_example.py\", line 112, in test_fixture_cases_in_fresh_processes\n    self.assertEqual([item[\"status\"] for item in json.loads(result.stdout)[\"results\"]],\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     statuses)\n                     ^^^^^^^^^\nAssertionError: Lists differ: ['fail', 'fail', 'fail'] != ['fail', 'pass', 'pass']\n\nFirst differing element 1:\n'fail'\n'pass'\n\n- ['fail', 'fail', 'fail']\n?           ^ ^^    ^ ^^\n\n+ ['fail', 'pass', 'pass']\n?           ^ ^^    ^ ^^\n\n\n======================================================================\nFAIL: test_fixture_cases_in_fresh_processes (test_example.CommandTests.test_fixture_cases_in_fresh_processes) (case='unrelated-control')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t017-cz33v5oj/4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/test_example.py\", line 111, in test_fixture_cases_in_fresh_processes\n    self.assertEqual(result.returncode, code, result.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 1 != 3 : \n\n======================================================================\nFAIL: test_minimal_text_does_not_mean_good_explanation (test_example.RubricTests.test_minimal_text_does_not_mean_good_explanation)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t017-cz33v5oj/4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/test_example.py\", line 62, in test_minimal_text_does_not_mean_good_explanation\n    self.assertEqual(check_scenario(scenario), {\"status\": \"pass\", \"issues\": []})\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'status': 'fail', 'issues': []} != {'status': 'pass', 'issues': []}\n- {'issues': [], 'status': 'fail'}\n?                           ^ ^^\n\n+ {'issues': [], 'status': 'pass'}\n?                           ^ ^^\n\n\n======================================================================\nFAIL: test_three_complete_scenarios_pass (test_example.RubricTests.test_three_complete_scenarios_pass) (scenario='departed-analyst')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t017-cz33v5oj/4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/test_example.py\", line 31, in test_three_complete_scenarios_pass\n    self.assertEqual(check_scenario(scenario),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"status\": \"pass\", \"issues\": []})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'status': 'fail', 'issues': []} != {'status': 'pass', 'issues': []}\n- {'issues': [], 'status': 'fail'}\n?                           ^ ^^\n\n+ {'issues': [], 'status': 'pass'}\n?                           ^ ^^\n\n\n======================================================================\nFAIL: test_three_complete_scenarios_pass (test_example.RubricTests.test_three_complete_scenarios_pass) (scenario='report-edit')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t017-cz33v5oj/4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/test_example.py\", line 31, in test_three_complete_scenarios_pass\n    self.assertEqual(check_scenario(scenario),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"status\": \"pass\", \"issues\": []})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'status': 'fail', 'issues': []} != {'status': 'pass', 'issues': []}\n- {'issues': [], 'status': 'fail'}\n?                           ^ ^^\n\n+ {'issues': [], 'status': 'pass'}\n?                           ^ ^^\n\n\n======================================================================\nFAIL: test_three_complete_scenarios_pass (test_example.RubricTests.test_three_complete_scenarios_pass) (scenario='stored-survey')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/7v/y7b_92w53sd060q5f5f4rk540000gn/T/r39-t017-cz33v5oj/4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t017/test_example.py\", line 31, in test_three_complete_scenarios_pass\n    self.assertEqual(check_scenario(scenario),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     {\"status\": \"pass\", \"issues\": []})\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'status': 'fail', 'issues': []} != {'status': 'pass', 'issues': []}\n- {'issues': [], 'status': 'fail'}\n?                           ^ ^^\n\n+ {'issues': [], 'status': 'pass'}\n?                           ^ ^^\n\n\n----------------------------------------------------------------------\nRan 9 tests in 0.217s\n\nFAILED (failures=9)\n"
+    }
+  }
+]
