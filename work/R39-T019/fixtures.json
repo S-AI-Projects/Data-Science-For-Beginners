@@ -1,0 +1,18 @@
+{
+  "scenarios": [
+    {"id": "capturing-survey", "section": "Capturing", "asset": "Fictional community survey records", "threat": "unclear_data_origin", "control": "record_source_and_provenance", "residual_risk": "Recorded provenance may still be incomplete or incorrect."},
+    {"id": "processing-import", "section": "Processing", "asset": "Fictional CSV used to prepare a monthly summary", "threat": "malformed_records", "control": "validate_input_schema", "residual_risk": "Well-formed rows may still contain inaccurate values."},
+    {"id": "maintenance-table", "section": "Maintaining / Managing Data", "asset": "Fictional shared project table", "threat": "unauthorized_edits", "control": "restrict_data_writers", "residual_risk": "An authorized writer could still make an erroneous change."}
+  ],
+  "size_comparison": [
+    {"scenarios": 1, "expected_statuses": ["pass"], "actual_statuses": ["pass"], "required_field_checks": 4, "correct": true},
+    {"scenarios": 2, "expected_statuses": ["pass", "pass"], "actual_statuses": ["pass", "pass"], "required_field_checks": 8, "correct": true},
+    {"scenarios": 3, "expected_statuses": ["pass", "pass", "pass"], "actual_statuses": ["pass", "pass", "pass"], "required_field_checks": 12, "correct": true}
+  ],
+  "cases": [
+    {"case": "complete", "args": [], "expected_exit": 0, "first_status": "pass"},
+    {"case": "missing asset", "args": ["--case", "missing-asset"], "expected_exit": 1, "first_status": "fail"},
+    {"case": "unrelated control", "args": ["--case", "unrelated-control"], "expected_exit": 3, "first_status": "review"},
+    {"case": "unknown case", "args": ["--case", "unknown"], "expected_exit": 2, "error": "invalid choice"}
+  ]
+}
