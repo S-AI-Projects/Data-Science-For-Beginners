@@ -337,3 +337,13 @@ You can go further into Low code/No code AutoML by reading this [documentation](
 ## Assignment
 
 [Low code/No code Data Science project on Azure ML](assignment.md)
+
+
+## Applied Lab: Security-Scenario Rubric with State Trace (`R39-T044`)
+
+See [applied-labs/r39-t044/README.md](./applied-labs/r39-t044/README.md) for a local Python 3 standard-library rubric evaluating three fictional low-code security scenarios while verifying state-trace invariants.
+
+- **Prerequisites:** Python 3 standard library and a local checkout.
+- **Run lab:** `python3 5-Data-Science-In-Cloud/18-Low-Code/applied-labs/r39-t044/example.py`
+- **Run tests:** `python3 -m unittest discover -s 5-Data-Science-In-Cloud/18-Low-Code/applied-labs/r39-t044 -p "test_*.py"`
+- **Scope/Limitations:** Validates structural rubric completeness and control relevance on local mock fixtures; records step-by-step state traces and enforces trace invariants without evaluating subjective prose quality or live cloud services.
