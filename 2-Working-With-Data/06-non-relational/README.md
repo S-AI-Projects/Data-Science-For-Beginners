@@ -147,3 +147,13 @@ Try to run a few select queries to find the documents that have Microsoft in the
 ## Assignment
 
 [Soda Profits](assignment.md)
+
+
+## Applied Lab: Parameterized Query Failure and Recovery (`R39-T048`)
+
+See [applied-labs/r39-t048/README.md](./applied-labs/r39-t048/README.md) for a local Python 3 SQLite example demonstrating parameterized querying and error recovery.
+
+- **Prerequisites:** Python 3 standard library and a local checkout.
+- **Run lab:** `python3 2-Working-With-Data/06-non-relational/applied-labs/r39-t048/example.py`
+- **Run tests:** `python3 -m unittest discover -s 2-Working-With-Data/06-non-relational/applied-labs/r39-t048 -p "test_*.py"`
+- **Scope/Limitations:** Seeds `(tea,drink), (rice,food), (coffee,drink)`; parameterized query for `drink` returns `["coffee", "tea"]`. Quote-containing categories remain literal data. Demonstrates documented error on empty input and recovery on next query.
