@@ -1,0 +1,26 @@
+=== Tool Versions ===
+Python: 3.14.6
+Platform: macOS-27.2.1-arm64-arm-64bit-Mach-O
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 5-Data-Science-In-Cloud/18-Low-Code/applied-labs/r39-t044/example.py
+fictional_complete_pass: verdict=PASS | steps=3 | invariant_ok=True
+fictional_missing_asset_fail: verdict=FAIL | steps=1 | invariant_ok=True
+fictional_unrelated_control_review: verdict=REVIEW | steps=2 | invariant_ok=True
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 5-Data-Science-In-Cloud/18-Low-Code/applied-labs/r39-t044 -p "test_*.py" -v
+test_deliberate_wrong_verdict_violates_invariant (test_example.TestSecurityScenarioRubric.test_deliberate_wrong_verdict_violates_invariant) ... ok
+test_missing_asset_none_fails (test_example.TestSecurityScenarioRubric.test_missing_asset_none_fails) ... ok
+test_three_fictional_scenarios_verdicts (test_example.TestSecurityScenarioRubric.test_three_fictional_scenarios_verdicts) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: "verdict": "FAIL" -> "verdict": "PASS"
+Exit code with deliberate mutation: 1 (Non-zero exit confirms test rigor)
