@@ -163,3 +163,13 @@ Visit [`notebook.ipynb`](./notebook.ipynb ':ignore') to read through the code.  
 ## Credits
 
 This lesson has been authored with ♥️ by [Dmitry Soshnikov](http://soshnikov.com)
+
+
+## Applied Lab: Security-Scenario Evaluation Experiment (`R39-T049`)
+
+See [applied-labs/r39-t049/README.md](./applied-labs/r39-t049/README.md) for a local Python 3 standard-library experiment benchmarking a structural security rubric.
+
+- **Prerequisites:** Python 3 standard library and a local checkout.
+- **Run lab:** `python3 1-Introduction/01-defining-data-science/applied-labs/r39-t049/example.py`
+- **Run tests:** `python3 -m unittest discover -s 1-Introduction/01-defining-data-science/applied-labs/r39-t049 -p "test_*.py"`
+- **Scope/Limitations:** Structural rubric for 3 fictional scenarios (`PASS`, `FAIL` on missing asset, `REVIEW` on unrelated control). Compares three controlled batch sizes without claiming real-world ML model accuracy.

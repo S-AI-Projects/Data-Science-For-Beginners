@@ -1,0 +1,63 @@
+=== Tool Versions ===
+Python: 3.14.6
+Platform: macOS-27.2.1-arm64-arm-64bit-Mach-O
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 1-Introduction/01-defining-data-science/applied-labs/r39-t049/example.py
+{
+  "config_single": {
+    "count": 1,
+    "correctness_pct": 100.0,
+    "total_microseconds": 3.58,
+    "us_per_item": 3.58,
+    "verdicts": [
+      "PASS"
+    ]
+  },
+  "config_triplet": {
+    "count": 3,
+    "correctness_pct": 100.0,
+    "total_microseconds": 4.46,
+    "us_per_item": 1.49,
+    "verdicts": [
+      "PASS",
+      "FAIL",
+      "REVIEW"
+    ]
+  },
+  "config_batch": {
+    "count": 9,
+    "correctness_pct": 100.0,
+    "total_microseconds": 6.04,
+    "us_per_item": 0.67,
+    "verdicts": [
+      "PASS",
+      "FAIL",
+      "REVIEW",
+      "PASS",
+      "FAIL",
+      "REVIEW",
+      "PASS",
+      "FAIL",
+      "REVIEW"
+    ]
+  }
+}
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 1-Introduction/01-defining-data-science/applied-labs/r39-t049 -p "test_*.py" -v
+test_deliberate_wrong_metric_fails (test_example.TestSecurityScenarioEvaluationExperiment.test_deliberate_wrong_metric_fails) ... ok
+test_evaluation_experiment_correctness_and_tradeoff (test_example.TestSecurityScenarioEvaluationExperiment.test_evaluation_experiment_correctness_and_tradeoff) ... ok
+test_missing_asset_string_fails (test_example.TestSecurityScenarioEvaluationExperiment.test_missing_asset_string_fails) ... ok
+test_three_fictional_scenarios_rubric_verdicts (test_example.TestSecurityScenarioEvaluationExperiment.test_three_fictional_scenarios_rubric_verdicts) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: "verdict": "FAIL" -> "verdict": "PASS"
+Exit code with deliberate mutation: 1 (Non-zero exit confirms test rigor)
