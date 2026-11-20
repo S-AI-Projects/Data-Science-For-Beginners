@@ -261,3 +261,13 @@ Probability and statistics is such a broad topic that it deserves its own course
 ## Credits
 
 This lesson has been authored with ♥️ by [Dmitry Soshnikov](http://soshnikov.com)
+
+
+## Applied Lab: Histogram Boundary Accounting (`R39-T041`)
+
+See [applied-labs/r39-t041/README.md](./applied-labs/r39-t041/README.md) for a local Python 3 standard-library example counting values in explicit half-open bins with a right-inclusive final bin.
+
+- **Prerequisites:** Python 3 standard library and a local checkout (no external libraries or cloud dependencies).
+- **Run lab:** `python3 1-Introduction/04-stats-and-probability/applied-labs/r39-t041/example.py`
+- **Run tests:** `python3 -m unittest discover -s 1-Introduction/04-stats-and-probability/applied-labs/r39-t041 -p "test_*.py"`
+- **Scope/Limitations:** Minimal deterministic local concept example. Illustrates boundary bin accounting where `bins=[0,10,20]` and `values=[0,9,10,20]` yield counts `[2,2]`; does not simulate floating-point visualization or distributed binning engines.

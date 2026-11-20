@@ -1,0 +1,27 @@
+=== Tool Versions ===
+Python: 3.14.6
+Platform: macOS-27.2.1-arm64-arm-64bit-Mach-O
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 1-Introduction/04-stats-and-probability/applied-labs/r39-t041/example.py
+{"bins": [0, 10, 20], "counts": [2, 2], "below_range": [], "above_range": [], "total_in_range": 4, "total_out_of_range": 0}
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 1-Introduction/04-stats-and-probability/applied-labs/r39-t041 -p "test_*.py" -v
+test_deliberate_wrong_result_fails (test_example.TestHistogramBoundaryAccounting.test_deliberate_wrong_result_fails) ... ok
+test_empty_values_list (test_example.TestHistogramBoundaryAccounting.test_empty_values_list) ... ok
+test_invalid_bins_raise_value_error (test_example.TestHistogramBoundaryAccounting.test_invalid_bins_raise_value_error) ... ok
+test_single_bin_is_right_inclusive (test_example.TestHistogramBoundaryAccounting.test_single_bin_is_right_inclusive) ... ok
+test_stated_contract_bins_and_values (test_example.TestHistogramBoundaryAccounting.test_stated_contract_bins_and_values) ... ok
+test_values_outside_range_reported_separately (test_example.TestHistogramBoundaryAccounting.test_values_outside_range_reported_separately) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: counts[i] += 1 -> counts[i] += 2
+Exit code with deliberate mutation: 1 (Non-zero exit confirms test rigor)
