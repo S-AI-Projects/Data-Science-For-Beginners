@@ -201,3 +201,13 @@ In this lesson, you used Matplotlib and started working with Seaborn to show mor
 ## Assignment
 
 [Apply your skills](assignment.md)
+
+
+## Applied Lab: Offline Histogram Service Adapter (`R39-T045`)
+
+See [applied-labs/r39-t045/README.md](./applied-labs/r39-t045/README.md) for a local Python 3 standard-library adapter implementing histogram boundary accounting behind a service interface.
+
+- **Prerequisites:** Python 3 standard library and a local checkout.
+- **Run lab:** `python3 3-Data-Visualization/10-visualization-distributions/applied-labs/r39-t045/example.py`
+- **Run tests:** `python3 -m unittest discover -s 3-Data-Visualization/10-visualization-distributions/applied-labs/r39-t045 -p "test_*.py"`
+- **Scope/Limitations:** Deterministic offline service adapter. Produces `[2, 2]` for bins `[0,10,20]` and values `[0,9,10,20]`. Documents real cloud behaviors not established (latency, distributed clusters, hardware vectorization).
