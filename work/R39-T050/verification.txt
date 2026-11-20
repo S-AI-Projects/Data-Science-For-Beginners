@@ -1,0 +1,33 @@
+=== Tool Versions ===
+Python: 3.14.6
+Platform: macOS-27.2.1-arm64-arm-64bit-Mach-O
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 5-Data-Science-In-Cloud/18-Low-Code/applied-labs/r39-t050/example.py
+fictional_complete_pass: {'scenario_id': 'fictional_complete_pass', 'verdict': 'PASS', 'reason': 'Complete scenario with relevant control'}
+fictional_missing_asset_fail: {'scenario_id': 'fictional_missing_asset_fail', 'verdict': 'FAIL', 'reason': 'Missing required field: asset'}
+fictional_unrelated_control_review: {'scenario_id': 'fictional_unrelated_control_review', 'verdict': 'REVIEW', 'reason': "Control unrelated to threat category 'data_leakage'"}
+
+Applied Questions Execution:
+Q1 (predict): True
+Q2 (diagnose): True
+Q3 (boundary): True
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 5-Data-Science-In-Cloud/18-Low-Code/applied-labs/r39-t050 -p "test_*.py" -v
+test_applied_question_q1_predict_output (test_example.TestSecurityScenarioAssessment.test_applied_question_q1_predict_output) ... ok
+test_applied_question_q2_diagnose_failure (test_example.TestSecurityScenarioAssessment.test_applied_question_q2_diagnose_failure) ... ok
+test_applied_question_q3_boundary_policy (test_example.TestSecurityScenarioAssessment.test_applied_question_q3_boundary_policy) ... ok
+test_deliberate_wrong_answer_fails (test_example.TestSecurityScenarioAssessment.test_deliberate_wrong_answer_fails) ... ok
+test_three_fictional_scenarios_verdicts (test_example.TestSecurityScenarioAssessment.test_three_fictional_scenarios_verdicts) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: return res["verdict"] == ASSESSMENT_QUESTIONS -> return res["verdict"] != ASSESSMENT_QUESTIONS
+Exit code with deliberate mutation: 1 (Non-zero exit confirms test rigor)

@@ -337,3 +337,13 @@ You can go further into Low code/No code AutoML by reading this [documentation](
 ## Assignment
 
 [Low code/No code Data Science project on Azure ML](assignment.md)
+
+
+## Applied Lab: Security-Scenario Assessment (`R39-T050`)
+
+See [applied-labs/r39-t050/README.md](./applied-labs/r39-t050/README.md) for a local Python 3 standard-library scenario assessment lab with applied questions.
+
+- **Prerequisites:** Python 3 standard library and a local checkout.
+- **Run lab:** `python3 5-Data-Science-In-Cloud/18-Low-Code/applied-labs/r39-t050/example.py`
+- **Run tests:** `python3 5-Data-Science-In-Cloud/18-Low-Code/applied-labs/r39-t050/test_example.py`
+- **Scope/Limitations:** Evaluates three fictional scenarios (`PASS`, `FAIL`, `REVIEW`) and executes three applied questions (predict output, diagnose failure, choose boundary policy) with rationales and executable checks.
