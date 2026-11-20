@@ -203,3 +203,13 @@ This first lesson has given you some information about how to use Matplotlib to 
 ## Assignment
 
 [Lines, Scatters, and Bars](assignment.md)
+
+
+## Applied Lab: Chart-Data Consistency (`R39-T046`)
+
+See [applied-labs/r39-t046/README.md](./applied-labs/r39-t046/README.md) for a local Python 3 standard-library example verifying chart data consistency and refactoring equivalence.
+
+- **Prerequisites:** Python 3 standard library and a local checkout.
+- **Run lab:** `python3 3-Data-Visualization/09-visualization-quantities/applied-labs/r39-t046/example.py`
+- **Run tests:** `python3 -m unittest discover -s 3-Data-Visualization/09-visualization-quantities/applied-labs/r39-t046 -p "test_*.py"`
+- **Scope/Limitations:** Verifies that category counts and displayed total agree (`A=2, B=1, C=3, total=6`; filtered to A/B gives `total=3`). Proves before/after equivalence when extracting `CategoryAggregator`.
