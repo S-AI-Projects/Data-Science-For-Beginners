@@ -42,3 +42,13 @@ All the topics in this lesson can help identify missing or inconsistent values, 
 ## Assignment
 
 [Exploring for answers](assignment.md)
+
+
+## Applied Lab: Client-Consent Gate (`R39-T043`)
+
+See [applied-labs/r39-t043/README.md](./applied-labs/r39-t043/README.md) for a local Python 3 standard-library state machine governing client-side model sampling consent.
+
+- **Prerequisites:** Python 3 standard library and a local checkout.
+- **Run lab:** `python3 4-Data-Science-Lifecycle/15-analyzing/applied-labs/r39-t043/example.py`
+- **Run tests:** `python3 -m unittest discover -s 4-Data-Science-Lifecycle/15-analyzing/applied-labs/r39-t043 -p "test_*.py"`
+- **Scope/Limitations:** Deterministic local state machine comparing direct transitions with an independent reference table. Demonstrates that denied consent never calls the model stub, approved consent calls once, and completed requests cannot be approved again.
