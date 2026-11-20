@@ -1,0 +1,27 @@
+=== Tool Versions ===
+Python: 3.14.6
+Platform: macOS-27.2.1-arm64-arm-64bit-Mach-O
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 2-Working-With-Data/07-python/applied-labs/r39-t042/example.py
+{"training_mean": 3.0, "validation": [100.0, 3.0]}
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 2-Working-With-Data/07-python/applied-labs/r39-t042 -p "test_*.py" -v
+test_boundary_empty_and_all_missing_validation (test_example.TestTrainingMeanImputer.test_boundary_empty_and_all_missing_validation) ... ok
+test_deliberate_validation_refit_fails (test_example.TestTrainingMeanImputer.test_deliberate_validation_refit_fails) ... ok
+test_invalid_all_missing_training_rejected (test_example.TestTrainingMeanImputer.test_invalid_all_missing_training_rejected) ... ok
+test_smallest_valid_training_input (test_example.TestTrainingMeanImputer.test_smallest_valid_training_input) ... ok
+test_stated_contract_training_and_validation (test_example.TestTrainingMeanImputer.test_stated_contract_training_and_validation) ... ok
+test_transform_before_fit_raises_runtime_error (test_example.TestTrainingMeanImputer.test_transform_before_fit_raises_runtime_error) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: self.mean_ = float(sum(valid) / len(valid)) -> self.mean_ = float(sum(valid) / len(valid)) + 10.0
+Exit code with deliberate mutation: 1 (Non-zero exit confirms test rigor)

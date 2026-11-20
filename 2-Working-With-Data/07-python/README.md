@@ -278,3 +278,13 @@ Whether you already have structured or unstructured data, using Python you can p
 ## Credits
 
 This lesson has been authored with ♥️ by [Dmitry Soshnikov](http://soshnikov.com)
+
+
+## Applied Lab: Training-Only Imputation (`R39-T042`)
+
+See [applied-labs/r39-t042/README.md](./applied-labs/r39-t042/README.md) for a local Python 3 standard-library example demonstrating fit/transform separation for missing-value mean imputation.
+
+- **Prerequisites:** Python 3 standard library and a local checkout (no external libraries or cloud dependencies).
+- **Run lab:** `python3 2-Working-With-Data/07-python/applied-labs/r39-t042/example.py`
+- **Run tests:** `python3 -m unittest discover -s 2-Working-With-Data/07-python/applied-labs/r39-t042 -p "test_*.py"`
+- **Scope/Limitations:** Fits missing-value mean on training observations only (`[2,None,4] -> mean 3`), then transforms validation observations (`[100,None] -> [100,3]`) without refitting. Emphasizes boundary decisions (rejecting all-missing training sets).
