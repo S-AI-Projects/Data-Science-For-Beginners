@@ -1,0 +1,26 @@
+=== Tool Versions ===
+Python: 3.14.6
+Platform: macOS-27.2.1-arm64-arm-64bit-Mach-O
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 3-Data-Visualization/10-visualization-distributions/applied-labs/r39-t045/example.py
+{"bins": [0, 10, 20], "counts": [2, 2], "below_range": [], "above_range": [], "total_in_range": 4, "total_out_of_range": 0, "service_mode": "local_offline_adapter"}
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 3-Data-Visualization/10-visualization-distributions/applied-labs/r39-t045 -p "test_*.py" -v
+test_deliberate_wrong_result_fails (test_example.TestHistogramOfflineAdapter.test_deliberate_wrong_result_fails) ... ok
+test_implements_interface (test_example.TestHistogramOfflineAdapter.test_implements_interface) ... ok
+test_invalid_bins_raise_error (test_example.TestHistogramOfflineAdapter.test_invalid_bins_raise_error) ... ok
+test_out_of_range_reported_separately (test_example.TestHistogramOfflineAdapter.test_out_of_range_reported_separately) ... ok
+test_stated_contract_counts (test_example.TestHistogramOfflineAdapter.test_stated_contract_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: counts[i] += 1 -> counts[i] += 5
+Exit code with deliberate mutation: 1 (Non-zero exit confirms test rigor)
