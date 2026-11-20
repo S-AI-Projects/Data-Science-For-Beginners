@@ -1,0 +1,57 @@
+=== Tool Versions ===
+Python: 3.14.6
+Platform: macOS-27.2.1-arm64-arm-64bit-Mach-O
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 4-Data-Science-Lifecycle/15-analyzing/applied-labs/r39-t047/example.py
+[
+  {
+    "step": 1,
+    "state": "PENDING",
+    "invocations": 0
+  },
+  {
+    "step": 2,
+    "state": "COMPLETED",
+    "invocations": 1,
+    "output": {
+      "request_id": "req_worked_demo",
+      "state": "COMPLETED",
+      "invocations": 1,
+      "result": {
+        "status": "success",
+        "feature_sample": [
+          0.12,
+          0.45,
+          0.78
+        ]
+      }
+    }
+  },
+  {
+    "step": 3,
+    "state": "COMPLETED",
+    "invocations": 1,
+    "caught_error": "Request req_worked_demo has already been completed."
+  }
+]
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 4-Data-Science-Lifecycle/15-analyzing/applied-labs/r39-t047 -p "test_*.py" -v
+test_approved_consent_calls_model_once (test_example.TestClientConsentGateWorkedExample.test_approved_consent_calls_model_once) ... ok
+test_completed_request_cannot_be_approved_again (test_example.TestClientConsentGateWorkedExample.test_completed_request_cannot_be_approved_again) ... ok
+test_deliberate_wrong_call_fails (test_example.TestClientConsentGateWorkedExample.test_deliberate_wrong_call_fails) ... ok
+test_denied_consent_never_calls_model (test_example.TestClientConsentGateWorkedExample.test_denied_consent_never_calls_model) ... ok
+test_worked_example_regression_verification (test_example.TestClientConsentGateWorkedExample.test_worked_example_regression_verification)
+Execute the exact published worked example and verify step-by-step match. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: self.invocations += 1 -> self.invocations += 3
+Exit code with deliberate mutation: 1 (Non-zero exit confirms test rigor)

@@ -42,3 +42,13 @@ All the topics in this lesson can help identify missing or inconsistent values, 
 ## Assignment
 
 [Exploring for answers](assignment.md)
+
+
+## Applied Lab: Client-Consent Gate Worked Example (`R39-T047`)
+
+See [applied-labs/r39-t047/README.md](./applied-labs/r39-t047/README.md) for a worked example and regression tests governing client-side model sampling consent.
+
+- **Prerequisites:** Python 3 standard library and a local checkout.
+- **Run lab:** `python3 4-Data-Science-Lifecycle/15-analyzing/applied-labs/r39-t047/example.py`
+- **Run tests:** `python3 -m unittest discover -s 4-Data-Science-Lifecycle/15-analyzing/applied-labs/r39-t047 -p "test_*.py"`
+- **Scope/Limitations:** Implements state transitions (`PENDING -> APPROVED -> COMPLETED` or `PENDING -> DENIED`). Verifies that denied consent never invokes the stub, approved consent invokes once, and completed requests reject repeat approval.
