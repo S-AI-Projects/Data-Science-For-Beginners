@@ -1,0 +1,29 @@
+=== Tool Versions ===
+Python: 3.14.6
+Platform: macOS-27.2.1-arm64-arm-64bit-Mach-O
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 3-Data-Visualization/09-visualization-quantities/applied-labs/r39-t046/example.py
+Full summary: {"labels": ["A", "B", "C"], "counts": {"A": 2, "B": 1, "C": 3}, "total": 6}
+Filtered summary: {"labels": ["A", "B"], "counts": {"A": 2, "B": 1}, "total": 3}
+Equivalence verified: True
+Filtered equivalence verified: True
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 3-Data-Visualization/09-visualization-quantities/applied-labs/r39-t046 -p "test_*.py" -v
+test_deliberate_inconsistency_fails (test_example.TestChartDataConsistency.test_deliberate_inconsistency_fails) ... ok
+test_extracted_aggregator_responsibility (test_example.TestChartDataConsistency.test_extracted_aggregator_responsibility) ... ok
+test_refactoring_equivalence (test_example.TestChartDataConsistency.test_refactoring_equivalence) ... ok
+test_stated_contract_filtered_ab (test_example.TestChartDataConsistency.test_stated_contract_filtered_ab) ... ok
+test_stated_contract_unfiltered (test_example.TestChartDataConsistency.test_stated_contract_unfiltered) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: total = sum(counts.values()) -> total = sum(counts.values()) + 1
+Exit code with deliberate mutation: 1 (Non-zero exit confirms test rigor)
