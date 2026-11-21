@@ -322,6 +322,48 @@ The script should return :
 Congratulations! You just consumed the model deployed and trained it on Azure ML !
 
 > **_NOTE:_** Once you are done with the project, don't forget to delete all the resources.
+## Local applied example: Scoring service simulation and request client
+
+Run the [scoring service example](./applied-labs/r39-t038/example.py) from the repository root:
+
+```bash
+python3 5-Data-Science-In-Cloud/18-Low-Code/applied-labs/r39-t038/example.py
+```
+
+It simulates the Azure Container Instance REST scoring endpoint and client consumption workflow from Section 3.2 without requiring an active cloud subscription, GPU, or remote endpoint:
+- **Baseline Sample (All zeros/false):**
+  - Features: `age='0'`, `anaemia='false'`, `creatinine_phosphokinase='0'`, `diabetes='false'`, `ejection_fraction='0'`, `high_blood_pressure='false'`, `platelets='0'`, `serum_creatinine='0'`, `serum_sodium='0'`, `sex='false'`, `smoking='false'`, `time='0'`
+- **Clinical Sample:**
+  - Features: `age='60'`, `anaemia='false'`, `creatinine_phosphokinase='500'`, `diabetes='false'`, `ejection_fraction='38'`, `high_blood_pressure='false'`, `platelets='260000'`, `serum_creatinine='1.40'`, `serum_sodium='137'`, `sex='false'`, `smoking='false'`, `time='130'`
+
+Expected output:
+
+```text
+--- 1. Single sample execution (lesson default: all 0 / false) ---
+Status Code: 200
+Response Body: b'"{\"result\": [true]}"'
+Parsed Result: {'result': [True]}
+
+--- 2. Dual sample execution (lesson batch: default + clinical) ---
+Status Code: 200
+Response Body: b'"{\"result\": [true, false]}"'
+Parsed Result: {'result': [True, False]}
+
+--- 3. Invalid / Missing-Data Case ---
+Status Code: 422
+Response Body: {"error": "Validation error at record 0: Missing required feature(s): serum_creatinine"}
+Error Diagnostic: Record 0 validation error: Missing required feature(s): serum_creatinine
+
+--- 4. Recovery Demonstration on Valid Input ---
+Status Code: 200
+Response Body: b'"{\"result\": [true]}"'
+Parsed Result: {'result': [True]}
+Recovery verified: service resumed healthy predictions.
+```
+
+**Simulation/mock behavior:** Fully simulated local mock. The script emulates the HTTP/REST request-response lifecycle, header authentication check (`Bearer <api_key>`), payload structure validation (`{"data": [...]}`), clinical feature schema validation (all 12 Heart Failure dataset columns), and Azure ML response byte serialization (`b'"{\\"result\\": [...]}"'`). Instead of invoking remote cloud infrastructure or an AutoML-trained ensemble model on Azure, it uses a deterministic local rule to mirror the lesson's sample predictions.
+
+---
 ## 🚀 Challenge
 
 Look closely at the model explanations and details that AutoML generated for the top models. Try to understand why the best model is better than the other ones. What algorithms were compared? What are the differences between them? Why is the best one performing better in this case?
