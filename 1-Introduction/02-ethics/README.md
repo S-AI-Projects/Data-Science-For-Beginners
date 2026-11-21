@@ -261,3 +261,13 @@ Courses and books help with understanding core ethics concepts and challenges, w
 # Assignment 
 
 [Write A Data Ethics Case Study](assignment.md)
+
+## Applied Lab: Group Metric Comparison (R39 T053)
+
+Check out [applied-labs/r39-t053/README.md](./applied-labs/r39-t053/README.md) for a simple local Python example comparing outcome rates and sample counts across groups.
+
+* Prerequisites: Python 3 standard library
+* Run lab: `python3 1-Introduction/02-ethics/applied-labs/r39-t053/example.py`
+* Run tests: `python3 -m unittest discover -s 1-Introduction/02-ethics/applied-labs/r39-t053 -p "test_*.py"`
+* Scope and limitations: Deterministic local calculation showing sample size awareness without claiming causal inference.
+

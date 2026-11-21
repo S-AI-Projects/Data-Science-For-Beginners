@@ -1,0 +1,28 @@
+=== Tool Versions ===
+Python: 3.14.6
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 1-Introduction/02-ethics/applied-labs/r39-t053/example.py
+Group A: {'n': 2, 'rate': 0.5, 'defined': True}
+Group B: {'n': 4, 'rate': 0.5, 'defined': True}
+Empty group: {'n': 0, 'rate': None, 'defined': False}
+Approaches match on A: True
+Approaches match on B: True
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 1-Introduction/02-ethics/applied-labs/r39-t053 -p "test_*.py" -v
+test_compare_two_approaches (test_example.TestGroupMetricComparison.test_compare_two_approaches) ... ok
+test_deliberate_wrong_result_fails (test_example.TestGroupMetricComparison.test_deliberate_wrong_result_fails) ... ok
+test_empty_group_is_undefined (test_example.TestGroupMetricComparison.test_empty_group_is_undefined) ... ok
+test_group_a_and_group_b_rates_and_counts (test_example.TestGroupMetricComparison.test_group_a_and_group_b_rates_and_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: setting broken calculate_group_metric returning n=100, rate=0.0
+Exit code with deliberate mutation: 1 (Non zero exit confirms test fails on wrong result)
