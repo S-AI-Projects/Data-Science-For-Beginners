@@ -115,9 +115,27 @@ In most instances, APIs that return JSON data can be directly transferred and st
     "_etag": "\"00000000-0000-0000-9f84-a0958ad901d7\"",
     "_attachments": "attachments/",
     "_ts": 1630537000
+}
 ```
 
 The fields of interest in this document are: `created_at`, `id`, and `text`.
+
+## Local applied example
+
+Run the [document querying example](./applied-labs/r39-t035/example.py) from the repository root:
+
+```bash
+python3 2-Working-With-Data/06-non-relational/applied-labs/r39-t035/example.py
+```
+
+It uses a small local fixture modeled after the lesson's `Persons` container documents (Eva, Christophe, Prema, and Keisha). The query filters for persons where `age < 40` and orders results alphabetically by `firstname`. Expected output:
+
+```text
+Christophe: age 32 (id: doc-002)
+Prema: age 20 (id: doc-003)
+```
+
+**Simulation/mock behavior:** The example runs a deterministic local adapter (`LocalDocumentStore`) implementing the callable `DocumentStoreClient` protocol. It simulates parameterized document filtering (`c.age < @max_age`) and result ordering without requiring an Azure Cosmos DB instance, emulator installation, network access, or credentials. It does not establish distributed partitioning (partition key indexing), Cosmos DB Request Unit (RU/s) consumption, server-side continuation tokens for pagination, eventual consistency models, or network latency/transport error handling.
 
 ## 🚀 Challenge
 
