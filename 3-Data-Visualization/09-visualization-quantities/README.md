@@ -203,3 +203,13 @@ This first lesson has given you some information about how to use Matplotlib to 
 ## Assignment
 
 [Lines, Scatters, and Bars](assignment.md)
+
+## Applied Lab: Visualizing Quantities Consistency (R39 T060)
+
+Check out [applied-labs/r39-t060/README.md](./applied-labs/r39-t060/README.md) for a simple local Python example validating category labels, counts, and displayed totals for quantity visualizations.
+
+* Prerequisites: Python 3 standard library
+* Run lab: `python3 3-Data-Visualization/09-visualization-quantities/applied-labs/r39-t060/example.py`
+* Run tests: `python3 -m unittest discover -s 3-Data-Visualization/09-visualization-quantities/applied-labs/r39-t060 -p "test_*.py"`
+* Scope and limitations: Local data validation connecting bar chart quantities to headline total consistency.
+
