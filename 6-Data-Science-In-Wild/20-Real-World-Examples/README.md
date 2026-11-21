@@ -143,3 +143,13 @@ Want to explore more use cases? Here are a few relevant articles:
 ## Assignment
 
 [Explore A Planetary Computer Dataset](assignment.md)
+
+## Applied Lab: Security Scenario Rubric (R39 T056)
+
+Check out [applied-labs/r39-t056/README.md](./applied-labs/r39-t056/README.md) for a simple local Python example checking real world security scenarios and demonstrating code refactoring with equivalence proof.
+
+* Prerequisites: Python 3 standard library
+* Run lab: `python3 6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t056/example.py`
+* Run tests: `python3 -m unittest discover -s 6-Data-Science-In-Wild/20-Real-World-Examples/applied-labs/r39-t056 -p "test_*.py"`
+* Scope and limitations: Local deterministic simulation demonstrating structural rubric checks and module refactoring.
+
