@@ -246,6 +246,38 @@ Note that there remains an intangible gap between _compliance_ (doing enough to 
 
 The latter requires [collaborative approaches to defining ethics cultures](https://towardsdatascience.com/why-ai-ethics-requires-a-culture-driven-approach-26f451afa29f) that build emotional connections and consistent shared values _across organizations_ in the industry. This calls for more [formalized data ethics cultures](https://www.codeforamerica.org/news/formalizing-an-ethical-data-culture/) in organizations - allowing _anyone_ to [pull the Andon cord](https://en.wikipedia.org/wiki/Andon_(manufacturing)) (to raise ethics concerns early in the process) and making _ethical assessments_ (e.g., in hiring) a core criteria team formation in AI projects.
 
+## Local applied example: Auditing subgroup denominators and metric claims
+
+Run the [metric claims audit example](./applied-labs/r39-t037/example.py) from the repository root:
+
+```bash
+python3 1-Introduction/02-ethics/applied-labs/r39-t037/example.py
+```
+
+It audits accuracy metric claims across three subgroups inspired by the lesson's fairness and collection bias case studies:
+- **Subgroup A (Majority):** `sample_size=950`, `correct_count=903` (95.05% accuracy, 95% Wilson CI: [93.48%, 96.26%])
+- **Subgroup B (Adequate Minority):** `sample_size=120`, `correct_count=109` (90.83% accuracy, 95% Wilson CI: [84.33%, 94.80%])
+- **Subgroup C (Under-sampled Minority):** `sample_size=10`, `correct_count=9` (90.00% point estimate, 95% Wilson CI: [59.58%, 98.21%])
+
+Expected output:
+
+```text
+Aggregate Evaluation:
+  Total Samples: 1080
+  Overall Accuracy: 94.54%
+Subgroup Metric Audit:
+  - Subgroup A (Majority): n=950, accuracy=95.05%, 95% CI=[93.48%, 96.26%] [ADEQUATE]
+  - Subgroup B (Adequate Minority): n=120, accuracy=90.83%, 95% CI=[84.33%, 94.80%] [ADEQUATE]
+  - Subgroup C (Under-sampled Minority): n=10, accuracy=90.00%, 95% CI=[59.58%, 98.21%] [UNDERPOWERED]
+Claim Audit:
+  Unsupported claims detected: True
+  * Subgroup 'Subgroup B (Adequate Minority)': Lower confidence bound (0.84) falls below claimed threshold (0.90)
+  * Subgroup 'Subgroup C (Under-sampled Minority)': Sample size 10 is below minimum power threshold (30): high uncertainty (CI: [0.60, 0.98])
+  * Overall accuracy claim (94.5%) conceals high uncertainty or disparity in subgroup metric claims.
+```
+
+**Simulation/mock behavior:** None. The example uses standard Python numerical and statistical routines (Wilson score interval) on local synthetic fixtures. It does not connect to external servers, cloud providers, or GPUs; the fixture values are illustrative educational data demonstrating how aggregate metrics obscure subgroup sample size disparities and metric uncertainty.
+
 ---
 ## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ds/quiz/3) 🎯
 ## Review & Self Study 
