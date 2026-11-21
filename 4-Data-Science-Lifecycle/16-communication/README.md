@@ -219,3 +219,12 @@ Review what you've just learned with the Post-Lecture Quiz above!
 ## Assignment
 
 [Market Research](assignment.md)
+
+## Applied Lab: Chart Data Consistency (R39 T057)
+
+Check out [applied-labs/r39-t057/README.md](./applied-labs/r39-t057/README.md) for a simple local Python example and regression test that checks chart label, count, and total consistency.
+
+* Prerequisites: Python 3 standard library
+* Run lab: `python3 4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t057/example.py`
+* Run tests: `python3 -m unittest discover -s 4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t057 -p "test_*.py"`
+* Scope and limitations: Local data level validation ensuring displayed totals match filtered categories before chart generation.

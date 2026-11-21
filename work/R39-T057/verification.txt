@@ -1,0 +1,27 @@
+=== Tool Versions ===
+Python: 3.14.6
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t057/example.py
+Unfiltered summary: {'labels': ['A', 'B', 'C'], 'counts': [2, 1, 3], 'displayed_total': 6, 'actual_sum': 6, 'consistent': True, 'error_message': None}
+Filtered A/B summary: {'labels': ['A', 'B'], 'counts': [2, 1], 'displayed_total': 3, 'actual_sum': 3, 'consistent': True, 'error_message': None}
+Stale view consistent: False
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 4-Data-Science-Lifecycle/16-communication/applied-labs/r39-t057 -p "test_*.py" -v
+test_deliberate_wrong_result_fails (test_example.TestChartDataConsistency.test_deliberate_wrong_result_fails) ... ok
+test_filtered_subset_total_is_three (test_example.TestChartDataConsistency.test_filtered_subset_total_is_three) ... ok
+test_stale_total_fails_consistency_check (test_example.TestChartDataConsistency.test_stale_total_fails_consistency_check) ... ok
+test_unfiltered_category_counts_and_total (test_example.TestChartDataConsistency.test_unfiltered_category_counts_and_total) ... ok
+test_worked_example_regression (test_example.TestChartDataConsistency.test_worked_example_regression) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: setting broken build_category_summary returning empty lists
+Exit code with deliberate mutation: 1 (Non zero exit confirms test fails on wrong result)
