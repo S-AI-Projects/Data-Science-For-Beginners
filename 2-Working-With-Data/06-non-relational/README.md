@@ -147,3 +147,13 @@ Try to run a few select queries to find the documents that have Microsoft in the
 ## Assignment
 
 [Soda Profits](assignment.md)
+
+## Applied Lab: Parameterized Local Query (R39 T054)
+
+Check out [applied-labs/r39-t054/README.md](./applied-labs/r39-t054/README.md) for a simple local Python example demonstrating parameterized SQLite queries and state trace invariants.
+
+* Prerequisites: Python 3 standard library
+* Run lab: `python3 2-Working-With-Data/06-non-relational/applied-labs/r39-t054/example.py`
+* Run tests: `python3 -m unittest discover -s 2-Working-With-Data/06-non-relational/applied-labs/r39-t054 -p "test_*.py"`
+* Scope and limitations: Uses in memory SQLite to verify injection safe querying and intermediate state consistency.
+
