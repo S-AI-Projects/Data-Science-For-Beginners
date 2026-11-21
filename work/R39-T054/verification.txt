@@ -1,0 +1,27 @@
+=== Tool Versions ===
+Python: 3.14.6
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 2-Working-With-Data/06-non-relational/applied-labs/r39-t054/example.py
+Drinks queried in name order: ['coffee', 'tea']
+State invariant passed: True
+Malicious quote query results: []
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 2-Working-With-Data/06-non-relational/applied-labs/r39-t054 -p "test_*.py" -v
+test_deliberate_wrong_result_fails (test_example.TestParameterizedQuery.test_deliberate_wrong_result_fails) ... ok
+test_drink_query_returns_ordered_names (test_example.TestParameterizedQuery.test_drink_query_returns_ordered_names) ... ok
+test_pipeline_integration (test_example.TestParameterizedQuery.test_pipeline_integration) ... ok
+test_quote_containing_category_remains_literal (test_example.TestParameterizedQuery.test_quote_containing_category_remains_literal) ... ok
+test_state_trace_and_invariant (test_example.TestParameterizedQuery.test_state_trace_and_invariant) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: setting broken query returning ['wrong', 'data']
+Exit code with deliberate mutation: 1 (Non zero exit confirms test fails on wrong result)
