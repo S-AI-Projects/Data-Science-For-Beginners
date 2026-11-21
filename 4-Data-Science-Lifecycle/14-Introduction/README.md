@@ -105,3 +105,13 @@ Applying the Data Science Lifecycle involves multiple roles and tasks, where som
 ## Assignment
 
 [Assessing a Dataset](assignment.md)
+
+## Applied Lab: Security Scenario Rubric (R39 T055)
+
+Check out [applied-labs/r39-t055/README.md](./applied-labs/r39-t055/README.md) for a simple local Python example checking lifecycle security scenarios using a callable offline adapter.
+
+* Prerequisites: Python 3 standard library
+* Run lab: `python3 4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t055/example.py`
+* Run tests: `python3 -m unittest discover -s 4-Data-Science-Lifecycle/14-Introduction/applied-labs/r39-t055 -p "test_*.py"`
+* Scope and limitations: Local offline simulation using standard Python. No live cloud APIs are called.
+
