@@ -261,3 +261,13 @@ Probability and statistics is such a broad topic that it deserves its own course
 ## Credits
 
 This lesson has been authored with ♥️ by [Dmitry Soshnikov](http://soshnikov.com)
+
+## Applied Lab: Histogram Boundary Accounting Experiment (R39 T058)
+
+Check out [applied-labs/r39-t058/README.md](./applied-labs/r39-t058/README.md) for a simple local Python example counting values in explicit half open bins and running an evaluation experiment across input sizes.
+
+* Prerequisites: Python 3 standard library
+* Run lab: `python3 1-Introduction/04-stats-and-probability/applied-labs/r39-t058/example.py`
+* Run tests: `python3 -m unittest discover -s 1-Introduction/04-stats-and-probability/applied-labs/r39-t058 -p "test_*.py"`
+* Scope and limitations: Deterministic local experiment measuring binning correctness across three small configurations without claiming real world model accuracy.
+
