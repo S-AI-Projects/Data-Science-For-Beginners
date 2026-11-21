@@ -1,0 +1,29 @@
+=== Tool Versions ===
+Python: 3.14.6
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 1-Introduction/04-stats-and-probability/applied-labs/r39-t058/example.py
+Contract result counts: [2, 2]
+
+Evaluation experiment across configurations:
+config_small: size=4, counts=[2, 2], correctness=100.0%
+config_medium: size=8, counts=[3, 3], correctness=100.0%
+config_multibin: size=6, counts=[2, 2, 2], correctness=100.0%
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 1-Introduction/04-stats-and-probability/applied-labs/r39-t058 -p "test_*.py" -v
+test_deliberate_wrong_result_fails (test_example.TestHistogramEvaluationExperiment.test_deliberate_wrong_result_fails) ... ok
+test_evaluation_experiment_configurations (test_example.TestHistogramEvaluationExperiment.test_evaluation_experiment_configurations) ... ok
+test_stated_contract_counts_and_out_of_range (test_example.TestHistogramEvaluationExperiment.test_stated_contract_counts_and_out_of_range) ... ok
+test_values_outside_range_reported_separately (test_example.TestHistogramEvaluationExperiment.test_values_outside_range_reported_separately) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: setting count_histogram_bins to return [0, 0]
+Exit code with deliberate mutation: 1 (Non zero exit confirms test fails on wrong result)
