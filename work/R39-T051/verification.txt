@@ -1,0 +1,27 @@
+=== Tool Versions ===
+Python: 3.14.6
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 5-Data-Science-In-Cloud/19-Azure/applied-labs/r39-t051/example.py
+Evaluating fictional scenarios:
+Scenario scenario_complete_pass: PASS (Complete scenario with relevant control)
+Scenario scenario_missing_asset_fail: FAIL (Missing required field: asset)
+Scenario scenario_unrelated_control_review: REVIEW (Control unrelated to threat category 'unauthorized_access')
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 5-Data-Science-In-Cloud/19-Azure/applied-labs/r39-t051 -p "test_*.py" -v
+test_complete_scenario_passes (test_example.TestSecurityScenarioRubric.test_complete_scenario_passes) ... ok
+test_deliberate_wrong_result_fails (test_example.TestSecurityScenarioRubric.test_deliberate_wrong_result_fails) ... ok
+test_missing_asset_fails (test_example.TestSecurityScenarioRubric.test_missing_asset_fails) ... ok
+test_unrelated_control_needs_review (test_example.TestSecurityScenarioRubric.test_unrelated_control_needs_review) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: setting FICTIONAL_SCENARIOS[0]['asset'] = None
+Exit code with deliberate mutation: 1 (Non zero exit confirms test fails on wrong result)

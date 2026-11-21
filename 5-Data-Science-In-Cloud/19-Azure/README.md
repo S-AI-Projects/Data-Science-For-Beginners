@@ -298,4 +298,14 @@ In this lesson, you learned how to train, deploy and consume a model to predict 
 
 [Data Science project using Azure ML SDK](assignment.md)
 
+## Applied Lab: Security Scenario Rubric (R39 T051)
+
+Check out [applied-labs/r39-t051/README.md](./applied-labs/r39-t051/README.md) for a simple local Python example that checks security scenarios for Azure ML assets.
+
+* Prerequisites: Python 3 standard library
+* Run lab: `python3 5-Data-Science-In-Cloud/19-Azure/applied-labs/r39-t051/example.py`
+* Run tests: `python3 -m unittest discover -s 5-Data-Science-In-Cloud/19-Azure/applied-labs/r39-t051 -p "test_*.py"`
+* Scope and limitations: This is a local mock check. It does not call real Azure endpoints.
+
+
 
