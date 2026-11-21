@@ -166,3 +166,13 @@ https://medium.com/@EvanSinar/use-animation-to-supercharge-data-visualization-cd
 ## Assignment
 
 [Build your own custom visualization](assignment.md)
+
+## Applied Lab: Chart Data Consistency (R39 T059)
+
+Check out [applied-labs/r39-t059/README.md](./applied-labs/r39-t059/README.md) for a simple local Python example and scenario assessment questions checking chart label, count, and total consistency.
+
+* Prerequisites: Python 3 standard library
+* Run lab: `python3 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t059/example.py`
+* Run tests: `python3 -m unittest discover -s 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t059 -p "test_*.py"`
+* Scope and limitations: Local data validation with three applied questions evaluating filtered chart consistency.
+

@@ -1,0 +1,31 @@
+=== Tool Versions ===
+Python: 3.14.6
+Git: git version 2.50.1 (Apple Git-155)
+GitHub CLI: gh version 2.101.0 (2026-09-15)
+
+=== Example Execution ===
+$ python3 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t059/example.py
+Full summary (total 6): [2, 1, 3] total: 6
+Filtered summary (total 3): [2, 1] total: 3
+
+Applied questions executable checks:
+Q1 (predict output): True
+Q2 (diagnose failure): True
+Q3 (boundary policy): True
+
+=== Unit Test Suite ===
+$ python3 -m unittest discover -s 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t059 -p "test_*.py" -v
+test_applied_question_q1 (test_example.TestChartScenarioAssessment.test_applied_question_q1) ... ok
+test_applied_question_q2 (test_example.TestChartScenarioAssessment.test_applied_question_q2) ... ok
+test_applied_question_q3 (test_example.TestChartScenarioAssessment.test_applied_question_q3) ... ok
+test_deliberate_wrong_result_fails (test_example.TestChartScenarioAssessment.test_deliberate_wrong_result_fails) ... ok
+test_full_and_filtered_counts_and_totals (test_example.TestChartScenarioAssessment.test_full_and_filtered_counts_and_totals) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+=== Deliberate Failure Verification ===
+Mutation target: setting check_q1_predict_output to False
+Exit code with deliberate mutation: 1 (Non zero exit confirms test fails on wrong result)
