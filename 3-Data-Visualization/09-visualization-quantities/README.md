@@ -191,6 +191,51 @@ In this plot, you can see the range per bird category of the Minimum Length and 
 
 ![superimposed values](images/superimposed-02.png)
 
+## Applied lab: grouping categories, label/value alignment, and aggregate totals
+
+The lesson's core principles on [grouping data in bar charts](#explore-bar-charts), maintaining clear [label/value alignment](#observe-wingspan-with-matplotlib), and [comparing aggregate quantities](#comparing-data) are illustrated in this local example: [example.py](./applied-labs/r39-t040/example.py) aggregates numerical quantities by category from a CSV file, preserves explicit label-to-value alignment, retains zero-valued categories, and calculates an overall aggregate total that reconciles exactly with the grouped quantities. The synthetic [fixture.csv](./applied-labs/r39-t040/fixture.csv) includes repeated categories (`Waterfowl`) and a zero-quantity category (`Songbirds`):
+
+```bash
+python3 3-Data-Visualization/09-visualization-quantities/applied-labs/r39-t040/example.py 3-Data-Visualization/09-visualization-quantities/applied-labs/r39-t040/fixture.csv
+```
+
+Expected output:
+
+```json
+{
+  "groups": [
+    {
+      "category": "Birds of Prey",
+      "quantity": 3
+    },
+    {
+      "category": "Songbirds",
+      "quantity": 0
+    },
+    {
+      "category": "Waterfowl",
+      "quantity": 7
+    }
+  ],
+  "total": 10
+}
+```
+
+### Applied Questions & Answers
+
+1. **Predict an output:** What is the grouped output and aggregate total for an input containing `Waterfowl,5`, `Birds of Prey,3`, `Waterfowl,2`, and `Songbirds,0`?
+   - *Rationale:* Repeated `Waterfowl` rows are aggregated ($5 + 2 = 7$), `Birds of Prey` retains $3$, `Songbirds` explicitly preserves $0$ to show observed absence, categories are sorted alphabetically, and the aggregate total sums to $3 + 0 + 7 = 10$.
+   - *Executable check:* `test_applied_question_1_predict_output` in [`test_example.py`](./applied-labs/r39-t040/test_example.py) verifies exact dictionary matching and reconciliation with `sum(g['quantity'])`.
+2. **Diagnose a failure:** Why does a row `Ducks/Geese,-4` fail validation, and what diagnostic is emitted?
+   - *Rationale:* Quantities represent physical non-negative quantities or counts. Negative numbers violate the data contract and raise a `ValueError` with exit status `2`.
+   - *Executable check:* `test_applied_question_2_diagnose_failure` verifies that `ValueError` is raised, stderr contains `"quantity must be a non-negative integer"`, and process exit code is `2`.
+3. **Choose a boundary policy:** What is the boundary policy when the CSV has only the header row, or records explicit zeros?
+   - *Rationale:* A header-only CSV is valid empty data returning `{"groups": [], "total": 0}`. Explicit zero quantities are preserved rather than omitted so visualizers can represent zero counts truthfully without dropping categories.
+   - *Executable check:* `test_applied_question_3_boundary_policy` confirms empty groups list for header-only input and explicit zero retention.
+
+**Simulation/mock behavior:** Fully local deterministic aggregation simulation. The lab demonstrates data pre-processing, grouping, alignment, and total reconciliation underlying quantity visualizations without launching GUI renderers, requiring external data downloads, machine learning models, or cloud providers. Its simplifications stop at a strict two-column `Category,Quantity` CSV schema, non-negative integer arithmetic, and alphabetical sorting; it does not automatically select visual encodings, render graphical pixels, or evaluate visual accessibility.
+
+---
 ## 🚀 Challenge
 
 This bird dataset offers a wealth of information about different types of birds within a particular ecosystem. Search around the internet and see if you can find other bird-oriented datasets. Practice building charts and graphs around these birds to discover facts you didn't realize.
