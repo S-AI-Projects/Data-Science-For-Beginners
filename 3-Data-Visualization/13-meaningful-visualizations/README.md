@@ -141,6 +141,48 @@ Loop through the .json object to capture the 'to' and 'from' data for the letter
 
 Run your app from the terminal (npm run serve) and enjoy the visualization!
 
+## Applied lab: grouping values and checking totals
+
+The lesson's guidance on [choosing a chart for category comparisons and totals](#choose-the-right-chart-type) and [readable labels](#styling-your-charts-for-readability) is illustrated in this small local example: [example.py](./applied-labs/r39-t039/example.py) groups integer values by label, keeps each label beside its value, and reports a grand total that reconciles with the grouped values. The synthetic [fixture.csv](./applied-labs/r39-t039/fixture.csv) repeats one label and includes a zero-valued group:
+
+```bash
+python3 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t039/example.py 3-Data-Visualization/13-meaningful-visualizations/applied-labs/r39-t039/fixture.csv
+```
+
+Expected output:
+
+```json
+{
+  "groups": [
+    {
+      "label": "Garden",
+      "value": 10
+    },
+    {
+      "label": "Harbor",
+      "value": 6
+    },
+    {
+      "label": "Hill",
+      "value": 0
+    }
+  ],
+  "total": 16
+}
+```
+
+This is a deterministic local aggregation simulation, not a chart, model, or measurement of real-world accuracy. Its simplifications stop at one exact `label,value` CSV schema, non-negative integer addition, and alphabetical output ordering; it does not select a chart, evaluate whether categories are meaningful, or account for context, uncertainty, or accessibility.
+
+Three controlled input sizes were checked against their exact expected grouped outputs. Correctness is measured as an exact output match; rows processed and distinct output groups show the work/output-size trade-off without relying on unstable timings.
+
+| Input rows | Distinct groups | Expected total | Exact output match |
+| ---: | ---: | ---: | :--- |
+| 2 | 2 | 9 | Yes |
+| 4 | 3 | 11 | Yes |
+| 8 | 3 | 22 | Yes |
+
+As rows increase from 2 to 8, the aggregator processes four times as many records while the output remains at three groups in the larger cases. The check is arithmetic and contract correctness only; it makes no claim about real-world model accuracy.
+
 ## 🚀 Challenge
 
 Take a tour of the internet to discover deceptive visualizations. How does the author fool the user, and is it intentional? Try correcting the visualizations to show how they should look.
